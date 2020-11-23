@@ -25,9 +25,9 @@ class CreateTOrdersDetailsTable extends Migration
             ->references('order_id')->on('t_orders')
             ->onDelete('cascade');
             // $table->foreign('shipment_status_id')
-            // ->references('shipment_status_id')->on('m_shipments_statuses');
+            // ->references('id')->on('m_shipments_statuses');
             // $table->foreign('products_id')
-            // ->references('product_id')->on('m_products');
+            // ->references('id')->on('m_products');
         });
     }
 
