@@ -14,9 +14,18 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'last_name' => 'sample1',
             'first_name' => 'sample11',
-            'email' => 'sample1@sample.com',
-            'password' => bcrypt('sample1'),
 
+            'password' => bcrypt('sample1'),
+            'zipcode' => '1111111',
+            'prefecture' => '北海道',
+            'municipality' => '札幌',
+            'address' => '1-2-3',
+            'apartments' => 'AAビル2F',
+            'email' => 'sample1@sample.com',
+            'phone_number' => '1111111111',
+            'user_classfication' => '1',
+            'company_name' => 'AA株式会社',
+            'delete_flag' => ''
         ]);
         DB::table('users')->insert([
             'last_name' => 'sample2',
