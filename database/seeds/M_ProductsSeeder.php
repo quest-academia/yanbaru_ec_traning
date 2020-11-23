@@ -12,7 +12,7 @@ class M_ProductsSeeder extends Seeder
     public function run()
     {
         DB::table('m_products')->insert([
-           'product_id' => 1,
+           'id' => 1,
            'product_name' => '黒毛和牛サーロイン',
            'category_id' => 1,
            'price' => 8000,
@@ -24,7 +24,7 @@ class M_ProductsSeeder extends Seeder
            'delete_flag' => ''
         ]);
         DB::table('m_products')->insert([
-            'product_id' => 2,
+            'id' => 2,
             'product_name' => 'A5ランク松坂牛',
             'category_id' => 1,
             'price' => 12000,
@@ -36,7 +36,7 @@ class M_ProductsSeeder extends Seeder
             'delete_flag' => ''
          ]);
          DB::table('m_products')->insert([
-            'product_id' => 3,
+            'id' => 3,
             'product_name' => 'フィレステーキ',
             'category_id' => 1,
             'price' => 5000,
@@ -48,7 +48,7 @@ class M_ProductsSeeder extends Seeder
             'delete_flag' => ''
          ]);
          DB::table('m_products')->insert([
-            'product_id' => 4,
+            'id' => 4,
             'product_name' => '越前ガニ',
             'category_id' => 2,
             'price' => 6000,
@@ -60,7 +60,7 @@ class M_ProductsSeeder extends Seeder
             'delete_flag' => ''
          ]);
          DB::table('m_products')->insert([
-            'product_id' => 5,
+            'id' => 5,
             'product_name' => '特選いくら',
             'category_id' => 2,
             'price' => 4000,

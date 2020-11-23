@@ -14,7 +14,7 @@ class CreateMProducts extends Migration
     public function up()
     {
         Schema::create('m_products', function (Blueprint $table) {
-            $table->increments('product_id');
+            $table->increments('id');
             $table->string('product_name',64);
             $table->integer('category_id')->unsigned();
             $table->integer('price')->unsigned();
@@ -25,8 +25,8 @@ class CreateMProducts extends Migration
             $table->integer('user_id')->unsigned();
             $table->char('delete_flag',1);
 
-            $table->foreign('sale_status_id')->references('sale_status_id')->on('m_sales_statuses')->onDelete('cascade');
-            $table->foreign('product_status_id')->references('product_status_id')->on('m_products_statuses')->onDelete('cascade');
+            $table->foreign('sale_status_id')->references('id')->on('m_sales_statuses')->onDelete('cascade');
+            $table->foreign('product_status_id')->references('id')->on('m_products_statuses')->onDelete('cascade');
         });
     }
 

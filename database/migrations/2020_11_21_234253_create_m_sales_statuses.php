@@ -14,7 +14,7 @@ class CreateMSalesStatuses extends Migration
     public function up()
     {
         Schema::create('m_sales_statuses', function (Blueprint $table) {
-            $table->increments('sale_status_id')->unsigned();
+            $table->increments('id')->unsigned();
             $table->string('sale_status_name',32);
         });
     }
