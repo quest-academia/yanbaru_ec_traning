@@ -15,7 +15,7 @@ class CreateMProductsStatuses extends Migration
     {
         Schema::create('m_products_statuses', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('product_status_name',32);
+            $table->string('product_status_name', 32);
         });
     }
 
