@@ -14,7 +14,7 @@ class CreateTOrdersTable extends Migration
     public function up()
     {
         Schema::create('t_orders', function (Blueprint $table) {
-            $table->increments('order_id');
+            $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->timestamp('order_date');
             // $table->foreign('user_id')

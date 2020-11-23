@@ -14,8 +14,8 @@ class CreateMShipmentsStatusesTable extends Migration
     public function up()
     {
         Schema::create('m_shipments_statuses', function (Blueprint $table) {
-            $table->increments('shipment_status_id');
-            $table->string('shipment_status_name',32);
+            $table->increments('id');
+            $table->string('shipment_status_name', 32);
         });
     }
 
