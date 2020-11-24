@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('m_users')->insert(
             [
-                'user_id' => '1',
+                'id' => '1',
                 'password' => '1a2b3c4d5e',
                 'last_name' => '東京',
                 'first_name' => '太郎',
@@ -27,11 +27,9 @@ class UsersTableSeeder extends Seeder
                 'user_classification_id' => '1',
                 'company_name' => '東京株式会社',
                 'delete_flag' => '0',
-            ]
-        );
-        DB::table('m_users')->insert(
+            ],
             [
-                'user_id' => '2',
+                'id' => '2',
                 'password' => '6f7g8h9i0j',
                 'last_name' => '大阪',
                 'first_name' => '次郎',
@@ -45,11 +43,9 @@ class UsersTableSeeder extends Seeder
                 'user_classification_id' => '2',
                 'company_name' => '株式会社大阪',
                 'delete_flag' => '0',
-            ]
-        );
-        DB::table('m_users')->insert(
+            ],
             [
-                'user_id' => '3',
+                'id' => '3',
                 'password' => 'k1l2m3n4o5',
                 'last_name' => '沖縄',
                 'first_name' => '花子',
@@ -63,7 +59,7 @@ class UsersTableSeeder extends Seeder
                 'user_classification_id' => '3',
                 'company_name' => '沖縄株式会社',
                 'delete_flag' => '0',
-            ]
+            ],
         );
     }
 }
