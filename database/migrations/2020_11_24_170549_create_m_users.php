@@ -26,7 +26,7 @@ class CreateMUsers extends Migration
             $table->string('email', 128);
             $table->string('phone_number', 16);
             $table->bigInteger('user_classification_id')->unsigned();
-            //$table->foreign('user_classification_id')->references('id')->on('m_users')->onDelete('cascade');
+            $table->foreign('user_classification_id')->references('id')->on('m_users')->onDelete('cascade');
             $table->string('company_name', 128);
             $table->char('delete_flag', 1);
         });
