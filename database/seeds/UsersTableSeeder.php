@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('m_users')->insert(
+        DB::table('m_users')->insert([
             [
                 'id' => '1',
                 'password' => '1a2b3c4d5e',
@@ -60,6 +60,6 @@ class UsersTableSeeder extends Seeder
                 'company_name' => '沖縄株式会社',
                 'delete_flag' => '0',
             ],
-        );
+        ]);
     }
 }

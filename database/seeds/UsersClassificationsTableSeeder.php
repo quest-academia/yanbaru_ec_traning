@@ -11,7 +11,7 @@ class UsersClassificationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('m_users_classifications')->insert(
+        DB::table('m_users_classifications')->insert([
             [
                'id' => '1',
                'user_classification_name' => '一般' ,
@@ -24,6 +24,6 @@ class UsersClassificationsTableSeeder extends Seeder
                 'id' => '3',
                 'user_classification_name' => 'ゲスト' ,
             ],
-        );
+        ]);
     }
 }
