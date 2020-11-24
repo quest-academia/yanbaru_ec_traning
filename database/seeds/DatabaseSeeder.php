@@ -11,11 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // 注文テーブルへのシーディング
         $this->call(T_OrdersTableSeeder::class);
-        // 注文詳細テーブルへのシーディング
         $this->call(T_OrdersDetailsTableSeeder::class);
-        // 発送状態テーブルへのシーディング
         $this->call(M_ShipmentsStatusesTableSeeder::class);
+        $this->call(M_ProductsSeeder::class);
+        $this->call(M_CategoriesSeeder::class);
+        $this->call(M_Products_StatusesSeeder::class);
+        $this->call(M_Sales_StatusesSeeder::class);
     }
 }
