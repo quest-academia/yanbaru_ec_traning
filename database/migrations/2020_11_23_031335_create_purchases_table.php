@@ -17,7 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->increments('id');
             $table->integer('purchase_price')->unsigned();
             $table->integer('purchase_quantity');
-            $table->string('purchase_company',128);
+            $table->string('purchase_company', 128);
             $table->timestamp('order_date')->useCurrent();
             $table->timestamp('purchase_date')->useCurrent();
             $table->integer('product_id')->unsigned();
