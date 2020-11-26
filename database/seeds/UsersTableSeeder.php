@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('m_users')->insert([
             [
                 'id' => '1',
-                'password' => '1a2b3c4d5e',
+                'password' => Hash::make('1a2b3c4d5e'),
                 'last_name' => '東京',
                 'first_name' => '太郎',
                 'zipcode' => '1638001',
@@ -30,7 +31,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => '2',
-                'password' => '6f7g8h9i0j',
+                'password' => Hash::make('6f7g8h9i0j'),
                 'last_name' => '大阪',
                 'first_name' => '次郎',
                 'zipcode' => '5408570',
@@ -46,7 +47,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => '3',
-                'password' => 'k1l2m3n4o5',
+                'password' => Hash::make('k1l2m3n4o5'),
                 'last_name' => '沖縄',
                 'first_name' => '花子',
                 'zipcode' => '9008570',
