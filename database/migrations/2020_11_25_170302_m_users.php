@@ -14,7 +14,7 @@ class MUsers extends Migration
     public function up()
     {
         Schema::create('m_users', function (Blueprint $table) {
-            $table->bigIncrements('user_id')->autoIncrement();
+            $table->increments('id');
             $table->string('password', 64);
             $table->string('last_name', 16);
             $table->string('first_name', 16);
@@ -25,8 +25,9 @@ class MUsers extends Migration
             $table->string('apartments', 32);
             $table->string('email', 128);
             $table->string('phone_number', 16);
-            $table->unsignedBigInteger('user_classification_id');
-            $table->foreign('user_classification_id')->references('user_id')->on('m_users')->onDelete('cascade');
+            $table->integer('user_classification_id')->unsigned();
+            //外部キー制約
+            $table->foreign('user_classification_id')->references('id')->on('m_users_classifications')->onDelete('cascade');
             $table->string('company_name', 128);
             $table->char('delete_flag', 1);
         });

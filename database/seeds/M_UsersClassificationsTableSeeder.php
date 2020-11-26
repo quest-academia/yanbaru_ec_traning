@@ -12,19 +12,19 @@ class M_UsersClassificationsTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '魚',
+            'user_classification_name' => '出品者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '肉',
+            'user_classification_name' => '出品者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => 'カフェ',
+            'user_classification_name' => '出品者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '居酒屋',
+            'user_classification_name' => '出品者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '製菓',
+            'user_classification_name' => '出品者',
         ]);
     }
 }
