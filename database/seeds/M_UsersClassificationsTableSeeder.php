@@ -18,13 +18,13 @@ class M_UsersClassificationsTableSeeder extends Seeder
             'user_classification_name' => '出品者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '出品者',
+            'user_classification_name' => '購入者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '出品者',
+            'user_classification_name' => '管理者',
         ]);
         DB::table('m_users_classifications')->insert([
-            'user_classification_name' => '出品者',
+            'user_classification_name' => '購入者',
         ]);
     }
 }
