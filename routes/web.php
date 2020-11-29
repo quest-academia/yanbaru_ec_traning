@@ -14,6 +14,3 @@
 Route::get('/', function () {
     return view('login/login');
 });
-
-//検索機能
-Route::resource('searchproducts', 'SearchProductController');
