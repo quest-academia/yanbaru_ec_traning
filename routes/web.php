@@ -28,7 +28,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/', function () {
     return redirect('/home');
 });
-Route::get('/hoge', function () {
+Route::get('/home', function () {
     return view('home');
 });
 
