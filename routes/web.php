@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('login/login');
 });
+
+//商品検索機能
+Route::get('searchproduct', 'SearchProductController@index')->name('searchproduct');
