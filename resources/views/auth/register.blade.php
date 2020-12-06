@@ -71,8 +71,8 @@
                         </div>
     
                         <div class="form-group-sm">
-                                {!! Form::label('password', 'パスワード再入力', ['class' => 'd-block mt-3 mb-0']) !!}
-                                {!! Form::password('password', ['class' => 'ml-3 form-control-sm col-sm-8']) !!}
+                                {!! Form::label('password_confirmation', 'パスワード再入力', ['class' => 'd-block mt-3 mb-0']) !!}
+                                {!! Form::password('password_confirmation', ['class' => 'ml-3 form-control-sm col-sm-8']) !!}
                         </div>
     
                         <div class="text-center mt-5">

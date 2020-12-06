@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -51,13 +51,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'last_name' => ['required', 'string', 'max:10'],
             'first_name' => ['required', 'string', 'max:10'],
-            'zipcode' => ['required', 'integer', 'max:7'],
+            'zipcode' => ['required', 'integer', 'digits:7'],
             'prefecture' => ['required', 'string', 'max:5'],
             'municipality' => ['required', 'string', 'max:10'],
             'address' => ['required', 'string', 'max:15'],
             'apartments' => ['required', 'string', 'max:20'],
             'email' => ['string', 'email', 'max:255', 'unique:users'],
-            'phone_number' => ['required', 'integer', 'max:15'],
+            'phone_number' => ['required', 'string', 'max:15'],
             'password' => ['required', 'string', 'min:6', 'max:15', 'confirmed'],
         ]);
     }
@@ -71,9 +71,16 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'first_name' => $data['first_name'],
+            'zipcode' => $data['zipcode'],
+            'prefecture' => $data['prefecture'],
+            'municipality' => $data['municipality'],
+            'address' => $data['address'],
+            'apartments' => $data['apartments'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'phone_number' => $data['phone_number'],
+            'password' => bcrypt($data['password']),
         ]);
     }
 }
