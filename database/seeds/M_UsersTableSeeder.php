@@ -57,35 +57,5 @@ class M_UsersTableSeeder extends Seeder
             'company_name' => 'Cafe de normal',
             'delete_flag' => '0'
         ]);
-        DB::table('m_users')->insert([
-            'password' => bcrypt('sample4'),
-            'last_name' => '本田',
-            'first_name' => '稜典',
-            'zipcode' => '4444444',
-            'prefecture' => '大阪府',
-            'municipality' => '大阪市',
-            'address' => '1-2-3',
-            'apartments' => 'DDビルB1階',
-            'email' => 'sample4@sample.com',
-            'phone_number' => '4444444444',
-            'user_classification_id' => '1',
-            'company_name' => '居酒屋瀧',
-            'delete_flag' => '0'
-        ]);
-        DB::table('m_users')->insert([
-            'password' => bcrypt('sample5'),
-            'last_name' => '佐藤',
-            'first_name' => '裕太',
-            'zipcode' => '5555555',
-            'prefecture' => '東京',
-            'municipality' => '千代田区',
-            'address' => '1-2-3',
-            'apartments' => 'EEビル1F',
-            'email' => 'sample5@sample.com',
-            'phone_number' => '5555555555',
-            'user_classification_id' => '1',
-            'company_name' => '六花製菓',
-            'delete_flag' => '0'
-        ]);
     }
 }

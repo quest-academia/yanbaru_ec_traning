@@ -13,7 +13,7 @@ class CreatePurchasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('t_purchases', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('purchase_price')->unsigned();
             $table->integer('purchase_quantity');
@@ -21,9 +21,7 @@ class CreatePurchasesTable extends Migration
             $table->timestamp('order_date')->useCurrent();
             $table->timestamp('purchase_date')->useCurrent();
             $table->integer('product_id')->unsigned();
-
-            // $table->foreign('product_id')->references('product_id')->on('m_products');
-
+            $table->foreign('product_id')->references('id')->on('m_products');
         });
     }
 
@@ -34,6 +32,6 @@ class CreatePurchasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('t_purchases');
     }
 }

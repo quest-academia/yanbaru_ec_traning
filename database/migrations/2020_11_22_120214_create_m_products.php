@@ -20,11 +20,10 @@ class CreateMProducts extends Migration
             $table->integer('price')->unsigned();
             $table->string('description', 256);
             $table->integer('sale_status_id')->unsigned();
-            $table->integer('product_status_id')->unsigned(); 
+            $table->integer('product_status_id')->unsigned();
             $table->timestamp('resist_date');
             $table->integer('user_id')->unsigned();
             $table->char('delete_flag', 1);
-
             $table->foreign('sale_status_id')->references('id')->on('m_sales_statuses')->onDelete('cascade');
             $table->foreign('product_status_id')->references('id')->on('m_products_statuses')->onDelete('cascade');
         });
