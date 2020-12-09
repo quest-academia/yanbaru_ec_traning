@@ -14,13 +14,14 @@ class CreateTPurchasesTable extends Migration
     public function up()
     {
         Schema::create('t_purchases', function (Blueprint $table) {
-            $table->bigIncrements('purchase_id');
+            $table->increments('purchase_id');
             $table->integer('purchase_price');
             $table->integer('purchase_quantity');
             $table->string('purchase_company')->length(128);
             $table->timestamp('order_date');
             $table->timestamp('purchase_date')->nullable();
-           // $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
+            $table->integer('product_id')->unsigned()->index();
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 
