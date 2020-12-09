@@ -16,10 +16,10 @@
               <label class="col-sm-2 col-form-label">商品名</label>
               <!--入力-->
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="productName">
+                <input type="text" class="form-control" name="keyword" value="{{ $keyword }}">
               </div>
               <div class="col-sm-auto">
-                <button type="search" class="btn btn-primary ">検索</button>
+                <button type="submit" class="btn btn-primary ">検索</button>
               </div>
             </div>     
             <!--カテゴリ選択-->
@@ -50,33 +50,14 @@
             <th></th>
           </tr>
         </thead>
+        @foreach($products as $product)
         <tr>
-          
-        </tr>
-        <tr>
-          <td>商品名2</td>
-          <td>食料品</td>
-          <td>2000円</td>
+          <td>{{ $product->product_name }}</td>
+          <td>{{ $product->category_id }}</td>
+          <td>{{ $product->price }}</td>
           <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
         </tr>
-        <tr>
-          <td>商品名3</td>
-          <td>食料品</td>
-          <td>4000円</td>
-          <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
-        </tr>
-        <tr>
-          <td>商品名4</td>
-          <td>食料品</td>
-          <td>500円</td>
-          <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
-        </tr>
-        <tr>
-          <td>商品名5</td>
-          <td>食料品</td>
-          <td>1000円</td>
-          <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
-        </tr>
+        @endforeach
       </table>
     </div>
     <!--テーブルここまで-->

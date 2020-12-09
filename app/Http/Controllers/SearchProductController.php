@@ -2,19 +2,39 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; //DBファサードを使う
 use App\Http\Controllers\Controller;
 
-//use App\Product;
+
 
 class SearchProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $m_products = DB::table('m_products')
-            ->join('m_categories', 'm_products.category_id', '=', 'm_categories.id')
-            ->select('m_products.product_name', 'm_categories.category_name')
-            ->get();
+        //キーワードを取得
+        $keyword = $request->input('keyword');
+
+        //キーワードが入力されている場合
+        if (!empty($keyword)) {
+
+            // 商品名から検索 ここが違う
+            $products = DB::table('m_products')
+                ->where('product_name', 'like', '%' . $keyword . '%')
+                ->paginate(15);
+        } else {
+            //入力されていない場合
+            $products = DB::table('m_products')
+                ->paginate(15);
+        }
+
+
+
+        //viewを表示
+        return view('searchproduct', [
+            'keyword' => $keyword,
+            'products' => $products
+        ]);
     }
 }
