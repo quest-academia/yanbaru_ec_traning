@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMUsersClassificationsTable extends Migration
+class CreateTOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateMUsersClassificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_users_classifications', function (Blueprint $table) {
-            //ここから
+        Schema::create('t_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_classification_name',32);
-            //ここまで
+            $table->unsignedInteger('user_id');
+            $table->timestamp('order_date');
+
+            $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateMUsersClassificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_users_classifications');
+        Schema::dropIfExists('t_orders');
     }
 }
