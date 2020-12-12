@@ -11,7 +11,7 @@
       <!--検索フォーム-->
       <div class="row">
         <div class="col-sm">
-          <form method="GET" action="">
+          <form method="GET">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">商品名</label>
               <!--入力-->
@@ -22,7 +22,7 @@
                 <button type="submit" class="btn btn-primary ">検索</button>
               </div>
             </div>     
-            <!--カテゴリ選択-->
+            <!--プルダウンカテゴリ選択-->
             <div class="form-group row">
               <label class="col-sm-2">商品カテゴリ</label>
               <div class="col-sm-3">
