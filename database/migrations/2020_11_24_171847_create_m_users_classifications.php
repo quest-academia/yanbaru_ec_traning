@@ -15,7 +15,7 @@ class CreateMUsersClassifications extends Migration
     {
         Schema::create('m_users_classifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_classification_name', 32);
+            $table->string('user_classification_name', 32)->nullable();
         });
     }
 

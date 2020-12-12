@@ -25,11 +25,14 @@ class CreateMUsers extends Migration
             $table->string('apartments', 32);
             $table->string('email', 128);
             $table->string('phone_number', 16);
-            $table->integer('user_classification_id')->unsigned();
+            $table->integer('user_classification_id')->unsigned()->default(2);
             //外部キー制約
             $table->foreign('user_classification_id')->references('id')->on('m_users_classifications')->onDelete('cascade');
-            $table->string('company_name', 128);
-            $table->char('delete_flag', 1);
+            
+            $table->string('company_name', 128)->nullable();
+            $table->char('delete_flag', 1)->deault(0);
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
