@@ -13,6 +13,15 @@
 
 /*
 |--------------------------------------------------------------------------
+| ユーザ登録機能
+|--------------------------------------------------------------------------
+*/
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+
+/*
+|--------------------------------------------------------------------------
 | ログイン機能
 |--------------------------------------------------------------------------
 */
@@ -40,3 +49,5 @@ Route::get('/home', function () {
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
+

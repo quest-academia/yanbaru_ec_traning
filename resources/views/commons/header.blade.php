@@ -17,7 +17,7 @@
         <nav class="pc-nav">
             <ul>
                 <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
-                <li class="nav-item">{!! link_to_route('login', '新規登録', [], ['class' => 'nav-link']) !!}</li>
+                <li class="nav-item">{!! link_to_route('signup', '新規登録', [], ['class' => 'nav-link']) !!}</li>
             </ul>
         </nav>
     @endif
