@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; //DBファサードを使う
 use App\Http\Controllers\Controller;
 
+use App\MProduct;
 
 
 class SearchProductController extends Controller
@@ -19,14 +20,13 @@ class SearchProductController extends Controller
         //キーワードが入力されている場合
         if (!empty($keyword)) {
 
-            // 商品名から検索 ここが違う
-            $products = DB::table('m_products')
-                ->where('product_name', 'like', '%' . $keyword . '%')
-                ->paginate(15);
+            // 商品名から検索 
+            $products = MProduct::where('product_name', 'like', '%' . $keyword . '%')
+                ->paginate(2);
         } else {
             //入力されていない場合
             $products = DB::table('m_products')
-                ->paginate(15);
+                ->paginate(2);
         }
 
 
