@@ -40,7 +40,7 @@
 
     <!--検索結果テーブル-->
     <div class="productTable">
-      <p>全5件</p>
+      <p>全{{ $products->total() }}件</p>
       <table class="table table-hover">
         <thead style="background-color: #ffd900">
           <tr>
