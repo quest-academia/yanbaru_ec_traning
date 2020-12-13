@@ -28,8 +28,9 @@
               <div class="col-sm-3">
                 <select id="category" name="category" class="form-control">
                   <option value="">未選択</option>
-                  <option value="1">肉類</option>
-                  <option value="2">魚介類</option>
+                  @foreach($categories as $id => $category_name)
+                  <option value="1"><a href="{{ route('searchproduct', ['category_id'=>$id]) }}" title="{{ $category_name }}">{{ $category_name }}</a></option>  
+                  @endforeach
                 </select>
               </div>
             </div>
