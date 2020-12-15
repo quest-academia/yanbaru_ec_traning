@@ -53,4 +53,4 @@ Route::group(['middleware' => 'auth:web'], function () {
 
 /* 開発ここから */
 
-Route::get('cartitem', 'CartItemsController@show')->name('cartitem');
+Route::resource('cartitem/', 'CartItemsController@index')->name('cartitem');

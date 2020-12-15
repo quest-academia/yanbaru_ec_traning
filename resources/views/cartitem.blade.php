@@ -16,16 +16,16 @@
                                     <div class="col-2">
                                         <span id="postal_code">
                                             @if(Auth::check())
-                                            {{ Auth::user()->zipcode }}
+                                            {!! Auth::user()->zipcode !!}
                                             @endif
                                         </span>
                                     </div>
                                     <div class="col-8" id="address">
                                         @if(Auth::check())
-                                        {{ Auth::user()->prefecture }}
-                                        {{ Auth::user()->municipality }}
-                                        {{ Auth::user()->address }}
-                                        {{ Auth::user()->apartments }}
+                                        {!! Auth::user()->prefecture !!}
+                                        {!! Auth::user()->municipality !!}
+                                        {!! Auth::user()->address !!}
+                                        {!! Auth::user()->apartments !!}
                                         @endif
                                     </div>
                                 </div>
@@ -33,8 +33,8 @@
                                     <div class="col-2"></div>
                                     <div class="col-8" id="name">
                                     @if(Auth::check())
-                                        {{ Auth::user()->last_name }}
-                                        {{ Auth::user()->first_name }}
+                                        {!! Auth::user()->last_name !!}
+                                        {!! Auth::user()->first_name !!}
                                         @endif
                                     <span class="ml-1">様</span>
                                     </div>
@@ -58,7 +58,7 @@
                                 <tbody style="overflow-y:auto;max-height:400px;display:block">
                                     <tr class="d-flex">
                                         <th scope="row" class="col-1 px-0 text-center">1</th>
-                                        <td class="col-2 px-0 text-center">商品1</td>
+                                        <td class="col-2 px-0 text-center">{!! $data !!}</td>
                                         <td class="col-2 px-0 text-center">食料品</td>
                                         <td class="col-2 px-0 text-center">1000円</td>
                                         <td class="col-2 px-0 text-center">
