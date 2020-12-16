@@ -13,8 +13,8 @@ class MCategory extends Model
         return $categories;
     }
 
-    public function m_products()
+    public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(MProduct::class);
     }
 }

@@ -11,12 +11,12 @@
       <!--検索フォーム-->
       <div class="row">
         <div class="col-sm">
-          <form method="GET">
+          <form method="GET" action="{{ route('searchproduct2')}}">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">商品名</label>
               <!--入力-->
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="keyword" value="{{ $keyword }}">
+                <input type="text" class="form-control" name="keyword">
               </div>
               <div class="col-sm-auto">
                 <button type="submit" class="btn btn-primary ">検索</button>
@@ -28,8 +28,11 @@
               <div class="col-sm-3">
                 <select id="category" name="category" class="form-control">
                   <option value="">未選択</option>
+
                   @foreach($categories as $id => $category_name)
-                  <option value="1"><a href="{{ route('searchproduct', ['category_id'=>$id]) }}" title="{{ $category_name }}">{{ $category_name }}</a></option>  
+                  <option value="{{ $id }}">
+                    {{ $category_name }}
+                  </option>  
                   @endforeach
                 </select>
               </div>
@@ -40,8 +43,9 @@
     </div>
 
     <!--検索結果テーブル-->
+    @if (!empty($products))
     <div class="productTable">
-      <p>全{{ $products->total() }}件</p>
+      <p>全{{ $products->count() }}件</p>
       <table class="table table-hover">
         <thead style="background-color: #ffd900">
           <tr>
@@ -54,19 +58,25 @@
         @foreach($products as $product)
         <tr>
           <td>{{ $product->product_name }}</td>
-          <td>{{ $product->category_id }}</td>
+          <td>{{ $product->category->category_name }}</td>
           <td>{{ $product->price }}円</td>
           <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
         </tr>
         @endforeach
+
+        
+        
       </table>
     </div>
+    
     <!--テーブルここまで-->
 
     <!--ページネーション-->
     <div class="d-flex justify-content-center">
-      {{ $products->links() }}
+      {{-- appendsでカテゴリを選択したまま遷移 --}}
+      {{ $products->appends(['category_id' => $category_id])->links() }}
     </div>
+    @endif
     <!--ページネーションここまで-->
 
 
