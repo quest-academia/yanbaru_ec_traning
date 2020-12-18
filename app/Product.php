@@ -28,6 +28,11 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     //この記載の意味は？fillableとどちらかで良い？
     //protected $guarded = array('id');
 

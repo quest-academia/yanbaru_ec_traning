@@ -14,7 +14,11 @@
                 <div class="row">
                     <div class="col-sm">
                         <div>
-                            <p class="itemCategory">商品カテゴリ:食料品</p>
+                            <p class="itemCategory">
+                                @if(isset($pd_category->category_name))
+                                    {{ $pd_category->category_name }}
+                                @endif
+                            </p>
                             <p>商品説明:</p>
                             <p>
                                 @if(isset($pd_info->description))

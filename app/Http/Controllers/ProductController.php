@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 //use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -50,8 +51,13 @@ class ProductController extends Controller
         //$pd = new Product(); 新しいデータ作るときだけ？
         
         $pd_info = Product::findOrFail($id);
-        //$pd_info = $pd->getData(); 条件指定のデータ取得？
-        return view('iteminfo', ['pd_info' => $pd_info]);
+        $pd_category = Category::findOrFail($pd_info -> category_id);
+        //$pd_info = $pd->getData(); 条件指定でデータ取得するときはこれ？
+        return view('iteminfo', 
+        [
+            'pd_info' => $pd_info,
+            'pd_category' => $pd_category,
+        ]);
     }
 
     /**
