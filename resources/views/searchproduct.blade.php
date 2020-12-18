@@ -11,7 +11,7 @@
       <!--検索フォーム-->
       <div class="row">
         <div class="col-sm">
-          <form method="GET" action="{{ route('searchproduct2')}}">
+          <form method="GET" action="{{ route('searchproduct')}}">
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">商品名</label>
               <!--入力-->
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <!--検索結果テーブル-->
+    <!--検索結果テーブル フォームに入力された時のみ表示する-->
     @if (!empty($products))
     <div class="productTable">
       <p>全{{ $products->count() }}件</p>
@@ -62,24 +62,17 @@
           <td>{{ $product->price }}円</td>
           <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
         </tr>
-        @endforeach
-
-        
-        
+        @endforeach   
       </table>
     </div>
-    
     <!--テーブルここまで-->
-
     <!--ページネーション-->
     <div class="d-flex justify-content-center">
       {{-- appendsでカテゴリを選択したまま遷移 --}}
-      {{ $products->appends(['category_id' => $category_id])->links() }}
+      {{ $products->appends(['category' => $category_id])->links() }}
     </div>
     @endif
     <!--ページネーションここまで-->
-
-
   </div>
 </main>
 
