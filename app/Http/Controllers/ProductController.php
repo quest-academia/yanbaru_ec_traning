@@ -6,9 +6,19 @@ use App\Product;
 use App\Category;
 //use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
+    public function addCart()
+    {
+        dd($_POST);//情報が飛んできているかの確認
+        return view('cartitem');
+        //ここでセッションに商品IDと個数を登録
+        $request->session()->put('', '');
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +26,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        //ここでカート内商品一覧を表示させる
+        //まずリダイレクト
     }
 
     /**
@@ -50,13 +61,28 @@ class ProductController extends Controller
     {
         //$pd = new Product(); 新しいデータ作るときだけ？
         
+        //変数の初期化
+        $pd_info = array();
+        $pd_category = array();
+        $user_id = '';
+
         $pd_info = Product::findOrFail($id);
         $pd_category = Category::findOrFail($pd_info -> category_id);
+        $user_id = Auth::user()->id;
+
+        //エラー画面出さないときはこの書き方
+        //if($pd_info){
+        //    $pd_category = Category::findOrFail($pd_info -> category_id); 
+        //}
+        
+        
+        
         //$pd_info = $pd->getData(); 条件指定でデータ取得するときはこれ？
         return view('iteminfo', 
         [
             'pd_info' => $pd_info,
             'pd_category' => $pd_category,
+            'user_id' => $user_id,
         ]);
     }
 

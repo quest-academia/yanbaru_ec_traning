@@ -57,6 +57,12 @@ Route::group(['middleware' => 'auth:web'], function () {
 |--------------------------------------------------------------------------
 */
 
-Route::resource('iteminfo', 'ProductController', ['only' => ['show']]);
+//Route::resource('iteminfo', 'ProductController', ['only' => ['show']]);
 
 
+Route::resource('cartitems', 'ProductController', ['only' => ['show']]);
+
+Route::group(["prefix" => 'iteminfo'], function() {
+    Route::get('/{id}', 'ProductController@show');
+    Route::post('/add', 'ProductController@addCart')->name('addcart');
+});
