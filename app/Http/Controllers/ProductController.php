@@ -10,7 +10,7 @@ use App\MProduct;
 use App\MCategory;
 
 
-class SearchProductController extends Controller
+class ProductController extends Controller
 {
     public function index(Request $request)
     {

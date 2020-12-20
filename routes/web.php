@@ -51,6 +51,6 @@ Route::group(['middleware' => 'auth:web'], function () {
 });
 
 //商品検索機能
-Route::get('show', 'SearchProductController@index')->name('show');
+Route::get('show', 'ProductController@index')->name('show');
 
-Route::get('searchproduct', 'SearchProductController@search')->name('searchproduct');
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
