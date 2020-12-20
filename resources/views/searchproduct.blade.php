@@ -16,7 +16,7 @@
               <label class="col-sm-2 col-form-label">商品名</label>
               <!--入力-->
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="keyword">
+                <input type="text" class="form-control" name="searchWord" value="{{ $searchWord }}">
               </div>
               <div class="col-sm-auto">
                 <button type="submit" class="btn btn-primary ">検索</button>
@@ -26,7 +26,7 @@
             <div class="form-group row">
               <label class="col-sm-2">商品カテゴリ</label>
               <div class="col-sm-3">
-                <select id="category" name="category" class="form-control">
+                <select id="categoryId" name="categoryId" class="form-control" value="{{ $categoryId }}">
                   <option value="">未選択</option>
 
                   @foreach($categories as $id => $category_name)
@@ -69,7 +69,7 @@
     <!--ページネーション-->
     <div class="d-flex justify-content-center">
       {{-- appendsでカテゴリを選択したまま遷移 --}}
-      {{ $products->appends(['category' => $category_id])->links() }}
+      {{ $products->appends(request()->input())->links() }}
     </div>
     @endif
     <!--ページネーションここまで-->
