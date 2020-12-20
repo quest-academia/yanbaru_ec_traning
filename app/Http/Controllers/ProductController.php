@@ -12,9 +12,12 @@ use App\MCategory;
 
 class ProductController extends Controller
 {
+    /*==================================
+    検索フォームのみ表示(show)
+    ==================================*/
     public function index(Request $request)
     {
-        //検索フォームだけを表示する
+        //フォームを機能させるために各情報を取得し、viewに返す
         $category = new MCategory;
         $categories = $category->getLists();
         $searchWord = $request->input('searchWord');
@@ -26,25 +29,31 @@ class ProductController extends Controller
             'categoryId' => $categoryId
         ]);
     }
-
+    /*==================================
+    検索メソッド(searchproduct)
+    ==================================*/
     public function search(Request $request)
     {
-        $searchWord = $request->input('searchWord');
-        $categoryId = $request->input('categoryId');
+        //入力される値value="{{ }}"の中身を定義する
+        $searchWord = $request->input('searchWord'); //商品名の値
+        $categoryId = $request->input('categoryId'); //カテゴリの値
 
         $query = MProduct::query();
+        //商品名が入力された場合、m_productsテーブルから一致する商品を$queryに代入
         if (isset($searchWord)) {
             $query->where('product_name', 'like', '%' . $searchWord . '%');
         }
+        //カテゴリが選択された場合、m_categoriesテーブルからcategory_idが一致する商品を$queryに代入
         if (isset($categoryId)) {
             $query->where('category_id', $categoryId);
         }
+        //$queryをcategory_idの昇順に並び替えて$productsに代入
         $products = $query->orderBy('category_id', 'asc')->paginate(15);
 
+        //m_categoriesテーブルからgetLists();関数でcategory_nameとidを取得する
         $category = new MCategory;
         $categories = $category->getLists();
 
-        //viewを表示
         return view('searchproduct', [
             'products' => $products,
             'categories' => $categories,

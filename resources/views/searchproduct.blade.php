@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <!--検索結果テーブル フォームに入力された時のみ表示する-->
+    <!--検索結果テーブル 検索された時のみ表示する-->
     @if (!empty($products))
     <div class="productTable">
       <p>全{{ $products->count() }}件</p>

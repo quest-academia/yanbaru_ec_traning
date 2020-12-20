@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class MProduct extends Model
 {
-    protected $fillable = ['product_name', 'category_id', 'price'];
-
+    //「商品(products)はカテゴリ(category)に属する」というリレーション関係を定義する
     public function category()
     {
         return $this->belongsTo(MCategory::class);
