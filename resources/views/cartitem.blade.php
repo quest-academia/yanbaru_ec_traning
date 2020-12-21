@@ -58,11 +58,13 @@
                             <tbody style="overflow-y:auto;max-height:400px;display:block">
                                 <tr class="d-flex">
                                     <th scope="row" class="col-1 px-0 text-center">1</th>
-                                    <td class="col-2 px-0 text-center">商品1</td>
-                                    <td class="col-2 px-0 text-center">食料品</td>
-                                    <td class="col-2 px-0 text-center">1000円</td>
+                                    <td class="col-2 px-0 text-center">{{ $pd_info->product_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $pd_category->category_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $pd_info->price }}</td>
                                     <td class="col-2 px-0 text-center">
-                                        <input class="col-5 text-right" placeholder="0" type="text" value="5"/> <span>個</span>
+                                        <input class="col-5 text-right" placeholder="0" type="text" 
+                                        value={{ $ses_pd_Qty }}> 
+                                        <span>個</span>
                                     </td>
                                     <td class="col-2 px-0 text-center">5000円</td>
                                     <td class="col-1 px-0 text-center"><button class="btn btn-danger">削除</button></td>

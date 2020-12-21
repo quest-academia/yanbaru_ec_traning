@@ -34,29 +34,25 @@
                             </p>
                         </div>
                         {!! Form::open(['route' => 'addcart']) !!}
-                            <!-- <input type="hidden" value={{$user_id}} name="user_id" > -->
+                            
                                 {{ Form::hidden('user_id', $user_id) }}
-                            <!-- @if(isset($pd_info->id)) -->
+                            
                                 {{ Form::hidden('product_id', $pd_info->id) }}
-                            <!-- @endif -->
                             
-                            
-                        <!-- <form class="quantitySelection" action="" method="post"> -->
                             <div class="form-group row justify-content-center">
                                 <label class="col-form-label">購入個数</label>
                                 <div class="">
-                                    <!--ここをlaravelcollectiveに変更すること-->
+                                    
                                     <input type="number" class="inputNumber form-control" value="0" name="productQty" >
                                 </div>
 
                                 <lavel class="col-form-label">個</lavel>
                                 <div class="col-sm-auto">
                                     {!! Form::submit('カートへ', ['class' => 'btn btn-primary']) !!}
-                                    
                                 </div>
                             </div>
                         {!! Form::close() !!}
-                        <!-- </form> -->
+                        
                     </div>
                 </div>
             </div>
