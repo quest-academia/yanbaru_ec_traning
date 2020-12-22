@@ -50,4 +50,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+//商品検索機能
+Route::get('show', 'ProductController@index')->name('show');
 
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
