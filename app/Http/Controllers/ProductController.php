@@ -41,12 +41,13 @@ class ProductController extends Controller
         $query = MProduct::query();
         //商品名が入力された場合、m_productsテーブルから一致する商品を$queryに代入
         if (isset($searchWord)) {
-            $query->where('product_name', 'like', '%' . $searchWord . '%');
+            $query->where('product_name', 'like', '%' . self::escapeLike($searchWord) . '%');
         }
         //カテゴリが選択された場合、m_categoriesテーブルからcategory_idが一致する商品を$queryに代入
         if (isset($categoryId)) {
             $query->where('category_id', $categoryId);
         }
+
         //$queryをcategory_idの昇順に並び替えて$productsに代入
         $products = $query->orderBy('category_id', 'asc')->paginate(15);
 
@@ -60,5 +61,11 @@ class ProductController extends Controller
             'searchWord' => $searchWord,
             'categoryId' => $categoryId
         ]);
+    }
+
+    //「\\」「%」「_」などの記号を文字としてエスケープさせる
+    public static function escapeLike($str)
+    {
+        return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
 }
