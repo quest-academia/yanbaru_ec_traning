@@ -14,11 +14,16 @@ class ProductController extends Controller
     {
         //セッションに保存したい変数を定義する（ここでは商品idと注文個数）
         //飛んできた$requestの中のname属性をそれぞれ指定
-        $ses_pd_id = $request->product_id;
-        $ses_pd_Qty = $request->productQty;
-        //セッションに商品IDと個数を登録（第一引数は”キー”）
-        $request->session()->put('product_id', $ses_pd_id);
-        $request->session()->put('productQty', $ses_pd_Qty);
+        $SessionProductId = $request->ProductId;
+        $SessionProductQuantity = $request->Quantity;
+        //配列の入れ物を作る（初期化）
+        $SessionData = array();
+        
+        //作った配列に、compact関数を用いてidと個数の変数をまとめる（”” を使っているが変数の意味）
+        $SessionData = compact("SessionProductId", "SessionProductQuantity");
+        
+        //session_dataというキーで、$SessionDataをセッションに登録
+        $request->session()->push('session_data', $SessionData);
         
         return redirect('cartitem');
         
@@ -32,20 +37,31 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         //セッションに保存していた値を取得し、変数として定義
-        $ses_pd_id = $request->session()->get('product_id');
-        $ses_pd_Qty = $request->session()->get('productQty');
+        $SessionData = $request->session()->get('session_data');
+        //セッションデータのなかのそれぞれのデータを抽出
+        $SessionProductId = array_column($SessionData, 'SessionProductId');
+        $SessionProductQuantity = array_column($SessionData, 'SessionProductQuantity');
+        
+
+        //viewで表示するための変数を定義
+        //取得してきたidより、Productモデルから商品を特定
+        $ProductInfo = array();
+        $ProductInfo = Product::findOrFail($SessionProductId);
+        
+        //カテゴリーを、Categoryモデルからidで特定
+        $ProductCategory = array();
+        $ProductCategory = Category::findOrFail($ProductInfo -> category_id);
+        
+
 
         //取得してきたidより、Productモデルから商品を特定
-        $pd_info = Product::findOrFail($ses_pd_id);
-        //カテゴリーを、Categoryモデルからidで特定
-        $pd_category = Category::findOrFail($pd_info -> category_id);
-        
+        $ProductInfo = Product::findOrFail($SessionData -> SessionProductId);
 
         return view('cartitem', 
         [
-            'pd_info' => $pd_info,
-            'ses_pd_Qty' => $ses_pd_Qty,
-            'pd_category' => $pd_category,
+            'ProductInfo' => $ProductInfo,
+            'SessionProductQuantity' => $SessionProductQuantity,
+            'ProductCategory' => $ProductCategory,
         ]);
 
     }
@@ -80,20 +96,21 @@ class ProductController extends Controller
     public function show($id)
     {
         //変数の初期化
-        $pd_info = array();
-        $pd_category = array();
-        $user_id = '';
+        $ProductInfo = array();
+        $ProductCategory = array();
+        $UserId = '';
 
         //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
-        $pd_info = Product::findOrFail($id);
-        $pd_category = Category::findOrFail($pd_info -> category_id);
-        $user_id = Auth::user()->id;
+        $ProductInfo = Product::findOrFail($id);
+        $ProductCategory = Category::findOrFail($ProductInfo -> category_id);
+        $UserId = Auth::user()->id;
 
+        
         return view('iteminfo', 
         [
-            'pd_info' => $pd_info,
-            'pd_category' => $pd_category,
-            'user_id' => $user_id,
+            'ProductInfo' => $ProductInfo,
+            'ProductCategory' => $ProductCategory,
+            'UserId' => $UserId,
         ]);
     }
 

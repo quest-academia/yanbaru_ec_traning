@@ -58,12 +58,12 @@
                             <tbody style="overflow-y:auto;max-height:400px;display:block">
                                 <tr class="d-flex">
                                     <th scope="row" class="col-1 px-0 text-center">1</th>
-                                    <td class="col-2 px-0 text-center">{{ $pd_info->product_name }}</td>
-                                    <td class="col-2 px-0 text-center">{{ $pd_category->category_name }}</td>
-                                    <td class="col-2 px-0 text-center">{{ $pd_info->price }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $ProductInfo->product_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $ProductCategory->category_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $ProductInfo->price }}</td>
                                     <td class="col-2 px-0 text-center">
                                         <input class="col-5 text-right" placeholder="0" type="text" 
-                                        value={{ $ses_pd_Qty }}> 
+                                        value={{ $SessionProductQuantity }}> 
                                         <span>個</span>
                                     </td>
                                     <td class="col-2 px-0 text-center">5000円</td>
@@ -75,7 +75,9 @@
                                     <td class="col-2 px-0 text-center">食料品</td>
                                     <td class="col-2 px-0 text-center">2000円</td>
                                     <td class="col-2 px-0 text-center">
-                                        <input class="col-5 text-right" placeholder="0" type="text" value="2" /> <span>個</span>
+                                        <input class="col-5 text-right" placeholder="0" type="text" 
+                                        value="2" /> 
+                                        <span>個</span>
                                     </td>
                                     <td class="col-2 px-0 text-center">4000円</td>
                                     <td class="col-1 px-0 text-center"><button class="btn btn-danger">削除</button></td>
