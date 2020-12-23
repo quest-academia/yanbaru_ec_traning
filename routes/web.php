@@ -60,10 +60,11 @@ Route::get('show', 'ProductController@index')->name('show');
 */
 
 
-Route::resource('cartitem', 'ProductController', ['only' => ['index']]);
+Route::resource('cartitem', 'CartController', ['only' => ['index']]);
 
 Route::group(["prefix" => 'iteminfo'], function() {
-    Route::get('/{id}', 'ProductController@show');
-    Route::post('/add', 'ProductController@addCart')->name('addcart');
+    Route::get('/{id}', 'CartController@show');
+    Route::post('/add', 'CartController@addCart')->name('addcart');
 });
+
 Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
