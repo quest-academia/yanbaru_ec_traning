@@ -37,13 +37,13 @@ class M_UsersTableSeeder extends Seeder
             'apartments' => 'テナントB',
             'email' => 'sample2@sample.com',
             'phone_number' => '2222222222',
-            'user_classification_id' => '2',
+            'user_classification_id' => '1',
             'company_name' => '宮代精肉店',
             'delete_flag' => '0'
         ]);
 
         DB::table('m_users')->insert([
-            'password' => bcrypt('sample3'),
+            'password' => bcrypt('sample1'),
             'last_name' => '神田',
             'first_name' => '彩香',
             'zipcode' => '3333333',
