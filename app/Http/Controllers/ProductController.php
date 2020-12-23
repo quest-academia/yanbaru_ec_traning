@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
 use App\Product;
 use App\Category;
 //use App\Http\Controllers\Controller;
@@ -147,7 +146,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-=======
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -213,6 +211,5 @@ class ProductController extends Controller
     public static function escapeLike($str)
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
->>>>>>> develop_alpha
     }
 }

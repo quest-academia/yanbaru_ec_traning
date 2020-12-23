@@ -53,7 +53,6 @@ Route::group(['middleware' => 'auth:web'], function () {
 //商品検索機能
 Route::get('show', 'ProductController@index')->name('show');
 
-<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | 開発中
@@ -67,6 +66,4 @@ Route::group(["prefix" => 'iteminfo'], function() {
     Route::get('/{id}', 'ProductController@show');
     Route::post('/add', 'ProductController@addCart')->name('addcart');
 });
-=======
 Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
->>>>>>> develop_alpha
