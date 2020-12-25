@@ -13,19 +13,18 @@ class CartController extends Controller
     {
         //セッションに保存したい変数を定義する（ここでは商品idと注文個数）
         //飛んできた$requestの中のname属性をそれぞれ指定
-        $SessionProductId = $request->ProductId;
-        $SessionProductQuantity = $request->Quantity;
+        $sessionProductId = $request->productId;
+        $sessionProductQuantity = $request->quantity;
         //配列の入れ物を作る（初期化）
-        $SessionData = array();
+        $sessionData = array();
         
         //作った配列に、compact関数を用いてidと個数の変数をまとめる（”” を使っているが変数の意味）
-        $SessionData = compact("SessionProductId", "SessionProductQuantity");
+        $sessionData = compact("sessionProductId", "sessionProductQuantity");
         
-        //session_dataというキーで、$SessionDataをセッションに登録
-        $request->session()->push('session_data', $SessionData);
+        //session_dataというキーで、$sessionDataをセッションに登録
+        $request->session()->push('session_data', $sessionData);
         
         return redirect('cartitem');
-        
     }
 
     /**
@@ -36,31 +35,35 @@ class CartController extends Controller
     public function index(Request $request)
     {
         //セッションに保存していた値を取得し、変数として定義
-        $SessionData = $request->session()->get('session_data');
+        $sessionData = $request->session()->get('session_data');
         //セッションデータのなかのそれぞれのデータを抽出
-        $SessionProductId = array_column($SessionData, 'SessionProductId');
-        $SessionProductQuantity = array_column($SessionData, 'SessionProductQuantity');
-        dd($SessionData);
+        $sessionProductId = array_column($sessionData, 'sessionProductId');
+        $sessionProductQuantity = array_column($sessionData, 'sessionProductQuantity');
+        dd($sessionData);
+
+        /*
+        |--------------------------------------------------------------------------
+        | 以下は実装できておりません。変更をお願いいたします
+        |--------------------------------------------------------------------------
+        */
 
         //viewで表示するための変数を定義
         //取得してきたidより、Productモデルから商品を特定
-        $ProductInfo = array();
-        $ProductInfo = Product::findOrFail($SessionProductId);
+        $productInfo = array();
+        $productInfo = Product::findOrFail($sessionProductId);
         
         //カテゴリーを、Categoryモデルからidで特定
-        $ProductCategory = array();
-        $ProductCategory = Category::findOrFail($ProductInfo -> category_id);
-        
-
+        $productCategory = array();
+        $productCategory = Category::findOrFail($productInfo -> category_id);
 
         //取得してきたidより、Productモデルから商品を特定
-        $ProductInfo = Product::findOrFail($SessionData -> SessionProductId);
+        $productInfo = Product::findOrFail($sessionData -> sessionProductId);
 
         return view('cartitem', 
         [
-            'ProductInfo' => $ProductInfo,
-            'SessionProductQuantity' => $SessionProductQuantity,
-            'ProductCategory' => $ProductCategory,
+            'productInfo' => $productInfo,
+            'sessionProductQuantity' => $sessionProductQuantity,
+            'productCategory' => $productCategory,
         ]);
 
     }
@@ -95,21 +98,20 @@ class CartController extends Controller
     public function show($id)
     {
         //変数の初期化
-        $ProductInfo = array();
-        $ProductCategory = array();
-        $UserId = '';
+        $productInfo = array();
+        $productCategory = array();
+        $userId = '';
 
         //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
-        $ProductInfo = Product::findOrFail($id);
-        $ProductCategory = Category::findOrFail($ProductInfo -> category_id);
-        $UserId = Auth::user()->id;
-
+        $productInfo = Product::findOrFail($id);
+        $productCategory = Category::findOrFail($productInfo -> category_id);
+        $userId = Auth::user()->id;
         
         return view('iteminfo', 
         [
-            'ProductInfo' => $ProductInfo,
-            'ProductCategory' => $ProductCategory,
-            'UserId' => $UserId,
+            'productInfo' => $sroductInfo,
+            'productCategory' => $productCategory,
+            'userId' => $userId,
         ]);
     }
 

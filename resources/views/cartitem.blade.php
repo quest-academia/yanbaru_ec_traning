@@ -58,9 +58,9 @@
                             <tbody style="overflow-y:auto;max-height:400px;display:block">
                                 <tr class="d-flex">
                                     <th scope="row" class="col-1 px-0 text-center">1</th>
-                                    <td class="col-2 px-0 text-center">{{ $ProductInfo->product_name }}</td>
-                                    <td class="col-2 px-0 text-center">{{ $ProductCategory->category_name }}</td>
-                                    <td class="col-2 px-0 text-center">{{ $ProductInfo->price }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $productInfo->product_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $productCategory->category_name }}</td>
+                                    <td class="col-2 px-0 text-center">{{ $productInfo->price }}</td>
                                     <td class="col-2 px-0 text-center">
                                         <input class="col-5 text-right" placeholder="0" type="text" 
                                         value={{ $SessionProductQuantity }}> 

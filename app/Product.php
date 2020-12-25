@@ -10,7 +10,6 @@ class Product extends Model
 {
     protected $table = 'm_products';
     
-    //いる？
     protected $fillable = [
         'id',
         'product_name',
@@ -32,11 +31,6 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    //この記載の意味は？fillableとどちらかで良い？
-    //protected $guarded = array('id');
-
-    //public $timestamps = false;
 
     public function getData(){
         //ここの$dataはどこで使う？条件絞りたい時に使う？
