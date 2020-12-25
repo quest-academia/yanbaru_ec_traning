@@ -109,7 +109,7 @@ class CartController extends Controller
         
         return view('iteminfo', 
         [
-            'productInfo' => $sroductInfo,
+            'productInfo' => $productInfo,
             'productCategory' => $productCategory,
             'userId' => $userId,
         ]);
