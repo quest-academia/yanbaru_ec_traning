@@ -30,6 +30,11 @@ class User extends Authenticatable
         'company_name',
     ];
 
+    public function Products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
