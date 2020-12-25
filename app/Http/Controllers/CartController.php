@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Product;
-use App\Category;
+use App\MProduct;
+use App\MCategory;
 //use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,14 +50,14 @@ class CartController extends Controller
         //viewで表示するための変数を定義
         //取得してきたidより、Productモデルから商品を特定
         $productInfo = array();
-        $productInfo = Product::findOrFail($sessionProductId);
+        $productInfo = MProduct::findOrFail($sessionProductId);
         
         //カテゴリーを、Categoryモデルからidで特定
         $productCategory = array();
-        $productCategory = Category::findOrFail($productInfo -> category_id);
+        $productCategory = MCategory::findOrFail($productInfo -> category_id);
 
         //取得してきたidより、Productモデルから商品を特定
-        $productInfo = Product::findOrFail($sessionData -> sessionProductId);
+        $productInfo = MProduct::findOrFail($sessionData -> sessionProductId);
 
         return view('cartitem', 
         [
@@ -92,7 +92,7 @@ class CartController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\MProduct  $product
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -103,8 +103,8 @@ class CartController extends Controller
         $userId = '';
 
         //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
-        $productInfo = Product::findOrFail($id);
-        $productCategory = Category::findOrFail($productInfo -> category_id);
+        $productInfo = MProduct::findOrFail($id);
+        $productCategory = MCategory::findOrFail($productInfo -> category_id);
         $userId = Auth::user()->id;
         
         return view('iteminfo', 
@@ -118,7 +118,7 @@ class CartController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
+     * @param  \App\MProduct  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -130,7 +130,7 @@ class CartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\MProduct  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -141,7 +141,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
+     * @param  \App\MProduct  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)

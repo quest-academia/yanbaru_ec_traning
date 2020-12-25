@@ -11,4 +11,9 @@ class MProduct extends Model
     {
         return $this->belongsTo(MCategory::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
