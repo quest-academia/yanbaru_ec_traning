@@ -21,7 +21,7 @@ if (! function_exists('formatDate')) {
 
 if (! function_exists('formatPostal')) {
     /**
-     * 日付の文字列を/区切りにする関数
+     * 郵便番号をハイフン区切りにする
      *
      * @param string $zip
      * @return string

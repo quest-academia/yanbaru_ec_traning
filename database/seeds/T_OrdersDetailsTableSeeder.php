@@ -36,5 +36,21 @@ class T_OrdersDetailsTableSeeder extends Seeder
             'order_quantity' => 3,
             'shipment_date' => $dt->modify('+2 day')->format('Y-m-d H:i:s')
         ]);
+        DB::table('t_orders_details')->insert([
+            'products_id' => 2,
+            'order_id' => 4,
+            'shipment_status_id' => 1,
+            'order_detail_number' => '23456',
+            'order_quantity' => 3,
+            'shipment_date' => $dt->format('Y-m-d H:i:s')
+        ]);
+        DB::table('t_orders_details')->insert([
+            'products_id' => 3,
+            'order_id' => 4,
+            'shipment_status_id' => 1,
+            'order_detail_number' => '23456',
+            'order_quantity' => 1,
+            'shipment_date' => $dt->format('Y-m-d H:i:s')
+        ]);
     }
 }

@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <script>
-        const toDetailUrl = 'fugafuga'
-        console.log(toDetailUrl);
-    </script>
     <main>
         <div class="container-fluid py-3">
             <div class="row col-12 justify-content-center m-0">
+                <!-- 削除後のリダイレクト処理で結果を表示する -->
+                @if (isset($deleteResult) && !empty($deleteResult))
+                    <div class="alert alert-danger col-12">
+                        {{$deleteResult}}
+                    </div>
+                @endif
                 <div class="col-12">
                     <!-- 直近3ヶ月表示ボタン -->
                     <div class="col-12 ">
@@ -28,8 +30,8 @@
                                     <th scope="col" class="col-2 px-0 py-1 text-center"></th>
                                 </tr>
                             </thead>
-                            <tbody class="" style="overflow-y:auto;max-height:400px;display:block">
-                                @if (!empty($orderHistoryData))
+                            <tbody style="overflow-y:auto;height:400px;display:block">
+                                @if (!$orderHistoryData->isEmpty())
                                     @foreach ($orderHistoryData as $key => $orderHistory)
                                         <tr class="d-flex">
                                             <th scope="row" class="col-1 px-0 text-center">{{$key+1}}</th>
@@ -55,12 +57,19 @@
                                                 </div>
                                             </td>
                                             <td class="col-3 px-0">
-                                                <div>注文日時：<span id="order_date_2">{{ formatDate($orderHistory->resist_date) }}</span></div>
-                                                <div>注文状態：<span id="order_status_2">{{ $orderHistory->shipment_status_name }}</span></div>
+                                                <div>注文日時：<span id="order_date_2">{{ formatDate($orderHistory->order_date) }}</span></div>
+                                                <div>注文状態：<span id="order_status_2">{{ $orderHistory->shipment_status }}</span></div>
                                             </td>
                                             <td class="col-2 px-0 text-center">
-                                                <button id="detail" class="btn btn-secondary btn-sm">詳細</button>
-                                                {!! link_to_route('o_detail', '詳細', ['data' => $orderHistory], ['class' => 'btn btn-primary btn-sm']) !!}
+                                                {!! link_to_route(
+                                                    'o_detail',
+                                                    '詳細',
+                                                    [
+                                                        'orderBaseNumber'    => $orderHistory->id,
+                                                        'orderDetailNumber'  => $orderHistory->order_detail_number,
+                                                        'currentOrderStatus' => $orderHistory->shipment_status
+                                                    ],
+                                                    ['class' => 'btn btn-primary btn-sm']) !!}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -72,18 +81,13 @@
                             </tbody>
                         </table>
                         <!-- ページング -->
-                        {{-- <div class="col-12 row justify-content-center mt-3 p-0 no-gutters">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                </ul>
-                            </nav>
-                        </div> --}}
+                        <div class="d-flex align-items-center justify-content-center">
+                            {{ $orderHistoryData->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+
 @endsection

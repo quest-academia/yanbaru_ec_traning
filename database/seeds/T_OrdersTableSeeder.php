@@ -18,5 +18,10 @@ class T_OrdersTableSeeder extends Seeder
                 ,'order_date' => $dt->modify('+1 day')->format('Y-m-d H:i:s')
             ]);
         }
+        // 追加
+        DB::table('t_orders')->insert([
+            'user_id' => 1
+            ,'order_date' => $dt->format('Y-m-d H:i:s')
+        ]);
     }
 }
