@@ -147,7 +147,8 @@ class TOrder extends Model
      * @param string $orderBaseNumber
      * @return bool
      */
-    public function deleteOrder($userId, $orderBaseNumber) {
+    public function deleteOrder($userId, $orderBaseNumber)
+    {
         $result = false;
         if ($userId && $orderBaseNumber) {
             $deleteCount = DB::table('t_orders')
