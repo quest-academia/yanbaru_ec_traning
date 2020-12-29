@@ -13,6 +13,15 @@
 
 /*
 |--------------------------------------------------------------------------
+| ユーザ登録機能
+|--------------------------------------------------------------------------
+*/
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+
+/*
+|--------------------------------------------------------------------------
 | ログイン機能
 |--------------------------------------------------------------------------
 */
@@ -43,3 +52,22 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/order-detail/delete', 'OrderController@deleteOrder')->name('delete_order');
     Route::get('/order-detail', 'OrderController@showOrderDetail')->name('o_detail');
 });
+
+//商品検索機能
+Route::get('show', 'ProductController@index')->name('show');
+
+/*
+|--------------------------------------------------------------------------
+| 開発中
+|--------------------------------------------------------------------------
+*/
+
+
+Route::resource('cartitem', 'CartController', ['only' => ['index']]);
+
+Route::group(["prefix" => 'iteminfo'], function() {
+    Route::get('/{id}', 'CartController@show');
+    Route::post('/add', 'CartController@addCart')->name('addcart');
+});
+
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');

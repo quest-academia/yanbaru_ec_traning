@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MUsersClassifications extends Migration
+class CreateMUsersClassifications extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class MUsersClassifications extends Migration
     {
         Schema::create('m_users_classifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_classification_name', 32);
+            $table->string('user_classification_name', 32)->nullable();
         });
     }
 
