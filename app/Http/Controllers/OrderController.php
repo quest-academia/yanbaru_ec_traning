@@ -22,14 +22,21 @@ class OrderController extends Controller
     public function showOrderHistory(Request $request)
     {
         // 初期値
-        $termFlg = false;
+        $termFlg = array(
+                            'term' => false,
+                        );
         $deleteResult = '';
         $orderHistoryData = [];
+        // 画面に表示する件数
+        $maxCountPerPage = 15;
+        $page = $request->input('page') ?? 1;
+        $pageFrom = (($page - 1) * $maxCountPerPage) + 1;
+
         // 初回ロードは3ヶ月取得ボタンを表示する
         $showAllBtn = false;
         // 3ヶ月取得ボタン経由でコントローラー叩いた場合の判別用フラグ
-        if ($request->input('term')) {
-            $termFlg = $request->input('term');
+        if (!empty($request->input('term'))) {
+            $termFlg['term'] = $request->input('term') == '1' ? true : false ;
         }
         // 削除後のリダイレクトで渡された結果があれば
         if ($request->input('deleteResult')) {
@@ -39,18 +46,20 @@ class OrderController extends Controller
         $user = Auth::user();
         // 履歴一覧データの取得
         if ($user->id) {
-            $orderHistoryData = $this->model->getBaseOrder($user->id, $termFlg);
+            $orderHistoryData = $this->model->getBaseOrder($user->id, $maxCountPerPage, $termFlg['term']);
         }
         // 3ヶ月or全件 表示ボタン出しわけ
-        if ($termFlg) {
+        if ($termFlg['term']) {
             $showAllBtn = true;
         }
         return view(
             'order.order_history',
             [
                 'orderHistoryData' => $orderHistoryData,
-                'showAllBtn' => $showAllBtn,
-                'deleteResult' => $deleteResult
+                'showAllBtn'       => $showAllBtn,
+                'deleteResult'     => $deleteResult,
+                'termFlg'          => $termFlg,
+                'pageFrom'         => $pageFrom // 画面に表示する履歴の開始番号
             ]
         );
     }

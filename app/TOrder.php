@@ -83,13 +83,14 @@ class TOrder extends Model
      * ユーザIDをキーにグループ化した注文履歴データを取得する。
      *
      * @param int $userId
+     * @param int $maxCountPerPage
      * @param bool $termFlg
      * @return Obj
      */
-    public function getBaseOrder($userId, $termFlg = false)
+    public function getBaseOrder($userId, $maxCountPerPage, $termFlg = false)
     {
-        $termFrom = date("Y-m-d"); //todays date
-        $termTo   = date('Y-m-d', strtotime("+3 month")); //after 3 month
+        $termTo = date("Y-m-d"); //todays date
+        $termFrom   = date('Y-m-d', strtotime("-3 month")); //before 3 month
         $orderBaseSql = DB::table('t_orders as base')
             ->join('t_orders_details as detail', 'base.id', '=', 'detail.order_id')
             ->select(
@@ -115,7 +116,6 @@ class TOrder extends Model
                 DB::raw("CASE WHEN detail.shipment_status_id = 3 THEN '発送済' ELSE '準備中' END")
             )
             ->toSql();
-            //dd($orderBaseSql);
         // 上記のクエリをサブクエリとして以下のクエリに注入
         $orderHistoryData = DB::table(DB::raw('('.$orderBaseSql.') AS orderBase'))
             ->leftJoin('m_users', 'orderBase.user_id', '=', 'm_users.id')
@@ -136,7 +136,7 @@ class TOrder extends Model
                 'phone_number' //電話番号
             ) //描画に使う値を記述
             ->setBindings([':user_id'=>$userId, ':termFrom'=>$termFrom, ':termTo'=>$termTo])
-            ->paginate(15);
+            ->paginate($maxCountPerPage);
         return $orderHistoryData;
     }
 

@@ -34,7 +34,7 @@
                                 @if (!$orderHistoryData->isEmpty())
                                     @foreach ($orderHistoryData as $key => $orderHistory)
                                         <tr class="d-flex">
-                                            <th scope="row" class="col-1 px-0 text-center">{{$key+1}}</th>
+                                            <th scope="row" class="col-1 px-0 text-center">{{$pageFrom++}}</th>
                                             <td class="col-2 px-0 text-center" id="order_number_1">
                                                 {{ $orderHistory->order_detail_number }}
                                             </td>
@@ -82,7 +82,7 @@
                         </table>
                         <!-- ページング -->
                         <div class="d-flex align-items-center justify-content-center">
-                            {{ $orderHistoryData->links() }}
+                            {{ $orderHistoryData->appends($termFlg)->links() }}
                         </div>
                     </div>
                 </div>
