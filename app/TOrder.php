@@ -99,7 +99,7 @@ class TOrder extends Model
                 // 日付だけを切り取り
                 DB::raw("substr(base.order_date, 1, 10) AS order_date"),
                 'detail.order_detail_number',
-                // 発送状態はCASE文で1だったら準備中それ以外は準備中
+                // 発送状態はCASE文で3だったら発送済それ以外は準備中
                 DB::raw("CASE WHEN detail.shipment_status_id = 3 THEN '発送済' ELSE '準備中' END AS shipment_status")
             )
             ->where('base.user_id', ':user_id')
@@ -107,7 +107,7 @@ class TOrder extends Model
             ->when($termFlg, function ($query, $termFlg) {
                 return $query->whereBetween('order_date', [':termFrom', ':termTo']);
             })
-            // 注文番号ごとにまとめる -> 1注文IDあたりに同じ注文番号の伝票(detail)が複数紐づく想定
+            // 注文番号ごとにまとめる -> 1注文IDあたりに同じ注文番号の伝票(detail)が複数紐づく想定(detailに枝番を設ける際はハイフン以降を切り取るなど必要)
             ->groupBy(
                 'base.id',
                 'base.user_id',
