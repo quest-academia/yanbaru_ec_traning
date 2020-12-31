@@ -83,8 +83,8 @@
                                             <th scope="row" class="col-1 px-0 text-center">{{$key+1}}</th>
                                             <td class="col-2 px-0 text-center">{{ $detail->product_name }}</td><!-- 商品名 -->
                                             <td class="col-2 px-0 text-center">{{ $detail->category_name }}</td><!-- カテゴリ -->
-                                            <td class="col-2 px-0 text-center">{{ $detail->order_quantity }}</td><!-- 値段 -->
-                                            <td class="col-1 px-0 text-center">{{ $detail->product_name }}<span>個</span></td><!-- 個数 -->
+                                            <td class="col-2 px-0 text-center">{{ $detail->price }}<span>円</span></td><!-- 値段 -->
+                                            <td class="col-1 px-0 text-center">{{ $detail->order_quantity }}<span>個</span></td><!-- 個数 -->
                                             <td class="col-2 px-0 text-center">{{ $detail->sub_ttl }}<span>円</span></td></td><!-- 小計 -->
                                             <td class="col-2 px-0 text-center">
                                                 注文状態：<span id="order_status_1">{{ $detail->shipment_status_name }}</span><!-- 注文状態 -->

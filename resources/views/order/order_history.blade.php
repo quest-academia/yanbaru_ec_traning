@@ -11,27 +11,27 @@
                     </div>
                 @endif
                 <div class="col-12">
-                    <!-- 直近3ヶ月表示ボタン -->
-                    <div class="col-12 ">
-                        @if($showAllBtn)
-                            <a class="btn btn-secondary btn-sm" href="{{ route('o_history', ['term' => false]) }}" role="button">全件を表示する</a>
-                        @else
-                            <a class="btn btn-secondary btn-sm" href="{{ route('o_history', ['term' => true]) }}" role="button">直近3ヶ月の注文を表示</a>
-                        @endif
-                    </div>
-                    <div class="mt-2">
-                        <table class="table">
-                            <thead>
-                                <tr class="d-flex">
-                                    <th scope="col" class="col-1 px-0 py-1 text-center">No</th>
-                                    <th scope="col" class="col-2 px-0 py-1 text-center">注文番号</th>
-                                    <th scope="col" class="col-4 px-2 py-1">お届け先</th>
-                                    <th scope="col" class="col-3 px-0 py-1">備考</th>
-                                    <th scope="col" class="col-2 px-0 py-1 text-center"></th>
-                                </tr>
-                            </thead>
-                            <tbody style="overflow-y:auto;height:400px;display:block">
-                                @if (!$orderHistoryData->isEmpty())
+                    @if (!$orderHistoryData->isEmpty())
+                        <!-- 直近3ヶ月表示ボタン -->
+                        <div class="col-12 ">
+                            @if($showAllBtn)
+                                <a class="btn btn-secondary btn-sm" href="{{ route('o_history', ['term' => false]) }}" role="button">全件を表示する</a>
+                            @else
+                                <a class="btn btn-secondary btn-sm" href="{{ route('o_history', ['term' => true]) }}" role="button">直近3ヶ月の注文を表示</a>
+                            @endif
+                        </div>
+                        <div class="mt-2">
+                            <table class="table">
+                                <thead>
+                                    <tr class="d-flex">
+                                        <th scope="col" class="col-1 px-0 py-1 text-center">No</th>
+                                        <th scope="col" class="col-2 px-0 py-1 text-center">注文番号</th>
+                                        <th scope="col" class="col-4 px-2 py-1">お届け先</th>
+                                        <th scope="col" class="col-3 px-0 py-1">備考</th>
+                                        <th scope="col" class="col-2 px-0 py-1 text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow-y:auto;height:400px;display:block">
                                     @foreach ($orderHistoryData as $key => $orderHistory)
                                         <tr class="d-flex">
                                             <th scope="row" class="col-1 px-0 text-center">{{$pageFrom++}}</th>
@@ -73,18 +73,24 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @else
-                                    <tr class="d-flex align-items-center justify-content-center">
-                                        <td colspan="5">データがありません</td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                        <!-- ページング -->
-                        <div class="d-flex align-items-center justify-content-center">
-                            {{ $orderHistoryData->appends($termFlg)->links() }}
+                                </tbody>
+                            </table>
+                            <!-- ページング -->
+                            <div class="d-flex align-items-center justify-content-center">
+                                {{ $orderHistoryData->appends($termFlg)->links() }}
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div style="height:400px;" class="col-12 py-3 px-3 d-flex align-items-center justify-content-center">
+                            <div>
+                                <h4 class="col-12 text-center">注文履歴は見つかりませんでした。</h4>
+                                <!-- ボタン -->
+                                <div class="col-12 row justify-content-center mt-3 p-0 no-gutters">
+                                    {!! link_to_route('home', 'トップへ戻る', [], ['class' => 'btn btn-info btn-sm']) !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
