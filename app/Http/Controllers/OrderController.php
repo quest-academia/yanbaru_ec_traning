@@ -8,9 +8,6 @@ use App\TOrder; //モデル呼び出し
 
 class OrderController extends Controller
 {
-    /**
-     * 注文履歴を表示する
-     */
     public function __construct()
     {
         // モデルのインスタンス
