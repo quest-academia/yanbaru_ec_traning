@@ -1,6 +1,6 @@
 <header>
     <h1>
-        <a href="#">やんばるエキスパート</a>
+        <a href="/">やんばるエキスパート</a>
     </h1>
     @if (Auth::check())
         <p>{{ !empty(Auth::user()) ? Auth::user()->last_name . Auth::user()->first_name : 'ユーザー' }} さん</p>
