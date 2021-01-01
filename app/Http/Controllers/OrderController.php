@@ -107,7 +107,6 @@ class OrderController extends Controller
         if ($user->id && !empty($orderBaseNumber) && !empty($orderDetailNumber)) {
             // 削除
             $deleteResult = $this->model->deleteOrder($user->id, $orderBaseNumber, $orderDetailNumber);
-            // $deleteResult = true;
 
             if ($deleteResult) {
                 $resultMessage = '注文データの削除に成功しました';

@@ -89,8 +89,8 @@ class TOrder extends Model
      */
     public function getBaseOrder($userId, $maxCountPerPage, $termFlg = false)
     {
-        $termTo = date("Y-m-d"); //todays date
-        $termFrom   = date('Y-m-d', strtotime("-3 month")); //before 3 month
+        $termTo = date("Y-m-d 23:59:59"); //todays date
+        $termFrom   = date('Y-m-d 00:00:00', strtotime("-3 month")); //before 3 month
         $orderBaseSql = DB::table('t_orders as base')
             ->join('t_orders_details as detail', 'base.id', '=', 'detail.order_id')
             ->select(
