@@ -124,13 +124,11 @@
     </main>
     <script>
         function confirmDelete(baseNumber, detailNumber) {
-            var result = confirm('注文データを削除しますか？');
+            let result = confirm('注文データを削除しますか？');
             if (result) {
                 if (baseNumber && detailNumber) {
                     let base = '{!! route("delete_order") !!}';
-                    console.log(base)
                     let url = base+'?base_number='+baseNumber+'&detail_number='+detailNumber ;
-                    console.log(url)
                     window.location.href=url;
                 }
             } else {

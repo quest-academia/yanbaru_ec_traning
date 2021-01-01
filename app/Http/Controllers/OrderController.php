@@ -109,7 +109,7 @@ class OrderController extends Controller
             $deleteResult = $this->model->deleteOrder($user->id, $orderBaseNumber, $orderDetailNumber);
 
             if ($deleteResult) {
-                $resultMessage = '注文データの削除に成功しました';
+                $resultMessage = '注文データを削除しました';
             } else {
                 $resultMessage = '注文データの削除に失敗しました';
             }
