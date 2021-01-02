@@ -15,7 +15,7 @@ class TOrder extends Model
      * @param string $orderDetailNumber
      * @return Obj
      */
-    public function getDetails($userId, $orderBaseNumber = null, $orderDetailNumber = null)
+    public static function getDetails($userId, $orderBaseNumber = null, $orderDetailNumber = null)
     {
         $orderBaseSql = DB::table('t_orders as base')
             ->join('t_orders_details as detail', 'base.id', '=', 'detail.order_id')
@@ -87,7 +87,7 @@ class TOrder extends Model
      * @param bool $termFlg
      * @return Obj
      */
-    public function getBaseOrder($userId, $maxCountPerPage, $termFlg = false)
+    public static function getBaseOrder($userId, $maxCountPerPage, $termFlg = false)
     {
         $termTo = date("Y-m-d 23:59:59"); //todays date
         $termFrom   = date('Y-m-d 00:00:00', strtotime("-3 month")); //before 3 month
@@ -147,7 +147,7 @@ class TOrder extends Model
      * @param string $orderBaseNumber
      * @return bool
      */
-    public function deleteOrder($userId, $orderBaseNumber)
+    public static function deleteOrder($userId, $orderBaseNumber)
     {
         $result = false;
         if ($userId && $orderBaseNumber) {
