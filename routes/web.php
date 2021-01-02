@@ -48,6 +48,9 @@ Route::get('/home', function () {
 */
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/order-history', 'OrderController@showOrderHistory')->name('o_history');
+    Route::get('/order-detail/delete', 'OrderController@deleteOrder')->name('delete_order');
+    Route::get('/order-detail', 'OrderController@showOrderDetail')->name('o_detail');
 });
 
 //商品検索機能
