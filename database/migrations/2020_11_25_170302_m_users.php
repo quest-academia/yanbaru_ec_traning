@@ -30,7 +30,7 @@ class MUsers extends Migration
             $table->foreign('user_classification_id')->references('id')->on('m_users_classifications')->onDelete('cascade');
             
             $table->string('company_name', 128)->nullable();
-            $table->char('delete_flag', 1)->deault(0);
+            $table->char('delete_flag', 1)->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
