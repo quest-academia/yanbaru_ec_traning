@@ -48,7 +48,9 @@ Route::get('/home', function () {
 */
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    
+    Route::get('/order-history', 'OrderController@showOrderHistory')->name('o_history');
+    Route::get('/order-detail/delete', 'OrderController@deleteOrder')->name('delete_order');
+    Route::get('/order-detail', 'OrderController@showOrderDetail')->name('o_detail');
 });
 
 /*
@@ -74,4 +76,23 @@ Route::put('/user_update', 'UserEditController@update')->name('user_update');
 Route::get('/delete', 'UserDeleteController@show')->name('user_delete');
 Route::post('/remove', 'UserDeleteController@remove')->name('user_remove');
 
+   
 
+//商品検索機能
+Route::get('show', 'ProductController@index')->name('show');
+
+/*
+|--------------------------------------------------------------------------
+| 開発中
+|--------------------------------------------------------------------------
+*/
+
+
+Route::resource('cartitem', 'CartController', ['only' => ['index']]);
+
+Route::group(["prefix" => 'iteminfo'], function() {
+    Route::get('/{id}', 'CartController@show');
+    Route::post('/add', 'CartController@addCart')->name('addcart');
+});
+
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
