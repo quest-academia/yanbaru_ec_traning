@@ -58,23 +58,23 @@ Route::group(['middleware' => 'auth:web'], function () {
 | ユーザ情報一覧
 |--------------------------------------------------------------------------
 */
-Route::get('/user_info', 'UserInfoController@show')->name('user_info');
+Route::get('/user_info', 'UserController@show')->name('user_info');
 
 /*
 |--------------------------------------------------------------------------
 | ユーザ情報編集
 |--------------------------------------------------------------------------
 */
-Route::get('/user_edit', 'UserEditController@edit')->name('user_edit');
-Route::put('/user_update', 'UserEditController@update')->name('user_update');
+Route::get('/user_edit', 'UserController@edit')->name('user_edit');
+Route::put('/user_update', 'UserController@update')->name('user_update');
 
 /*
 |--------------------------------------------------------------------------
 | ユーザ情報削除
 |--------------------------------------------------------------------------
 */
-Route::get('/delete', 'UserDeleteController@show')->name('user_delete');
-Route::post('/remove', 'UserDeleteController@remove')->name('user_remove');
+Route::get('/delete', 'UserController@delete')->name('user_delete');
+Route::post('/remove', 'UserController@remove')->name('user_remove');
 
    
 
