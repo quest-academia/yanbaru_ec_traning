@@ -53,6 +53,32 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/order-detail', 'OrderController@showOrderDetail')->name('o_detail');
 });
 
+/*
+|--------------------------------------------------------------------------
+| ユーザ情報一覧
+|--------------------------------------------------------------------------
+*/
+Route::get('/user_info', 'UserController@show')->name('user_info');
+
+/*
+|--------------------------------------------------------------------------
+| ユーザ情報編集
+|--------------------------------------------------------------------------
+*/
+Route::get('/user_edit', 'UserController@edit')->name('user_edit');
+Route::put('/user_update', 'UserController@update')->name('user_update');
+
+
+/*
+|--------------------------------------------------------------------------
+| ユーザ情報削除
+|--------------------------------------------------------------------------
+*/
+Route::get('/delete', 'UserController@delete')->name('user_delete');
+Route::post('/remove', 'UserController@remove')->name('user_remove');
+
+   
+
 //商品検索機能
 Route::get('show', 'ProductController@index')->name('show');
 

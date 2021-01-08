@@ -117,3 +117,40 @@
         font-weight: bold;
         margin: 0 auto;
     }
+
+    /***main******/
+    .row{
+        font-size: 14px;
+        line-height: 30px;
+    }
+    .edit-content-title{
+        width: 35%;
+        height: auto;
+        display: inline-block;
+        margin-bottom: 5px;
+        vertical-align: top;
+    }
+    .edit-content-text{
+        width: 60%;
+        height: auto;
+        display: inline-block;
+        margin: 0 0 5px 0;
+    }
+    .title-name{
+        width: 70%;
+        text-align: center;
+        display: inline-block;
+    }
+    .title-name-text{
+        width: 20%;
+        text-align: right;
+        float: right;
+    }
+    .title-address{
+        width: 100%;
+        text-align: right;
+        display: inline-block;
+    }
+    #address-text{
+        line-height: 15px !important;
+    }
