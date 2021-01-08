@@ -68,6 +68,7 @@ Route::get('/user_info', 'UserController@show')->name('user_info');
 Route::get('/user_edit', 'UserController@edit')->name('user_edit');
 Route::put('/user_update', 'UserController@update')->name('user_update');
 
+
 /*
 |--------------------------------------------------------------------------
 | ユーザ情報削除

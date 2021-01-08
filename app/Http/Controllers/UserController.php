@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -27,23 +28,9 @@ class UserController extends Controller
         return view('auth/user_edit', [ 'user' => $user ]); 
     }
 
-    public function update(Request $request)
+    // フォームリクエストを使用してバリデーション実装
+    public function update(UserRequest $request)
     {
-        // ここからvalidation処理について追加
-        $rules = [
-            'last_name' => ['required', 'string', 'max:10'],
-            'first_name' => ['required', 'string', 'max:10'],
-            'zipcode' => ['required', 'numeric', 'digits:7'],
-            'prefecture' => ['required', 'string', 'max:5'],
-            'municipality' => ['required', 'string', 'max:10'],
-            'address' => ['required', 'string', 'max:15'],
-            'apartments' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
-            'phone_number' => ['required', 'numeric', 'digits_between:4,15'],
-        ];
-        $this->validate($request, $rules);
-        // ここまでvalidation処理について追加
-
         $user = Auth::user();
         $user->last_name = $request->last_name;
         $user->first_name = $request->first_name;

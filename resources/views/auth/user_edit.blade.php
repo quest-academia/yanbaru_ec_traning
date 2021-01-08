@@ -6,7 +6,7 @@
             <div class="page-header mt-5 text-center">
                 <h4>ユーザ情報修正</h4>
             </div>
-            {!! Form::open(['route' => 'user_update','method'=>'put']) !!}
+            {!! Form::open(['route' => 'user_update', 'method'=>'put']) !!}
                 @method('PUT')
                 @csrf
                 <div class="row mt-5 mb-5">
@@ -63,7 +63,7 @@
                         </div>
             {!! Form::close() !!}
 
-            {!! Form::open(['route' => 'user_delete','method'=>'get']) !!}
+            {!! Form::open(['route' => 'user_delete', 'method'=>'get']) !!}
                 <div class="text-center">
                     {!! Form::submit('退会', ['class' => 'button btn btn-danger mt-2']) !!}
                 </div> 
