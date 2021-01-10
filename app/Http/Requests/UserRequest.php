@@ -11,7 +11,8 @@ class UserRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {
+    {   
+        // デフォルトのfalseからtrueに変更
         return true;
     }
 
@@ -23,6 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+
+            // バリデーションルールについて記述
             'last_name' => 'required|string|max:10',
             'first_name' => 'required|string|max:10',
             'zipcode' => 'required|numeric|digits:7',
