@@ -25,7 +25,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $user_role_id = $this->guard()->user()->user_classification_id;
+        if ($user_role_id == config('const.USER_CLASSIFICATIONS.SELLER') || $user_role_id == config('const.USER_CLASSIFICATIONS.ADMIN')) {
+            // 編集可能ユーザー;
+            return '/seller/items';
+        } else {
+            // 一般購入ユーザー;
+            return '/home';
+        }
+    }
 
     /**
      * Create a new controller instance.
