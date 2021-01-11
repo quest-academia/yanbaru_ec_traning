@@ -16,7 +16,6 @@ class CreateMCategoriesTable extends Migration
         Schema::create('m_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('category_name', '32');
-            $table->timestamps();
         });
     }
 
