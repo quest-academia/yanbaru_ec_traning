@@ -68,4 +68,22 @@ class ProductController extends Controller
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
+
+    /*==================================
+    商品詳細の表示メソッド(detail)
+    ==================================*/
+    public function detail(Request $request)
+    {
+        $productId = $request->productId;
+        //unset($productId);
+
+        if (isset($productId)){
+            return redirect(route('iteminfo', [
+                'id' => $productId,
+            ]));
+        }
+        elseif(!isset($productId)){
+            return view('item_notfound'); 
+        }
+    }
 }

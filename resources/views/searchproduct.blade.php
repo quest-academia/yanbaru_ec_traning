@@ -60,7 +60,14 @@
           <td>{{ $product->product_name }}</td>
           <td>{{ $product->category->category_name }}</td>
           <td>{{ $product->price }}円</td>
-          <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
+
+          {!! Form::open(['route' => 'detail']) !!}
+            {{ Form::hidden('productId', $product->id) }}
+            <td>
+              {!! Form::submit('商品詳細', ['class' => 'btn btn-primary btn-sm']) !!}
+            </td>
+          {!! Form::close() !!}
+
         </tr>
         @endforeach   
       </table>

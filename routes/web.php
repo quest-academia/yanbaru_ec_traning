@@ -78,22 +78,26 @@ Route::get('/delete', 'UserController@delete')->name('user_delete');
 Route::post('/remove', 'UserController@remove')->name('user_remove');
 
    
-
-//商品検索機能
+/*
+|--------------------------------------------------------------------------
+| 商品検索機能
+|--------------------------------------------------------------------------
+*/
 Route::get('show', 'ProductController@index')->name('show');
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
+Route::post('detail', 'ProductController@detail')->name('detail');
+
 
 /*
 |--------------------------------------------------------------------------
-| 開発中
+| カート機能
 |--------------------------------------------------------------------------
 */
-
-
 Route::resource('cartitem', 'CartController', ['only' => ['index']]);
 
 Route::group(["prefix" => 'iteminfo'], function() {
-    Route::get('/{id}', 'CartController@show');
+    Route::get('/{id}', 'CartController@show')->name('iteminfo');
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
-Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
+
