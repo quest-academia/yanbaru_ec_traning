@@ -14,7 +14,6 @@ class CreateMProductsStatusesTable extends Migration
     public function up()
     {
         Schema::create('m_products_statuses', function (Blueprint $table) {
-            // $table->bigIncrements('product_status_id');
             $table->bigIncrements('id');
             $table->string('product_status_name', '32');
             $table->timestamps();
