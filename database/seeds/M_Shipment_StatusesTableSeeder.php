@@ -12,11 +12,11 @@ class M_Shipment_StatusesTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_shipment_statuses')->insert([
-            ['shipment_status_name' => '注文を受付いたしました',
+            ['shipment_status_name' => '未発送',
             ],
-            ['shipment_status_name' => '発送準備中です',
+            ['shipment_status_name' => '発送済',
             ],
-            ['shipment_status_name' => '商品が発送されました',
+            ['shipment_status_name' => '入荷待ち',
             ],
         ]);
     }
