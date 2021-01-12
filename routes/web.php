@@ -103,8 +103,8 @@ Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 | バック商品修正
 |--------------------------------------------------------------------------
 */
-Route::get('back_product_edit', function () {
-    return view('back_product_edit');
-});
+// Route::get('back_product_edit', function () {
+//     return view('back_product_edit');
+// });
 Route::get('back_product_edit', 'BackProductController@edit')->name('back_product_edit');
 Route::put('back_product_update', 'BackProductController@update')->name('user_update');
