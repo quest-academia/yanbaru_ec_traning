@@ -12,11 +12,14 @@ class M_Shipment_StatusesTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_shipment_statuses')->insert([
-            ['shipment_status_name' => '未発送',
+            [
+            'shipment_status_name' => '未発送',
             ],
-            ['shipment_status_name' => '発送済',
+            [
+            'shipment_status_name' => '発送済',
             ],
-            ['shipment_status_name' => '入荷待ち',
+            [
+            'shipment_status_name' => '入荷待ち',
             ],
         ]);
     }
