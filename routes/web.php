@@ -35,10 +35,17 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/login');
 });
-Route::get('/home', function () {
-    return view('home');
+
+
+/*
+|--------------------------------------------------------------------------
+| 出品者(管理者含む)のみのルーティング
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
+    Route::resource('items', 'SellerController');
 });
 
 /*
@@ -46,7 +53,7 @@ Route::get('/home', function () {
 | ログイン後
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'auth:web'], function () {
+Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/order-history', 'OrderController@showOrderHistory')->name('o_history');
     Route::get('/order-detail/delete', 'OrderController@deleteOrder')->name('delete_order');
@@ -77,7 +84,15 @@ Route::put('/user_update', 'UserController@update')->name('user_update');
 Route::get('/delete', 'UserController@delete')->name('user_delete');
 Route::post('/remove', 'UserController@remove')->name('user_remove');
 
+<<<<<<< HEAD
    
+=======
+
+
+//商品検索機能
+Route::get('show', 'ProductController@index')->name('show');
+
+>>>>>>> develop_alpha
 /*
 |--------------------------------------------------------------------------
 | 商品検索機能
