@@ -84,15 +84,11 @@ Route::put('/user_update', 'UserController@update')->name('user_update');
 Route::get('/delete', 'UserController@delete')->name('user_delete');
 Route::post('/remove', 'UserController@remove')->name('user_remove');
 
-<<<<<<< HEAD
-   
-=======
 
 
 //商品検索機能
 Route::get('show', 'ProductController@index')->name('show');
 
->>>>>>> develop_alpha
 /*
 |--------------------------------------------------------------------------
 | 商品検索機能
