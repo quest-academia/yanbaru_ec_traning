@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="text-center mt-3">
-                    <button type="button" class="btn btn-link">まだ登録がお済みでない方はこちら</button>
+                    {!! link_to_route('signup', 'まだ登録がお済みでない方はこちら', [], ['class' => 'btn btn-link']) !!}
                 </div>
             </form>
         {!! Form::close() !!}

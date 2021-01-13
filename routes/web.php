@@ -85,7 +85,7 @@ Route::post('/remove', 'UserController@remove')->name('user_remove');
 */
 Route::get('show', 'ProductController@index')->name('show');
 Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
-Route::post('detail', 'ProductController@detail')->name('detail');
+// Route::post('detail', 'ProductController@detail')->name('detail');
 
 
 /*

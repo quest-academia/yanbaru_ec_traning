@@ -103,16 +103,20 @@ class CartController extends Controller
         $userId = '';
 
         //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
-        $productInfo = MProduct::findOrFail($id);
-        $productCategory = MCategory::findOrFail($productInfo -> category_id);
+        $productInfo = MProduct::find($id);
+        if(!isset($productInfo)){
+            return view('item_notfound'); 
+        }
+        $productCategory = MCategory::find($productInfo -> category_id);
         $userId = Auth::user()->id;
-        
+
         return view('iteminfo', 
         [
             'productInfo' => $productInfo,
             'productCategory' => $productCategory,
             'userId' => $userId,
         ]);
+        
     }
 
     /**
