@@ -106,5 +106,5 @@ Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 // Route::get('back_product_edit', function () {
 //     return view('back_product_edit');
 // });
-Route::get('back_product_edit', 'BackProductController@edit')->name('back_product_edit');
-Route::put('back_product_update', 'BackProductController@update')->name('user_update');
+Route::get('backProduct/edit', 'BackProductController@edit')->name('back_product_edit');
+Route::put('backProduct/update', 'BackProductController@update')->name('user_update');

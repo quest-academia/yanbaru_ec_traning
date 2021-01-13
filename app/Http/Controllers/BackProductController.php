@@ -57,7 +57,7 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         $product = MProduct::findOrFail(2);
         // dd($product);
