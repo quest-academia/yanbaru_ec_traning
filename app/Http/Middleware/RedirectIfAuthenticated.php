@@ -19,9 +19,9 @@ class RedirectIfAuthenticated
     {
         if (Auth::guard($guard)->check()) {
             // 会員登録ページやログインページのmiddlewareで会員状態をチェックしてリダイレクト先を出し分ける
-            $can_edit_flag = Auth::guard()->user()->user_classification_id;
-            if ($can_edit_flag == config('const.USER_CLASSIFICATIONS.SELLER')
-                || $can_edit_flag == config('const.USER_CLASSIFICATIONS.ADMIN')
+            $userRoleId = Auth::guard()->user()->user_classification_id;
+            if ($userRoleId == config('const.USER_CLASSIFICATIONS.SELLER')
+                || $userRoleId == config('const.USER_CLASSIFICATIONS.ADMIN')
                 ) {
                 // 編集可能ユーザー;
                 return redirect('/seller/items');

@@ -27,8 +27,8 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
-        $user_role_id = $this->guard()->user()->user_classification_id;
-        if ($user_role_id == config('const.USER_CLASSIFICATIONS.SELLER') || $user_role_id == config('const.USER_CLASSIFICATIONS.ADMIN')) {
+        $userRoleId = $this->guard()->user()->user_classification_id;
+        if ($userRoleId == config('const.USER_CLASSIFICATIONS.SELLER') || $userRoleId == config('const.USER_CLASSIFICATIONS.ADMIN')) {
             // 編集可能ユーザー;
             return '/seller/items';
         } else {

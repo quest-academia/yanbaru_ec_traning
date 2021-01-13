@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
         \Gate::define('onlyShow', function ($user) {
             return (
                 $user->user_classification_id == config('const.USER_CLASSIFICATIONS.BUYER')
+                || $user->user_classification_id == config('const.USER_CLASSIFICATIONS.ADMIN')
             );
         });
     }

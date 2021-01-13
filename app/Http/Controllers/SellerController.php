@@ -13,7 +13,6 @@ class SellerController extends Controller
      */
     public function index()
     {
-        //
         return view('seller/index');
     }
 
@@ -24,7 +23,6 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +33,6 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -46,7 +43,6 @@ class SellerController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -57,7 +53,6 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -69,7 +64,6 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -80,6 +74,5 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }
