@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class m_categoriesTableSeeder extends Seeder
+class m_product_statusesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,8 +11,8 @@ class m_categoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('m_categories')->insert([
-            'category_name' => 'test',
+        DB::table('m_product_statuses')->insert([
+            'product_status_name' => 'test',
         ]);
     }
 }

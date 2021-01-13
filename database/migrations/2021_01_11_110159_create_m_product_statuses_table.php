@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMProductsStatusesTable extends Migration
+class CreateMProductStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMProductsStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_products_statuses', function (Blueprint $table) {
+        Schema::create('m_product_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('product_status_name', '32');
         });
