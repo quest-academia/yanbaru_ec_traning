@@ -21,7 +21,7 @@ class m_productsTableSeeder extends Seeder
                 'product_status_id' => '1',
                 'regist_date' => date('Y-m-d H:i:s'),
                 'user_id' => '1',
-                'delete_flag' => '1',
+                'delete_flag' => '0',
             ],
             [
                 'product_name' => '2',
@@ -32,7 +32,7 @@ class m_productsTableSeeder extends Seeder
                 'product_status_id' => '2',
                 'regist_date' => date('Y-m-d H:i:s'),
                 'user_id' => '2',
-                'delete_flag' => '2',
+                'delete_flag' => '0',
             ],
             [
                 'product_name' => '3',
@@ -43,29 +43,7 @@ class m_productsTableSeeder extends Seeder
                 'product_status_id' => '3',
                 'regist_date' => date('Y-m-d H:i:s'),
                 'user_id' => '3',
-                'delete_flag' => '3',
-            ],
-            [
-                'product_name' => '4',
-                'category_id' => '4',
-                'price' => '4000',
-                'description' => '製品情報が入ります｡製品情報が入ります｡製品情報が入ります｡',
-                'sale_status_id' => '4',
-                'product_status_id' => '4',
-                'regist_date' => date('Y-m-d H:i:s'),
-                'user_id' => '4',
-                'delete_flag' => '4',
-            ],
-            [
-                'product_name' => '5',
-                'category_id' => '5',
-                'price' => '5000',
-                'description' => '製品情報が入ります｡製品情報が入ります｡製品情報が入ります｡',
-                'sale_status_id' => '5',
-                'product_status_id' => '5',
-                'regist_date' => date('Y-m-d H:i:s'),
-                'user_id' => '5',
-                'delete_flag' => '5',
+                'delete_flag' => '0',
             ],
         ]);
     }
