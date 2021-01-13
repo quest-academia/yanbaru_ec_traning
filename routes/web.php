@@ -46,6 +46,8 @@ Route::get('/', function () {
 */
 Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
     Route::resource('items', 'SellerController');
+    Route::get('product/edit', 'BackProductController@edit')->name('back_product_edit');
+Route::put('product/update', 'BackProductController@update')->name('user_update');
 });
 
 /*
@@ -105,13 +107,4 @@ Route::group(["prefix" => 'iteminfo'], function() {
 
 Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 
-/*
-|--------------------------------------------------------------------------
-| バック商品修正
-|--------------------------------------------------------------------------
-*/
-// Route::get('back_product_edit', function () {
-//     return view('back_product_edit');
-// });
-Route::get('backProduct/edit', 'BackProductController@edit')->name('back_product_edit');
-Route::put('backProduct/update', 'BackProductController@update')->name('user_update');
+

@@ -1,7 +1,5 @@
-@extends('layouts_back.appback')
-
+@extends('layouts.seller_app')
 @section('content')
-
 <main>
         
     <div class="page-header mt-5 text-center">

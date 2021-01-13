@@ -61,7 +61,7 @@ class BackProductController extends Controller
     {
         $product = MProduct::findOrFail(2);
         // dd($product);
-        return view('back_product_edit',
+        return view('seller.back_product_edit',
             ['product' => $product ]
         );
     }
