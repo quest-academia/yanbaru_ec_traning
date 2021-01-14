@@ -47,7 +47,7 @@ Route::get('/', function () {
 Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
     Route::resource('items', 'SellerController');
     Route::get('product/edit', 'BackProductController@edit')->name('back_product_edit');
-Route::put('product/update', 'BackProductController@update')->name('user_update');
+    Route::put('product/update', 'BackProductController@update')->name('user_update');
 });
 
 /*
