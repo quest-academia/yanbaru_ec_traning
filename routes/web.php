@@ -91,16 +91,24 @@ Route::get('show', 'ProductController@index')->name('show');
 
 /*
 |--------------------------------------------------------------------------
-| 開発中
+| 商品検索機能
 |--------------------------------------------------------------------------
 */
+Route::get('show', 'ProductController@index')->name('show');
+Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 
 
+
+/*
+|--------------------------------------------------------------------------
+| カート機能
+|--------------------------------------------------------------------------
+*/
 Route::resource('cartitem', 'CartController', ['only' => ['index']]);
 
 Route::group(["prefix" => 'iteminfo'], function() {
-    Route::get('/{id}', 'CartController@show');
+    Route::get('/{id}', 'CartController@show')->name('iteminfo');
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
-Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
+
