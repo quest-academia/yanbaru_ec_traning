@@ -116,7 +116,6 @@ class CartController extends Controller
             'productCategory' => $productCategory,
             'userId' => $userId,
         ]);
-        
     }
 
     /**

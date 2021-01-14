@@ -7,7 +7,7 @@
                 <h3 class="pt-5">商品検索画面に戻り、やり直してください</h3>
                 
                 <h3 class="pt-5">
-                {!! link_to_route('show', '商品検索画面', [], ['class' => 'btn btn-primary btn-lg']) !!}
+                    {!! link_to_route('show', '商品検索画面', [], ['class' => 'btn btn-primary btn-lg']) !!}
                 </h3>
             </div>
         </div>

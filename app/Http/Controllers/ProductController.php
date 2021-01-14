@@ -68,5 +68,4 @@ class ProductController extends Controller
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
     }
-
 }

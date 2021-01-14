@@ -61,7 +61,7 @@
           <td>{{ $product->category->category_name }}</td>
           <td>{{ $product->price }}円</td>
           <td>
-          {!! link_to_route('iteminfo', '商品詳細', ['id' => $product->id ], ['class' => 'btn btn-primary btn-sm']) !!}
+              {!! link_to_route('iteminfo', '商品詳細', ['id' => $product->id ], ['class' => 'btn btn-primary btn-sm']) !!}
           </td>
         </tr>
         @endforeach   
