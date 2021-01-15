@@ -59,8 +59,7 @@ class BackProductController extends Controller
      */
     public function edit()
     {
-        $product = MProduct::with(['category', 'sales_status'])->find(1);
-        // $product = MProduct::with('sale_status')->find(1);
+        $product = MProduct::with(['category', 'sale_status'])->find(4);
         // dd($product);
         return view('seller.back_product_edit',
             ['product' => $product ]

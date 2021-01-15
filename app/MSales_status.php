@@ -8,12 +8,12 @@ class MSales_status extends Model
 {
     protected $table = 'm_sales_statuses';
 
-    public function getLists()
-    {
-        $sales_statuses = MSales_status::pluck('sale_status_name', 'id');
+    // public function getLists()
+    // {
+    //     $sales_statuses = MSales_status::pluck('sale_status_name', 'id');
 
-        return $sales_statuses;
-    }
+    //     return $sales_statuses;
+    // }
 
     public function products()
     {
