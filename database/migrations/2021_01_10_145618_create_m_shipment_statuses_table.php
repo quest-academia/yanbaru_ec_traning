@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMProductsStatusesTable extends Migration
+class CreateMShipmentStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateMProductsStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_products_statuses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('product_status_name', '32');
+        Schema::create('m_shipment_statuses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('shipment_status_name', 32);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateMProductsStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_products_statuses');
+        Schema::dropIfExists('m_shipment_statuses');
     }
 }
