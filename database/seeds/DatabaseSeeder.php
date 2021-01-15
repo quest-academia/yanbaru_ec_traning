@@ -15,6 +15,10 @@ class DatabaseSeeder extends Seeder
             M_Shipment_StatusesTableSeeder::class,
             T_OrdersTableSeeder::class,
             T_Order_DetailsTableSeeder::class,
+            m_categoriesTableSeeder::class,
+            m_sale_statusesTableSeeder::class,
+            m_product_statusesTableSeeder::class,
+            m_productsTableSeeder::class,
         ]);
     }
 }
