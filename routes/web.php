@@ -113,9 +113,4 @@ Route::group(["prefix" => 'iteminfo'], function() {
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
-<<<<<<< HEAD
-Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
-
-=======
->>>>>>> develop_alpha
 
