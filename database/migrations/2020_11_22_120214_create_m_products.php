@@ -26,6 +26,7 @@ class CreateMProducts extends Migration
             $table->char('delete_flag', 1);
             $table->foreign('sale_status_id')->references('id')->on('m_sales_statuses')->onDelete('cascade');
             $table->foreign('product_status_id')->references('id')->on('m_products_statuses')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -10,7 +10,7 @@
     <div class="row mt-5 mb-5">
         <div class="col-sm-5 mx-auto">
     
-            {!! Form::open(['route' => 'signup.post']) !!}
+            {!! Form::open(['route' => 'back_product_update', 'method'=>'put']) !!}
                 
                 <div class="form-group-sm">
                     {!! Form::label('product_name', '商品名', ['class' => 'mt-2 mb-0']) !!}
@@ -33,13 +33,13 @@
             
                 <div class="form-group-sm">
                     {!! Form::label('sale_status_name', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    {!! Form::text('sale_status_name', $product->sales_status->sale_status_name, ['class' => 'ml-3 form-control col-sm-8']) !!}
+                    {!! Form::text('sale_status_name', $product->sale_status->sale_status_name, ['class' => 'ml-3 form-control col-sm-8']) !!}
                 </div>
 
                 <div class="form-group-sm">
                     {!! Form::label('description', '商品説明', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
-                        {!! Form::textarea('textareaRemarks', $product->description, ['class' => 'form-control d-inline w-100']) !!}
+                        {!! Form::textarea('description', $product->description, ['class' => 'form-control d-inline w-100']) !!}
                     </div>
                 </div>
 

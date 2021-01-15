@@ -57,9 +57,9 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $product = MProduct::with(['category', 'sale_status'])->find(4);
+        $product = MProduct::with(['category', 'sale_status'])->find($id);
         // dd($product);
         return view('seller.back_product_edit',
             ['product' => $product ]
@@ -73,9 +73,19 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $product = MProduct::with(['category', 'sale_status'])->find($id);
+        $product->product_name = $request->product_name;
+        $product->category->category_name = $request->category_name;
+        $product->price = $request->price;
+        $product->sale_status->sale_status_name = $request->sale_status_name;
+        $product->description = $request->description;
+        $product->save();
+        // dd($product);
+        //以下は要編集
+        return redirect('back_search_product');
+        // return view('seller.back_product_edit', [ 'product' => $product ]);
     }
 
     /**
