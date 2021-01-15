@@ -51,7 +51,7 @@
                     </div>
             {!! Form::close() !!}
 
-            {!! Form::open(['route' => 'user_delete', 'method'=>'get']) !!}
+            {!! Form::open(['route' => 'back_product_delete', 'method'=>'delete']) !!}
                     <div class="w-50 float-right">
                         <div class="text-center mt-5">
                             {!! Form::submit('削除', ['class' => 'button btn btn-danger mt-2']) !!}

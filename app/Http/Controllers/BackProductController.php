@@ -57,9 +57,9 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $product = MProduct::with(['category', 'sale_status'])->find($id);
+        $product = MProduct::with(['category', 'sale_status'])->find(2);
         // dd($product);
         return view('seller.back_product_edit',
             ['product' => $product ]
@@ -73,9 +73,9 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        $product = MProduct::with(['category', 'sale_status'])->find($id);
+        $product = MProduct::with(['category', 'sale_status'])->find(2);
         $product->product_name = $request->product_name;
         $product->category->category_name = $request->category_name;
         $product->price = $request->price;
@@ -94,8 +94,11 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $product = MProduct::find(2);
+        // dd($product);
+        $product->delete();
+        return redirect('seller/items');
     }
 }

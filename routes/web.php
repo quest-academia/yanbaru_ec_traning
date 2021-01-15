@@ -48,6 +48,7 @@ Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth'
     Route::resource('items', 'SellerController');
     Route::get('product/edit', 'BackProductController@edit')->name('back_product_edit');
     Route::put('product/update', 'BackProductController@update')->name('back_product_update');
+    Route::delete('product/delete', 'BackProductController@destroy')->name('back_product_delete');
 });
 
 /*
