@@ -111,4 +111,10 @@ Route::group(["prefix" => 'iteminfo'], function() {
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
-
+/*
+|--------------------------------------------------------------------------
+| 出品者の商品検索
+|--------------------------------------------------------------------------
+*/
+Route::get('seller_show', 'SellerProductController@index')->name('seller_show');
+Route::get('seller_search', 'SellerProductController@search')->name('seller_search');

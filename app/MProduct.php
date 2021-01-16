@@ -16,4 +16,11 @@ class MProduct extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // 追加（挙動確認）
+    public function getLists()
+    {
+        $products = MProduct::pluck('price', 'product_name');
+        return $products;
+    }
 }
