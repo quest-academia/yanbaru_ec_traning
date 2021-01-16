@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+
             M_Shipment_StatusesTableSeeder::class,
             T_OrdersTableSeeder::class,
             T_Order_DetailsTableSeeder::class,
@@ -19,6 +20,8 @@ class DatabaseSeeder extends Seeder
             m_sale_statusesTableSeeder::class,
             m_product_statusesTableSeeder::class,
             m_productsTableSeeder::class,
+            T_purchaseTableSeeder::class,
+
         ]);
     }
 }
