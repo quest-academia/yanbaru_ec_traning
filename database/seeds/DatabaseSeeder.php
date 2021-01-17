@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             m_product_statusesTableSeeder::class,
             m_productsTableSeeder::class,
             T_purchaseTableSeeder::class,
-
+            M_User_ClassificationsTableSeeder::class,
+            M_UsersTableSeeder::class,
         ]);
     }
 }
