@@ -55,19 +55,22 @@
                 <th scope="col" class="col-1 px-0 py-1 text-center"></th>
               </tr>
             </thead>
+            @foreach($productInfo as $product)
             <tbody style="overflow-y:auto;max-height:400px;display:block">
               <tr class="d-flex">
                 <th scope="row" class="col-1 px-0 text-center">1</th>
-                <td class="col-2 px-0 text-center">{{ $productInfo->product_name }}</td>
-                <td class="col-2 px-0 text-center">{{ $productCategory->category_name }}</td>
-                <td class="col-2 px-0 text-center">{{ $productInfo->price }}</td>
+                <td class="col-2 px-0 text-center">{{ $product->product_name }}</td>
+                <td class="col-2 px-0 text-center">{{ $product->category->category_name }}</td>
+                <td class="col-2 px-0 text-center">{{ $product->price }}円</td>
                 <td class="col-2 px-0 text-center">
-                  <input class="col-5 text-right" placeholder="0" type="text" value={{ $SessionProductQuantity }}>
+                  <input class="col-5 text-right" placeholder="0" type="text" name="SessionProductQuantity">
+                  {{-- value={{ $SessionProductQuantity }} --}}
                   <span>個</span>
                 </td>
                 <td class="col-2 px-0 text-center">5000円</td>
                 <td class="col-1 px-0 text-center"><button class="btn btn-danger">削除</button></td>
               </tr>
+              @endforeach
               <tr class="d-flex">
                 <th scope="row" class="col-1 px-0 text-center">2</th>
                 <td class="col-2 px-0 text-center">商品2</td>
