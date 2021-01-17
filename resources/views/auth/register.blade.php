@@ -21,6 +21,9 @@
                             {!! Form::text('last_name', old('last_name'), ['class' => 'form-control d-inline col-sm-5']) !!}
                             {!! Form::label('first_name', '名', ['class' => 'd-inline ml-1']) !!}
                             {!! Form::text('first_name', old('first_name'), ['class' => 'form-control d-inline col-sm-5']) !!}
+                            @if($errors->has('last_name'))
+                            　　{{ $errors->first('last_name') }}
+                            @endif 
                         </div>
                     </div>
             

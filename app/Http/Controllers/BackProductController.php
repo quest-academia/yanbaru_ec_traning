@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\MProduct;
+use App\MCategory;
+use App\MSales_status;
+use App\MProduct_status;
 
 class BackProductController extends Controller
 {
@@ -57,12 +60,31 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $product = MProduct::with(['category', 'sale_status'])->find($id);
-        // dd($product);
-        return view('seller.back_product_edit',
-            ['product' => $product ]
+        $product = MProduct::with(['category', 'sale_status'])->find(2);
+        //category関連の定義
+        $category = new MCategory;
+        $categories = $category->getLists();
+        $category_name = $product->category->category_name;
+        //sale_status関連の定義
+        $sale_status = new MSales_status;
+        $sale_statuses = $sale_status->getLists();
+        $sale_status_name = $product->sale_status->sale_status_name;
+        //product_status関連の定義
+        $product_status = new MProduct_status;
+        $product_statuses = $product_status->getLists();
+        $product_status_name = $product->product_status->product_status_name;
+
+        return view('seller.back_product_edit',[
+            'product' => $product,
+            'categories' => $categories,
+            'category_name' => $category_name,
+            'sale_statuses' => $sale_statuses,
+            'sale_status_name' => $sale_status_name,
+            'product_statuses' => $product_statuses,
+            'product_status_name' => $product_status_name,
+            ]
         );
     }
 
@@ -83,8 +105,8 @@ class BackProductController extends Controller
         $product->description = $request->description;
         $product->save();
         
-        // return redirect('seller_show');
-        return back();
+        return redirect('seller/items');
+        // return back();
     }
 
     /**

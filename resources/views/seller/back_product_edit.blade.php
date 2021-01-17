@@ -22,10 +22,17 @@
                 <div class="form-group-sm">
                     {!! Form::label('category_name', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
-                        {!! Form::text('category_name', $product->category->category_name, ['class' => 'form-control d-inline w-100']) !!}
+                        <select class="form-control d-inline w-100" name="category_name">
+                        <option value="">{{$category_name}}</option>
+                            @foreach($categories as $id => $category_name)
+                                <option>
+                                    {{ $category_name }}
+                                </option>  
+                            @endforeach, 
+                        </select>
                     </div>
                 </div>
-            
+                
                 <div class="form-group-sm">
                     {!! Form::label('price', '販売単価', ['class' => 'd-block mt-2 mb-0']) !!}
                     {!! Form::text('price', $product->price, ['class' => 'ml-3 form-control col-sm-8']) !!}
@@ -33,7 +40,26 @@
             
                 <div class="form-group-sm">
                     {!! Form::label('sale_status_name', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    {!! Form::text('sale_status_name', $product->sale_status->sale_status_name, ['class' => 'ml-3 form-control col-sm-8']) !!}
+                    <select class="ml-3 form-control col-sm-8" name="sale_status_name">
+                        <option value="">{{$sale_status_name}}</option>
+                            @foreach($sale_statuses as $id => $sale_status_name)
+                                <option>
+                                    {{ $sale_status_name }}
+                                </option>  
+                            @endforeach, 
+                    </select>
+                </div>
+
+                <div class="form-group-sm">
+                    {!! Form::label('product_status_name', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
+                    <select class="ml-3 form-control col-sm-8" name="product_status_name">
+                        <option value="">{{$product_status_name}}</option>
+                            @foreach($product_statuses as $id => $product_status_name)
+                                <option>
+                                    {{ $product_status_name }}
+                                </option>  
+                            @endforeach, 
+                    </select>
                 </div>
 
                 <div class="form-group-sm">

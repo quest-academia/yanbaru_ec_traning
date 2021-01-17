@@ -21,5 +21,9 @@ class MProduct extends Model
     {
         return $this->belongsTo(MSales_status::class);
     }
-    
+
+    public function product_status()
+    {
+        return $this->belongsTo(MProduct_status::class);
+    }
 }

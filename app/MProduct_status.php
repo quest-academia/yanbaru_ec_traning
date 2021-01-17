@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MSales_status extends Model
+class MProduct_status extends Model
 {
+    protected $table = 'm_products_statuses';
+
     public function getLists()
     {
-        $sale_statuses = MSales_status::pluck('sale_status_name', 'id');
+        $product_statuses = MProduct_status::pluck('product_status_name', 'id');
 
-        return $sale_statuses;
+        return $product_statuses;
     }
-
-    protected $table = 'm_sales_statuses';
 
     public function products()
     {
