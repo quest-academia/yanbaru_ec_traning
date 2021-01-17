@@ -24,7 +24,7 @@ class CreateMUsersTable extends Migration
             $table->string('address', 32);
             $table->string('apartments', 32);
             $table->string('email', 128);
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->unsignedInteger('user_classification_id');
             $table->string('company_name', 128);
             $table->char('delete_flag', 1);
