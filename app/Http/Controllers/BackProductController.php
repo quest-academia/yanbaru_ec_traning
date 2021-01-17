@@ -60,9 +60,9 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $product = MProduct::with(['category', 'sale_status'])->find(2);
+        $product = MProduct::with(['category', 'sale_status'])->find($id);
         //category関連の定義
         $category = new MCategory;
         $categories = $category->getLists();
@@ -97,7 +97,7 @@ class BackProductController extends Controller
      */
     public function update(Request $request)
     {
-        $product = MProduct::with(['category', 'sale_status'])->find(2);
+        $product = MProduct::with(['category', 'sale_status'])->find($request->id);
         $product->product_name = $request->product_name;
         $product->category->category_name = $request->category_name;
         $product->price = $request->price;
