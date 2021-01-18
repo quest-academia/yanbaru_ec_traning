@@ -25,6 +25,9 @@
                                 @if($errors->has('last_name'))
                                     {{ $errors->first('last_name') }}
                                 @endif
+                                @if($errors->has('first_name'))
+                                    {{ $errors->first('first_name') }}
+                                @endif
                             </div>
                         </div>
                     </div>

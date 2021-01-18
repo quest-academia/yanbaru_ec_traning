@@ -30,7 +30,7 @@ return [
         'array' => 'The :attribute must have between :min and :max items.',
     ],
     'boolean' => 'The :attribute field must be true or false.',
-    'confirmed' => 'The :attribute confirmation does not match.',
+    'confirmed' => ':attributeを再入力してください。もしくは確認用パスワードが一致しません。',
     'date' => 'The :attribute is not a valid date.',
     'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format' => 'The :attribute does not match the format :format.',
@@ -85,14 +85,14 @@ return [
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => ':attributeは:min.文字以上で入力してください',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => ':attributeは:min文字以上で入力してください.',
         'array' => 'The :attribute must have at least :min items.',
     ],
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
-    'numeric' => 'The :attribute must be a number.',
+    'numeric' => ':attributeは数字で入力してください.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => ':attributeは必須項目です',
@@ -145,6 +145,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'last_name' => '※姓',
+        'first_name' => '※名',
+        'zipcode' => '※郵便番号',
+        'prefecture' => '※都道府県',
+        'municipality' => '※市町村区',
+        'address' => '※番地',
+        'apartments' => '※マンション・部屋番号',
+        'email' => '※メールアドレス',
+        'phone_number' => '※電話番号',
+        'password' => '※パスワード',
+    ],
 
 ];
