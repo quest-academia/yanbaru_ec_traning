@@ -20,8 +20,8 @@ class CreateTPurchasesTable extends Migration
             $table->string('purchase_company', 128);
             $table->timestamp('order_date');
             $table->timestamp('purchase_date')->nullable();
-            $table->integer('product_id');
-            // $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
+            $table->integer('product_id')->unsigned();//incrementsと外部キーで繋げる場合->unsigned()はセットみたい
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 
