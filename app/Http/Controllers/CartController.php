@@ -32,7 +32,7 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        //セッションに保存していた値を取得し、変数として定義
+        //セッション$sessionDataに保存していた値を取得し、変数として定義
         $sessionData = $request->session()->get('session_data');
         //セッションデータのなかのそれぞれのデータを抽出
         $sessionProductId = array_column($sessionData, 'sessionProductId');
@@ -42,29 +42,40 @@ class CartController extends Controller
         $productInfo = array();
         $productInfo = MProduct::findOrFail($sessionProductId);
 
+
+
+
         //m_categoriesテーブルからgetLists()関数でcategory_nameとidを取得する
         $category = new MCategory;
         $categories = $category->getLists();
 
-        //カテゴリーを、Categoryモデルからidで特定
-        // $productCategory = array();
-        // $productCategory = MCategory::findOrFail($productInfo->category_id);
-        // //取得してきたidより、Productモデルから商品を特定
-        // $productInfo = MProduct::findOrFail($sessionData->sessionProductId);
+        //カートをNo.1から表示したい
+        $productNumber = [];
+        foreach ($productInfo as $product) {
+            $productNumber++;
+            array_push($productNumber, $product);
+        }
+        // dd($sessionProductQuantity);
+
         return view(
             'cartitem',
             [
                 'productInfo' => $productInfo,
-                'sessionProductQuantity' => $sessionProductQuantity,
+                'productNumber' => $productNumber,
+                'product' => $product,
                 'categories' => $categories,
+                'sessionProductQuantity' => $sessionProductQuantity,
             ]
         );
     }
+    /*==================================
+    商品詳細画面
+    ==================================*/
     public function show($id)
     {
         //変数の初期化
         $productInfo = array();
-        $productCategory = array();
+        $productQuantity = array();
         $userId = '';
 
         //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
@@ -76,9 +87,16 @@ class CartController extends Controller
             'iteminfo',
             [
                 'productInfo' => $productInfo,
+                'productQuantity' => $productQuantity,
                 'productCategory' => $productCategory,
                 'userId' => $userId,
             ]
         );
+    }
+    public function delete(Request $request)
+    {
+        $cart_id = $request->input('cart_id');
+        set_message('カートから商品を削除しました');
+        return redirect('/cart');
     }
 }

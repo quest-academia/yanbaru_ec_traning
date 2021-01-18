@@ -43,9 +43,9 @@
         </div>
         <!-- カート内商品 -->
         <div class="mt-5">
-          <table class="table border-bottom">
+          <table class="table border-dark">
             <thead>
-              <tr class="d-flex">
+              <tr class="d-flex border-bottom border-dark">
                 <th scope="col" class="col-1 px-0 py-1 text-center">No</th>
                 <th scope="col" class="col-2 px-0 py-1 text-center">商品名</th>
                 <th scope="col" class="col-2 px-0 py-1 text-center">商品カテゴリ</th>
@@ -55,35 +55,24 @@
                 <th scope="col" class="col-1 px-0 py-1 text-center"></th>
               </tr>
             </thead>
-            @foreach($productInfo as $product)
+            @foreach($productInfo as $productNumber => $product)
             <tbody style="overflow-y:auto;max-height:400px;display:block">
               <tr class="d-flex">
-                <th scope="row" class="col-1 px-0 text-center">1</th>
+                <th scope="row" class="col-1 px-0 text-center">{{ $productNumber }}</th>
                 <td class="col-2 px-0 text-center">{{ $product->product_name }}</td>
                 <td class="col-2 px-0 text-center">{{ $product->category->category_name }}</td>
                 <td class="col-2 px-0 text-center">{{ $product->price }}円</td>
                 <td class="col-2 px-0 text-center">
-                  <input class="col-5 text-right" placeholder="0" type="text" name="SessionProductQuantity">
-                  {{-- value={{ $SessionProductQuantity }} --}}
+                  <input class="col-5 text-right" placeholder="0" type="number" name="SessionProductQuantity" value="{{ $sessionProductQuantity[1] }}">
                   <span>個</span>
                 </td>
                 <td class="col-2 px-0 text-center">5000円</td>
-                <td class="col-1 px-0 text-center"><button class="btn btn-danger">削除</button></td>
-              </tr>
-              @endforeach
-              <tr class="d-flex">
-                <th scope="row" class="col-1 px-0 text-center">2</th>
-                <td class="col-2 px-0 text-center">商品2</td>
-                <td class="col-2 px-0 text-center">食料品</td>
-                <td class="col-2 px-0 text-center">2000円</td>
-                <td class="col-2 px-0 text-center">
-                  <input class="col-5 text-right" placeholder="0" type="text" value="2" />
-                  <span>個</span>
+                <td class="col-1 px-0 text-center">
+                  <form method="post" action="{{}}"><button type="submit" class="btn btn-danger">削除</button></form>
                 </td>
-                <td class="col-2 px-0 text-center">4000円</td>
-                <td class="col-1 px-0 text-center"><button class="btn btn-danger">削除</button></td>
               </tr>
             </tbody>
+            @endforeach
           </table>
           <!-- 合計 -->
           <div class="col-12 row justify-content-end m-0 p-0">
@@ -94,7 +83,7 @@
           <!-- ボタン -->
           <div class="col-12 row justify-content-center mt-3">
             <button class="btn btn-info mx-3">
-              {!! link_to_route('login', '買い物を続ける', [], ['class' => 'text-white d-inline']) !!}
+              {!! link_to_route('show', '買い物を続ける', [], ['class' => 'text-white d-inline']) !!}
             </button>
             <button class="btn btn-primary mx-3">
               {!! link_to_route('login', '注文を確定する', [], ['class' => 'text-white d-inline']) !!}

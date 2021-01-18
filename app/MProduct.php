@@ -16,4 +16,10 @@ class MProduct extends Model
     {
         return $this->belongsTo(User::class);
     }
+    //カート内商品小計の合計を算出する
+    public function subtotal()
+    {
+        $result = $this->item->price * $this->quantity;
+        return $result;
+    }
 }
