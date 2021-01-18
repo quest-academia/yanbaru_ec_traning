@@ -13,13 +13,13 @@ class M_User_ClassificationsTableSeeder extends Seeder
     {
         DB::table('m_user_classifications')->insert([
             [
-                'user_classification_name' => '出品者',
+            'user_classification_name' => '出品者',
             ],
             [
-                'user_classification_name' => '購入者',
+            'user_classification_name' => '購入者',
             ],
             [
-                'user_classification_name' => '管理者',
+            'user_classification_name' => '管理者',
             ],
         ]);
     }
