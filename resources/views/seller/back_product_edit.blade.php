@@ -22,11 +22,11 @@
                 <div class="form-group-sm">
                     {!! Form::label('category_name', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
-                        <select class="form-control d-inline w-100" name="category_name">
-                        <option value="">{{$category_name}}</option>
-                            @foreach($categories as $id => $category_name)
-                                <option>
-                                    {{ $category_name }}
+                        <select class="form-control d-inline w-100" name="category_id">
+                        <option value="">{{ $category_name }}</option>
+                            @foreach($categories as $id => $categoryName)
+                                <option value="{{ $id }}">
+                                    {{ $categoryName }}
                                 </option>  
                             @endforeach, 
                         </select>
@@ -40,11 +40,11 @@
             
                 <div class="form-group-sm">
                     {!! Form::label('sale_status_name', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    <select class="ml-3 form-control col-sm-8" name="sale_status_name">
+                    <select class="ml-3 form-control col-sm-8" name="sale_status_id">
                         <option value="">{{$sale_status_name}}</option>
-                            @foreach($sale_statuses as $id => $sale_status_name)
-                                <option>
-                                    {{ $sale_status_name }}
+                            @foreach($sale_statuses as $id => $sale_statusName)
+                                <option value="{{ $id }}">
+                                    {{ $sale_statusName }}
                                 </option>  
                             @endforeach, 
                     </select>
@@ -52,11 +52,11 @@
 
                 <div class="form-group-sm">
                     {!! Form::label('product_status_name', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    <select class="ml-3 form-control col-sm-8" name="product_status_name">
+                    <select class="ml-3 form-control col-sm-8" name="product_status_id">
                         <option value="">{{$product_status_name}}</option>
-                            @foreach($product_statuses as $id => $product_status_name)
-                                <option>
-                                    {{ $product_status_name }}
+                            @foreach($product_statuses as $id => $product_statusName)
+                                <option value="{{ $id }}">
+                                    {{ $product_statusName }}
                                 </option>  
                             @endforeach, 
                     </select>
