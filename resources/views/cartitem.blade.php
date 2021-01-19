@@ -58,12 +58,12 @@
             @foreach($productInfo as $productNumber => $product)
             <tbody style="overflow-y:auto;max-height:400px;display:block">
               <tr class="d-flex">
-                <th scope="row" class="col-1 px-0 text-center">{{ $productNumber }}</th>
+                <th scope="row" class="col-1 px-0 text-center">{{ $productNumber + 1 }}</th>
                 <td class="col-2 px-0 text-center">{{ $product->product_name }}</td>
                 <td class="col-2 px-0 text-center">{{ $product->category->category_name }}</td>
                 <td class="col-2 px-0 text-center">{{ $product->price }}円</td>
                 <td class="col-2 px-0 text-center">
-                  <input class="col-5 text-right" placeholder="0" type="number" name="SessionProductQuantity" value="{{ $sessionProductQuantity[1] }}">
+                  <input class="col-5 text-right"  type="text"  value="{{ $product->sessionProductQuantity }}">
                   <span>個</span>
                 </td>
                 <td class="col-2 px-0 text-center">5000円</td>

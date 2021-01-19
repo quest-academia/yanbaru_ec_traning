@@ -41,28 +41,18 @@ class CartController extends Controller
         //取得してきたidより、Productモデルから商品を特定
         $productInfo = array();
         $productInfo = MProduct::findOrFail($sessionProductId);
-
-
-
-
+        // dd($sessionData);
         //m_categoriesテーブルからgetLists()関数でcategory_nameとidを取得する
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
-        //カートをNo.1から表示したい
-        $productNumber = [];
-        foreach ($productInfo as $product) {
-            $productNumber++;
-            array_push($productNumber, $product);
-        }
+
         // dd($sessionProductQuantity);
 
         return view(
             'cartitem',
             [
                 'productInfo' => $productInfo,
-                'productNumber' => $productNumber,
-                'product' => $product,
                 'categories' => $categories,
                 'sessionProductQuantity' => $sessionProductQuantity,
             ]
