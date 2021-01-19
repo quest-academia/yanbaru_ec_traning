@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             m_productsTableSeeder::class,
             T_purchaseTableSeeder::class,
             M_User_ClassificationsTableSeeder::class,
-            M_UsersTableSeeder::class,
+            M_Users_TableSeeder::class,
         ]);
     }
 }
