@@ -14,9 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-// ユーザー登録画面へ
-Route::get('/signup',function(){
-    return view('customer_information_registration');
-});
-// ユーザー登録コントローラーへ
-Route::post('/signup/create', 'UserRegistrationController@create');
