@@ -46,9 +46,9 @@ Route::get('/', function () {
 */
 Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
     Route::resource('items', 'SellerController');
-    Route::get('product/edit', 'BackProductController@edit')->name('back_product_edit');
-    Route::put('product/update', 'BackProductController@update')->name('back_product_update');
-    Route::delete('product/delete', 'BackProductController@destroy')->name('back_product_delete');
+    Route::get('product/edit/{id}', 'BackProductController@edit')->name('back_product_edit');
+    Route::put('product/update/{id}', 'BackProductController@update')->name('back_product_update');
+    Route::delete('product/delete/{id}', 'BackProductController@destroy')->name('back_product_delete');
 });
 
 /*

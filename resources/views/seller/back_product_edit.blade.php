@@ -10,7 +10,9 @@
     <div class="row mt-5 mb-5">
         <div class="col-sm-5 mx-auto">
     
-            {!! Form::open(['route' => 'back_product_update', 'method'=>'put']) !!}
+            {!! Form::open(['route' => ['back_product_update', $product->id]]) !!}
+            {{ method_field('PUT') }}
+            
                 
                 <div class="form-group-sm">
                     {!! Form::label('product_name', '商品名', ['class' => 'mt-2 mb-0']) !!}
@@ -23,7 +25,7 @@
                     {!! Form::label('category_name', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
                         <select class="form-control d-inline w-100" name="category_id">
-                        <option value="">{{ $category_name }}</option>
+                        <option value="{{ $category_id }}">{{ $category_name }}</option>
                             @foreach($categories as $id => $categoryName)
                                 <option value="{{ $id }}">
                                     {{ $categoryName }}
@@ -41,7 +43,7 @@
                 <div class="form-group-sm">
                     {!! Form::label('sale_status_name', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
                     <select class="ml-3 form-control col-sm-8" name="sale_status_id">
-                        <option value="">{{$sale_status_name}}</option>
+                        <option value="{{ $sale_status_id }}">{{$sale_status_name}}</option>
                             @foreach($sale_statuses as $id => $sale_statusName)
                                 <option value="{{ $id }}">
                                     {{ $sale_statusName }}
@@ -53,7 +55,7 @@
                 <div class="form-group-sm">
                     {!! Form::label('product_status_name', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
                     <select class="ml-3 form-control col-sm-8" name="product_status_id">
-                        <option value="">{{$product_status_name}}</option>
+                        <option value="{{ $product_status_id }}">{{$product_status_name}}</option>
                             @foreach($product_statuses as $id => $product_statusName)
                                 <option value="{{ $id }}">
                                     {{ $product_statusName }}
@@ -77,7 +79,8 @@
                     </div>
             {!! Form::close() !!}
 
-            {!! Form::open(['route' => 'back_product_delete', 'method'=>'delete']) !!}
+            {!! Form::open(['route' => ['back_product_delete', $product->id]]) !!}
+            {{ method_field('DELETE') }}
                     <div class="w-50 float-right">
                         <div class="text-center mt-5">
                             {!! Form::submit('削除', ['class' => 'button btn btn-danger mt-2']) !!}

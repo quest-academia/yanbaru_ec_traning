@@ -60,36 +60,43 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find(1);
+        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
         //category関連の定義
+        
         $category = new MCategory;
         $categories = $category->getLists();
         // $category_name = $product->category_id->category_name; 不要なら削除
         $category_name = MCategory::find($product->category_id)->category_name;
+        $category_id = $product->category_id;
         // dd($category_name);
-
+        
         //sale_status関連の定義
         $sale_status = new MSales_status;
         $sale_statuses = $sale_status->getLists();
         // $sale_status_name = $product->sale_status->sale_status_name; 不要なら削除
         $sale_status_name = MSales_status::find($product->sale_status_id)->sale_status_name;
-        
+        $sale_status_id = $product->sale_status_id;
+
         //product_status関連の定義
         $product_status = new MProduct_status;
         $product_statuses = $product_status->getLists();
         // $product_status_name = $product->product_status->product_status_name; 不要なら削除
         $product_status_name = MProduct_status::find($product->product_status_id)->product_status_name;
+        $product_status_id = $product->product_status_id;
 
         return view('seller.back_product_edit',[
             'product' => $product,
             'categories' => $categories,
             'category_name' => $category_name,
+            'category_id' => $category_id,
             'sale_statuses' => $sale_statuses,
             'sale_status_name' => $sale_status_name,
+            'sale_status_id' => $sale_status_id,
             'product_statuses' => $product_statuses,
             'product_status_name' => $product_status_name,
+            'product_status_id' => $product_status_id,
             ]
         );
     }
@@ -101,7 +108,7 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //以下おそらく不要なので削除予定
         // $categoryId = $request->category_id;
@@ -114,9 +121,9 @@ class BackProductController extends Controller
         // {!! link_to_route('iteminfo', '商品詳細', ['id' => $product->id ], ['class' => 'btn btn-primary btn-sm']) !!}
         //を参考にバック商品検索画面から送ってもらう！！
         //-------------------------------------------------
-        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find(1);
-        // dd($product);
-
+        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
+    
+        // dd($request);
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
@@ -125,8 +132,12 @@ class BackProductController extends Controller
         $product->description = $request->description;
         $product->save();
         
+        // if(is_null($request->category_id)){
+        //     $product->category_id;
+        // }else{
+        //     $product->category_id = $request->category_id;
+        // }
         return redirect('seller/items');
-        // return back();
     }
 
     /**
@@ -142,7 +153,6 @@ class BackProductController extends Controller
         $product = MProduct::find($request->id);
         $product->delete();
         
-        // return redirect('seller_show');
-        return back();
+        return redirect('seller/items');
     }
 }
