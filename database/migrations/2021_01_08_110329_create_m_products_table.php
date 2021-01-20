@@ -14,7 +14,7 @@ class CreateMProductsTable extends Migration
     public function up()
     {
         Schema::create('m_products', function (Blueprint $table) {
-            $table->increments('id');//bigIncrementsをincrementsに変更　型が合っていない的なエラーが出たため
+            $table->increments('id');
             $table->string('product_name', '64');
             $table->bigInteger('category_id')->unsigned();
             $table->integer('price');
@@ -24,7 +24,6 @@ class CreateMProductsTable extends Migration
             $table->timestamp('regist_date');
             // m_usersテーブル完成し次第変更予定
             $table->integer('user_id')->unsigned();
-            //$table->integer('user_id'); カラム重複のエラーが出たためコメントアウト
             $table->char('delete_flag', '1');
             $table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
             $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses')->onDelete('cascade');
