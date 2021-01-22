@@ -155,7 +155,12 @@ return [
         'apartments' => '※マンション・部屋番号',
         'email' => '※メールアドレス',
         'phone_number' => '※電話番号',
-        'password' => '※パスワード',
+        'product_name' => '※商品名',
+        'category_id' => '※商品カテゴリ',
+        'price' => '※販売単価',
+        'sale_status_id' => '※販売状態',
+        'product_status_id' => '※商品状態',
+        'description' => '※商品説明',
     ],
 
 ];

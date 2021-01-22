@@ -9,6 +9,8 @@ use App\MProduct;
 use App\MCategory;
 use App\MSales_status;
 use App\MProduct_status;
+use App\Http\Requests\CreateProductRequest;
+
 
 class BackProductController extends Controller
 {
@@ -105,10 +107,10 @@ class BackProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateProductRequest $request, $id)
     {
         $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
-    
+        // dd($request);
         $product->product_name = $request->product_name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;

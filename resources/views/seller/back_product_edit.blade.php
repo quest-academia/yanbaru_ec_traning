@@ -19,25 +19,40 @@
                     <div class="pl-3">
                         {!! Form::text('product_name', $product->product_name, ['class' => 'form-control d-inline w-100']) !!}
                     </div>
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('product_name'))
+                            {{ $errors->first('product_name') }}
+                        @endif
+                    </div>
                 </div>
             
                 <div class="form-group-sm">
                     {!! Form::label('category_name', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
                         <select class="form-control d-inline w-100" name="category_id">
-                        <option value="{{ $category_id }}">{{ $category_name }}</option>
+                        <option value={{ $category_id }}>{{ $category_name }}</option>
                             @foreach($categories as $id => $categoryName)
-                                <option value="{{ $id }}">
+                                <option value={{ $id }}>
                                     {{ $categoryName }}
                                 </option>  
                             @endforeach, 
                         </select>
+                    </div>
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('category_id'))
+                            {{ $errors->first('category_id') }}
+                        @endif
                     </div>
                 </div>
                 
                 <div class="form-group-sm">
                     {!! Form::label('price', '販売単価', ['class' => 'd-block mt-2 mb-0']) !!}
                     {!! Form::text('price', $product->price, ['class' => 'ml-3 form-control col-sm-8']) !!}
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('price'))
+                            {{ $errors->first('price') }}
+                        @endif
+                    </div>
                 </div>
             
                 <div class="form-group-sm">
@@ -50,6 +65,11 @@
                                 </option>  
                             @endforeach, 
                     </select>
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('sale_status_id'))
+                            {{ $errors->first('sale_status_id') }}
+                        @endif
+                    </div>
                 </div>
 
                 <div class="form-group-sm">
@@ -62,12 +82,22 @@
                                 </option>  
                             @endforeach, 
                     </select>
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('product_status_id'))
+                            {{ $errors->first('product_status_id') }}
+                        @endif
+                    </div>
                 </div>
 
                 <div class="form-group-sm">
                     {!! Form::label('description', '商品説明', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
                         {!! Form::textarea('description', $product->description, ['class' => 'form-control d-inline w-100']) !!}
+                    </div>
+                    <div class="mt-1 text-right text-danger">
+                        @if($errors->has('description'))
+                            {{ $errors->first('description') }}
+                        @endif
                     </div>
                 </div>
 
