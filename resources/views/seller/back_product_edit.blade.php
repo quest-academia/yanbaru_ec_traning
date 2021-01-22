@@ -107,10 +107,10 @@
                             {!! Form::submit('修正', ['class' => 'button btn btn-primary mt-2']) !!}
                         </div>
                     </div>
-            {!! Form::close() !!}
+                    {!! Form::close() !!}
 
-            {!! Form::open(['route' => ['back_product_delete', $product->id]]) !!}
-            {{ method_field('DELETE') }}
+                    {!! Form::open(['route' => ['back_product_delete', $product->id]]) !!}
+                    {{ method_field('DELETE') }}
                     <div class="w-50 float-right">
                         <div class="text-center mt-5">
                             {!! Form::submit('削除', ['class' => 'button btn btn-danger mt-2']) !!}
