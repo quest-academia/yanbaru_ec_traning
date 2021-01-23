@@ -47,7 +47,7 @@
                 
                 <div class="form-group-sm">
                     {!! Form::label('price', '販売単価', ['class' => 'd-block mt-2 mb-0']) !!}
-                    {!! Form::text('price', $product->price, ['class' => 'ml-3 form-control col-sm-8']) !!}
+                    {!! Form::text('price', $product->price, ['class' => 'ml-3 mr-2 form-control col-sm-8 d-inline'])."円" !!}
                     <div class="mt-1 text-right text-danger">
                         @if($errors->has('price'))
                             {{ $errors->first('price') }}

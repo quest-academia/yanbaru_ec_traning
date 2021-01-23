@@ -64,7 +64,7 @@ class BackProductController extends Controller
      */
     public function edit($id)
     {
-        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
+        $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
         
         //category関連の定義
         $categories = MCategory::getLists();
@@ -105,7 +105,7 @@ class BackProductController extends Controller
      */
     public function update(CreateProductRequest $request, $id)
     {
-        $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
+        $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
         
         $product->product_name = $request->productName;
         $product->category_id = $request->categoryId;

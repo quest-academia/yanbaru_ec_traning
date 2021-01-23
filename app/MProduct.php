@@ -17,12 +17,12 @@ class MProduct extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function sale_status()
+    public function saleStatus()
     {
         return $this->belongsTo(MSalesStatus::class);
     }
 
-    public function product_status()
+    public function productStatus()
     {
         return $this->belongsTo(MProductStatus::class);
     }
