@@ -19,11 +19,11 @@ class MProduct extends Model
 
     public function sale_status()
     {
-        return $this->belongsTo(MSales_status::class);
+        return $this->belongsTo(MSalesStatus::class);
     }
 
     public function product_status()
     {
-        return $this->belongsTo(MProduct_status::class);
+        return $this->belongsTo(MProductStatus::class);
     }
 }

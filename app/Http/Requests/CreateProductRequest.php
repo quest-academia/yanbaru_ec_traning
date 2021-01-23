@@ -24,11 +24,11 @@ class CreateProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_name' => 'required|string|max:20',
-            'category_id' => 'required|numeric|exists:m_categories,id',
+            'productName' => 'required|string|max:20',
+            'categoryId' => 'required|numeric|exists:m_categories,id',
             'price' => 'required|numeric',
-            'sale_status_id' => 'required|numeric|exists:m_sales_statuses,id',
-            'product_status_id' => 'required|numeric|exists:m_products_statuses,id',
+            'saleStatusId' => 'required|numeric|exists:m_sales_statuses,id',
+            'productStatusId' => 'required|numeric|exists:m_products_statuses,id',
             'description' => 'required|string|max:191',
         ];
     }

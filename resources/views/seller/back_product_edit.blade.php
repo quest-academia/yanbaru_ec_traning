@@ -15,32 +15,32 @@
             
                 
                 <div class="form-group-sm">
-                    {!! Form::label('product_name', '商品名', ['class' => 'mt-2 mb-0']) !!}
+                    {!! Form::label('productName', '商品名', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
-                        {!! Form::text('product_name', $product->product_name, ['class' => 'form-control d-inline w-100']) !!}
+                        {!! Form::text('productName', $product->product_name, ['class' => 'form-control d-inline w-100']) !!}
                     </div>
                     <div class="mt-1 text-right text-danger">
-                        @if($errors->has('product_name'))
-                            {{ $errors->first('product_name') }}
+                        @if($errors->has('productName'))
+                            {{ $errors->first('productName') }}
                         @endif
                     </div>
                 </div>
             
                 <div class="form-group-sm">
-                    {!! Form::label('category_name', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
+                    {!! Form::label('categoryName', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
-                        <select class="form-control d-inline w-100" name="category_id">
-                        <option value={{ $category_id }}>{{ $category_name }}</option>
-                            @foreach($categories as $id => $categoryName)
+                        <select class="form-control d-inline w-100" name="categoryId">
+                        <option value={{ $categoryId }}>{{ $categoryName }}</option>
+                            @foreach($categories as $id => $category_Name)
                                 <option value={{ $id }}>
-                                    {{ $categoryName }}
+                                    {{ $category_Name }}
                                 </option>  
                             @endforeach, 
                         </select>
                     </div>
                     <div class="mt-1 text-right text-danger">
-                        @if($errors->has('category_id'))
-                            {{ $errors->first('category_id') }}
+                        @if($errors->has('categoryId'))
+                            {{ $errors->first('categoryId') }}
                         @endif
                     </div>
                 </div>
@@ -56,35 +56,35 @@
                 </div>
             
                 <div class="form-group-sm">
-                    {!! Form::label('sale_status_name', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    <select class="ml-3 form-control col-sm-8" name="sale_status_id">
-                        <option value="{{ $sale_status_id }}">{{$sale_status_name}}</option>
-                            @foreach($sale_statuses as $id => $sale_statusName)
+                    {!! Form::label('saleStatusName', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
+                    <select class="ml-3 form-control col-sm-8" name="saleStatusId">
+                        <option value="{{ $saleStatusId }}">{{ $saleStatusName }}</option>
+                            @foreach($saleStatuses as $id => $sale_StatusName)
                                 <option value="{{ $id }}">
-                                    {{ $sale_statusName }}
+                                    {{ $sale_StatusName }}
                                 </option>  
                             @endforeach, 
                     </select>
                     <div class="mt-1 text-right text-danger">
-                        @if($errors->has('sale_status_id'))
-                            {{ $errors->first('sale_status_id') }}
+                        @if($errors->has('saleStatusId'))
+                            {{ $errors->first('saleStatusId') }}
                         @endif
                     </div>
                 </div>
 
                 <div class="form-group-sm">
-                    {!! Form::label('product_status_name', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
-                    <select class="ml-3 form-control col-sm-8" name="product_status_id">
-                        <option value="{{ $product_status_id }}">{{$product_status_name}}</option>
-                            @foreach($product_statuses as $id => $product_statusName)
+                    {!! Form::label('productStatusName', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
+                    <select class="ml-3 form-control col-sm-8" name="productStatusId">
+                        <option value="{{ $productStatusId }}">{{$productStatusName}}</option>
+                            @foreach($productStatuses as $id => $product_StatusName)
                                 <option value="{{ $id }}">
-                                    {{ $product_statusName }}
+                                    {{ $product_StatusName }}
                                 </option>  
                             @endforeach, 
                     </select>
                     <div class="mt-1 text-right text-danger">
-                        @if($errors->has('product_status_id'))
-                            {{ $errors->first('product_status_id') }}
+                        @if($errors->has('productStatusId'))
+                            {{ $errors->first('productStatusId') }}
                         @endif
                     </div>
                 </div>

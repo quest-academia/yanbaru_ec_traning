@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\MProduct;
 use App\MCategory;
-use App\MSales_status;
-use App\MProduct_status;
+use App\MSalesStatus;
+use App\MProductStatus;
 use App\Http\Requests\CreateProductRequest;
 
 
@@ -67,34 +67,31 @@ class BackProductController extends Controller
         $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
         
         //category関連の定義
-        $category = new MCategory;
-        $categories = $category->getLists();
-        $category_name = MCategory::find($product->category_id)->category_name;
-        $category_id = $product->category_id;
+        $categories = MCategory::getLists();
+        $categoryName = MCategory::find($product->category_id)->category_name;
+        $categoryId = $product->category_id;
         
         //sale_status関連の定義
-        $sale_status = new MSales_status;
-        $sale_statuses = $sale_status->getLists();
-        $sale_status_name = MSales_status::find($product->sale_status_id)->sale_status_name;
-        $sale_status_id = $product->sale_status_id;
+        $saleStatuses = MSalesStatus::getLists();
+        $saleStatusName = MSalesStatus::find($product->sale_status_id)->sale_status_name;
+        $saleStatusId = $product->sale_status_id;
 
         //product_status関連の定義
-        $product_status = new MProduct_status;
-        $product_statuses = $product_status->getLists();
-        $product_status_name = MProduct_status::find($product->product_status_id)->product_status_name;
-        $product_status_id = $product->product_status_id;
+        $productStatuses = MProductStatus::getLists();
+        $productStatusName = MProductStatus::find($product->product_status_id)->product_status_name;
+        $productStatusId = $product->product_status_id;
 
         return view('seller.back_product_edit',[
-            'product' => $product,
-            'categories' => $categories,
-            'category_name' => $category_name,
-            'category_id' => $category_id,
-            'sale_statuses' => $sale_statuses,
-            'sale_status_name' => $sale_status_name,
-            'sale_status_id' => $sale_status_id,
-            'product_statuses' => $product_statuses,
-            'product_status_name' => $product_status_name,
-            'product_status_id' => $product_status_id,
+                'product' => $product,
+                'categories' => $categories,
+                'categoryName' => $categoryName,
+                'categoryId' => $categoryId,
+                'saleStatuses' => $saleStatuses,
+                'saleStatusName' => $saleStatusName,
+                'saleStatusId' => $saleStatusId,
+                'productStatuses' => $productStatuses,
+                'productStatusName' => $productStatusName,
+                'productStatusId' => $productStatusId,
             ]
         );
     }
@@ -110,11 +107,11 @@ class BackProductController extends Controller
     {
         $product = MProduct::with(['category', 'sale_status', 'product_status'])->find($id);
         
-        $product->product_name = $request->product_name;
-        $product->category_id = $request->category_id;
+        $product->product_name = $request->productName;
+        $product->category_id = $request->categoryId;
         $product->price = $request->price;
-        $product->sale_status_id = $request->sale_status_id;
-        $product->product_status_id = $request->product_status_id;
+        $product->sale_status_id = $request->saleStatusId;
+        $product->product_status_id = $request->productStatusId;
         $product->description = $request->description;
         $product->save();
 
