@@ -21,7 +21,7 @@ class CreatePurchasesTable extends Migration
             $table->timestamp('order_date')->useCurrent();
             $table->timestamp('purchase_date')->useCurrent();
             $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('m_products');
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 

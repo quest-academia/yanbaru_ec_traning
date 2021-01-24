@@ -59,7 +59,7 @@
                     <td>{{ $product->product_name }}</td>
                     <td>{{ $product->category->category_name }}</td>
                     <td>{{ $product->price }}円</td>
-                    <td><a herf="" class="btn btn-primary" type="submit">修正</td>
+                    <td>{!! link_to_route('back_product_edit', '修正', [$product->id], ['class' => 'btn btn-primary mt-2']) !!}</td>
                 </tr>
                 @endforeach
             </table>

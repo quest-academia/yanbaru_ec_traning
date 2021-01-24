@@ -46,6 +46,10 @@ Route::get('/', function () {
 */
 Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
     Route::resource('items', 'SellerController');
+    Route::get('seller_search', 'SellerController@search')->name('seller_search');
+    Route::get('product/edit/{id}', 'BackProductController@edit')->name('back_product_edit');
+    Route::put('product/update/{id}', 'BackProductController@update')->name('back_product_update');
+    Route::delete('product/delete/{id}', 'BackProductController@destroy')->name('back_product_delete');
 });
 
 /*
@@ -62,32 +66,16 @@ Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| ユーザ情報一覧
+| ユーザ情報一覧、編集、削除
 |--------------------------------------------------------------------------
 */
-Route::get('/user_info', 'UserController@show')->name('user_info');
-
-/*
-|--------------------------------------------------------------------------
-| ユーザ情報編集
-|--------------------------------------------------------------------------
-*/
-Route::get('/user_edit', 'UserController@edit')->name('user_edit');
-Route::put('/user_update', 'UserController@update')->name('user_update');
-
-
-/*
-|--------------------------------------------------------------------------
-| ユーザ情報削除
-|--------------------------------------------------------------------------
-*/
-Route::get('/delete', 'UserController@delete')->name('user_delete');
-Route::post('/remove', 'UserController@remove')->name('user_remove');
-
-
-
-//商品検索機能
-Route::get('show', 'ProductController@index')->name('show');
+Route::group(['prefix' => 'user'], function(){
+    Route::get('info', 'UserController@show')->name('user/info');
+    Route::get('edit', 'UserController@edit')->name('user/edit');
+    Route::put('update', 'UserController@update')->name('user/update');
+    Route::get('delete', 'UserController@index')->name('user/delete');
+    Route::post('delete', 'UserController@delete')->name('delete');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -111,10 +99,4 @@ Route::group(["prefix" => 'iteminfo'], function() {
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
-/*
-|--------------------------------------------------------------------------
-| 出品者の商品検索
-|--------------------------------------------------------------------------
-*/
-Route::get('seller_show', 'SellerProductController@index')->name('seller_show');
-Route::get('seller_search', 'SellerProductController@search')->name('seller_search');
+
