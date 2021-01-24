@@ -11,7 +11,6 @@
         <div class="all">
             @include('commons.seller.header')
             <div class="wrapper">
-                @include('commons.error_messages')
                 @yield('content')
             </div>
             @include('commons.seller.footer')
