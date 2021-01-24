@@ -18,17 +18,17 @@ return [
             'string' => ':attributeは:max文字以内で入力してください。',
         ],
     'numeric' => ':attributeは数字で入力してください。',
-    'required' => ':attributeは必須項目です。',
-
-    'attributes' => [
-            'name'     => 'お名前',
-            'email'    => 'メールアドレス',
-            'tel'      => '電話番号',
-            'gender'   => '性別',
-            'contents' => 'お問い合わせ内容',
-            'password'=>'パスワード'
-        ],
     'alpha_num' => ':attributeは半角英数字で入力してください。',
+    'confirmed' => ':attributeを再入力してください。もしくは確認用パスワードが一致しません。',
+    'min' => [
+        'numeric' => ':attributeは:min.文字以上で入力してください',
+        'file' => 'The :attribute must be at least :min kilobytes.',
+        'string' => ':attributeは:min文字以上で入力してください.',
+        'array' => 'The :attribute must have at least :min items.',
+    ],
+    'required' => ':attributeは必須項目です',
+
+    'alpha_num_check' => ':attribute は半角英数字で入力してください',
 
     /*
     |--------------------------------------------------------------------------
@@ -58,4 +58,22 @@ return [
     |
     */
 
+    'attributes' => [
+        'last_name' => '※姓',
+        'first_name' => '※名',
+        'zipcode' => '※郵便番号',
+        'prefecture' => '※都道府県',
+        'municipality' => '※市町村区',
+        'address' => '※番地',
+        'apartments' => '※マンション・部屋番号',
+        'email' => '※メールアドレス',
+        'phone_number' => '※電話番号',
+        'productName' => '※商品名',
+        'categoryId' => '※商品カテゴリ',
+        'price' => '※販売単価',
+        'saleStatusId' => '※販売状態',
+        'productStatusId' => '※商品状態',
+        'description' => '※商品説明',
+        'password'=>'パスワード'
+    ],
 ];
