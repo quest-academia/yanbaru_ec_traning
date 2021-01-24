@@ -66,9 +66,9 @@
                   <input class="col-5 text-right" type="text" value="{{ $data['session_quantity'] }}">
                   <span>個</span>
                 </td>
-                <td class="col-2 px-0 text-center">5000円</td>
+                <td class="col-2 px-0 text-center">{{ number_format($data['session_quantity'] * $data['product']->price) }}円</td>
                 <td class="col-1 px-0 text-center">
-                  <form method="post" action="{{}}"><button type="submit" class="btn btn-danger">削除</button></form>
+                  <form method="post" action=""><button type="submit" class="btn btn-danger">削除</button></form>
                 </td>
               </tr>
             </tbody>
@@ -77,7 +77,13 @@
           <!-- 合計 -->
           <div class="col-12 row justify-content-end m-0 p-0">
             <div class="col-2 text-center px-0">合計</div>
-            <div class="col-2 text-center px-0">9000円</div>
+            <div class="col-2 text-center px-0">
+              @php
+                foreach($cartData as $key => $data)
+                  $totalPrice = array_sum(array_column($cartData, 'itemPrice'))
+              @endphp
+              <td class="border-bottom-0 align-middle">{{ number_format($totalPrice) }}円</td>
+            </div>
             <div class="col-1 text-center"></div>
           </div>
           <!-- ボタン -->
