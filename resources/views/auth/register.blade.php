@@ -111,10 +111,10 @@
         <div>氏名</div>
 
         <div class="container form-row">
-          {!! Form::label('last_name', '姓', ['class' => 'col-sm-1 col-form-label']) !!}
-          {!! Form::text('last_name', old('last_name'), ['class' => 'col-md-5', 'style' => 'height:30px', 'required']) !!}
-          {!! Form::label('first_name', '名', ['class' => 'col-sm-1 col-form-label']) !!}
-          {!! Form::text('first_name', old('first_name'), ['class' => 'col-md-5', 'style' => 'height:30px', 'required']) !!}
+          {!! Form::label('last_name', '姓', ['class' => 'col-lg-1 col-sm-3 col-form-label']) !!}
+          {!! Form::text('last_name', old('last_name'), ['class' => 'col-lg-5  col-sm-9', 'style' => 'height:30px', 'required']) !!}
+          {!! Form::label('first_name', '名', ['class' => 'col-lg-1 col-sm-3 col-form-label']) !!}
+          {!! Form::text('first_name', old('first_name'), ['class' => 'col-lg-5 col-sm-9', 'style' => 'height:30px', 'required']) !!}
         </div>
 
         <div>
