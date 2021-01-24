@@ -63,7 +63,7 @@ return [
         'first_name' => '名',
         'zipcode' => '郵便番号',
         'prefecture' => '都道府県',
-        'municipality' => '※市町村区',
+        'municipality' => '市町村区',
         'address' => '番地',
         'apartments' => 'マンション・部屋番号',
         'email' => 'メールアドレス',
