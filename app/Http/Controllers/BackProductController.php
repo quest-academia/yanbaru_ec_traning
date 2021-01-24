@@ -31,7 +31,7 @@ class BackProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('seller.back_product_create');
     }
 
     /**
@@ -65,12 +65,12 @@ class BackProductController extends Controller
     public function edit($id)
     {
         $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
-        
+
         //category関連の定義
         $categories = MCategory::getLists();
         $categoryName = MCategory::find($product->category_id)->category_name;
         $categoryId = $product->category_id;
-        
+
         //sale_status関連の定義
         $saleStatuses = MSalesStatus::getLists();
         $saleStatusName = MSalesStatus::find($product->sale_status_id)->sale_status_name;
@@ -106,7 +106,7 @@ class BackProductController extends Controller
     public function update(CreateProductRequest $request, $id)
     {
         $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
-        
+
         $product->product_name = $request->productName;
         $product->category_id = $request->categoryId;
         $product->price = $request->price;
@@ -128,7 +128,7 @@ class BackProductController extends Controller
     {
         $product = MProduct::find($request->id);
         $product->delete();
-        
+
         return redirect('seller/items');
     }
 }
