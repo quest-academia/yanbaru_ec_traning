@@ -63,7 +63,7 @@ Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 | カート内商品一覧
 |-----------------------------------------------------------------
 */
-Route::resource('cartitem', 'CartController', ['only' => ['index']]);
+Route::resource('cartlist', 'CartController', ['only' => ['index']]);
 
 Route::group(["prefix" => 'iteminfo'], function () {
     Route::get('/{id}', 'CartController@show');
