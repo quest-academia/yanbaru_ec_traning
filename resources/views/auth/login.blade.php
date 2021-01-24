@@ -14,15 +14,28 @@
                             {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
                         </div>
                     </div>
+                    @if ($errors->has('email'))
+                        <div class="row justify-content-center">
+                            <div class="cal-xs-4">
+                                <span style="color:red">{{ $errors->first('email') }}</span>
+                            </div>
+                        </div>
+                    @endif
                 </div>
-
                 <div class="form-group">
                     <div class="row justify-content-center">
-                    <div class="cal-xs-4">
-                        {!! Form::label('password', 'パスワード', ['class' => 'mt-3']) !!}
-                        {!! Form::password('password', ['class' => 'form-control']) !!}
+                        <div class="cal-xs-4">
+                            {!! Form::label('password', 'パスワード', ['class' => 'mt-3']) !!}
+                            {!! Form::password('password', ['class' => 'form-control']) !!}
+                        </div>
                     </div>
-                    </div>
+                    @if ($errors->has('password'))
+                        <div class="row justify-content-center">
+                            <div class="cal-xs-4">
+                                <span style="color:red">{{ $errors->first('password') }}</span>
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="text-center">
