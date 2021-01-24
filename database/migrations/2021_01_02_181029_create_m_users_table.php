@@ -25,9 +25,9 @@ class CreateMUsersTable extends Migration
             $table->string('apartments', 32);
             $table->string('email', 128);
             $table->string('phone_number');
-            $table->unsignedInteger('user_classification_id');
-            $table->string('company_name', 128);
-            $table->char('delete_flag', 1);
+            $table->unsignedInteger('user_classification_id')->default(2);
+            $table->string('company_name', 128)->nullable();
+            $table->char('delete_flag', 1)->default(0);
             $table->rememberToken();
             $table->timestamps();
 
