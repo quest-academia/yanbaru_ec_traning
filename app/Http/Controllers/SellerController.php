@@ -33,7 +33,7 @@ class SellerController extends Controller
         $query = MProduct::query();
         $products = $query->orderBy('category_id', 'asc')->paginate(15);
         
-        return view('seller/seller_search_product',[
+        return view('seller/seller_search_product', [
             'categories' => $categories,
             'products' => $products,
             'searchWord' => $searchWord,
@@ -50,14 +50,12 @@ class SellerController extends Controller
 
         $query = MProduct::query();
         // 商品名が入力された場合、m_productsテーブルから一致する商品を検索する
-        if(isset($searchWord))
-        {
+        if(isset($searchWord)){
             $query->where('product_name', 'like', '%' . self::escapeLike($searchWord) . '%');
         }
 
         // カテゴリが選択された場合、m_categoriesテーブルからcategory_idが一致する商品を検索する
-        if(isset($categoryId))
-        {
+        if(isset($categoryId)){
             $query->where('category_id', $categoryId);
         }
 
@@ -68,7 +66,7 @@ class SellerController extends Controller
         $category = new MCategory;
         $categories = $category->getLists();
 
-        return view('seller/seller_search_product',[
+        return view('seller/seller_search_product', [
             'products' => $products,
             'categories' => $categories,
             'searchWord' => $searchWord,

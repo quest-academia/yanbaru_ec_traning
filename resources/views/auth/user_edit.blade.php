@@ -13,7 +13,7 @@
                     <div class="col-sm-6 mx-auto">
 
                         <div class="form-group">
-                            {!! Form::label('last_name','姓') !!}
+                            {!! Form::label('last_name', '姓') !!}
                             {!! Form::text('last_name', $user->last_name, ['class' => 'form-control']) !!}
                             @if($errors->has('last_name'))
                                 <span class="help-block">
@@ -23,7 +23,7 @@
                         </div>
             
                         <div class="form-group">
-                            {!! Form::label('first_name','名') !!}
+                            {!! Form::label('first_name', '名') !!}
                             {!! Form::text('first_name', $user->first_name, ['class' => 'form-control']) !!}
                             @if($errors->has('first_name'))
                                 <span class="help-block">
@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('zipcode','郵便番号') !!}
+                            {!! Form::label('zipcode', '郵便番号') !!}
                             {!! Form::text('zipcode', $user->zipcode, ['class' => 'form-control']) !!}
                             @if($errors->has('zipcode'))
                                 <span class="help-block">
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('prefecture','都道府県') !!}
+                            {!! Form::label('prefecture', '都道府県') !!}
                             {!! Form::text('prefecture', $user->prefecture, ['class' => 'form-control']) !!}
                             @if($errors->has('prefecture'))
                                 <span class="help-block">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('municipality','市町村区') !!}
+                            {!! Form::label('municipality', '市町村区') !!}
                             {!! Form::text('municipality', $user->municipality, ['class' => 'form-control']) !!}
                             @if($errors->has('municipality'))
                                 <span class="help-block">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('address','番地') !!}
+                            {!! Form::label('address', '番地') !!}
                             {!! Form::text('address', $user->address, ['class' => 'form-control']) !!}
                             @if($errors->has('address'))
                                 <span class="help-block">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('apartments','マンション名/部屋番号') !!}
+                            {!! Form::label('apartments', 'マンション名/部屋番号') !!}
                             {!! Form::text('apartments', $user->apartments, ['class' => 'form-control']) !!}
                             @if($errors->has('apartments'))
                                 <span class="help-block">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('email','メールアドレス') !!}
+                            {!! Form::label('email', 'メールアドレス') !!}
                             {!! Form::text('email', $user->email, ['class' => 'form-control']) !!}
                             @if($errors->has('email'))
                                 <span class="help-block">
@@ -93,7 +93,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('phone_number','電話番号') !!}
+                            {!! Form::label('phone_number', '電話番号') !!}
                             {!! Form::text('phone_number', $user->phone_number, ['class' => 'form-control']) !!}
                             @if($errors->has('phone_number'))
                                 <span class="help-block">
