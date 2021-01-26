@@ -10,7 +10,7 @@
         </div>
         <div class="flex-row py-5 text-center mx-5">
             <p class="lead">すでにアカウントを<br>お持ちの方はこちら</p>
-            <button type="button" class="btn btn-primary py-3">ログイン</button>
+            <button type="button" onclick="location.href='login'" class="btn btn-primary py-3">ログイン</button>
         </div>
     </div>
 
