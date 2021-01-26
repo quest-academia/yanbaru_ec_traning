@@ -153,43 +153,59 @@ class CartController extends Controller
             $category_name = MCategory::find($product->category_id);
             $user = Auth::user();
             return view('iteminfo', compact('product', 'category_name', 'user'));
-        } else {
-            return redirect()->route('noProd');
         }
-
-
-
-
-
-
-
-
-
-
-        // //変数の初期化
-        // $productInfo = array();
-        // $productQuantity = array();
-        // $userId = '';
-
-        // //urlパラメータから飛んできたユーザidを元にモデルからそれぞれ商品、カテゴリーを特定
-        // $productInfo = MProduct::findOrFail($id);
-        // $productCategory = MCategory::findOrFail($productInfo->category_id);
-        // $userId = Auth::user()->id;
-
-        // return view(
-        //     'iteminfo',
-        //     [
-        //         'productInfo' => $productInfo,
-        //         'productQuantity' => $productQuantity,
-        //         'productCategory' => $productCategory,
-        //         'userId' => $userId,
-        //     ]
-        // );
+        // else {
+        //     return redirect()->route('noProd');
+        // }
     }
-    public function delete(Request $request)
+    /*==================================
+    商品をカートに入れるメソッド(iteminfo/id)
+    ==================================*/
+    public function remove(Request $request)
     {
-        $cart_id = $request->input('cart_id');
-        set_message('カートから商品を削除しました');
-        return redirect('/cart');
+        //POST送信された情報をsessionに保存 'users_id'(key)に$request内の'users_id'をセット
+        $sessionUsersId = $request->session()->get('users_id');
+        //session情報の取得（product_idと個数の2次元配列）
+        $sessionCartData = $request->session()->get('cartData');
+
+        //削除ボタンから受け取ったproduct_idと個数を2次元配列に
+        $removeCartItem = [
+            [
+                'session_products_id' => $request->product_id,
+                'session_quantity' => $request->product_quantity
+            ]
+        ];
+        $newCartData = array_udiff($sessionCartData, $removeCartItem, function ($sessionCartData, $removeCartItem) {
+            $result1 = $sessionCartData['session_products_id'] - $removeCartItem['session_products_id'];
+            $result2 = $sessionCartData['session_quantity'] - $removeCartItem['session_quantity'];
+            return $result1 + $result2;
+        });
+        //dd($newCartData);
+
+        $request->session()->put('cartData', $newCartData);
+        $cartData = $request->session()->get('cartData');
+
+        if (!empty($cartData)) {
+            return redirect()->route('cartlist.index');
+        } else {
+            $user = Auth::user();
+            return view('no_cart_list', compact('user'));
+        }
     }
+    public function checkout(Cart $cart)
+    {
+        return view('checkout');
+    }
+
+    //     public function store(Request $request)
+    //     {
+    //         // ここでセッションを取り出す
+    //         $orderDitailNumber = "12345678";
+    //         return view(
+    //             'checkout',
+    //             [
+    //                 'orderDitailNumber' => $orderDitailNumber,
+    //             ]
+    //         );
+    //     }
 }

@@ -68,7 +68,11 @@
                 </td>
                 <td class="col-2 px-0 text-center">{{ number_format($data['session_quantity'] * $data['product']->price) }}円</td>
                 <td class="col-1 px-0 text-center">
-                  <form method="post" action=""><button type="submit" class="btn btn-danger">削除</button></form>
+                  {!! Form::open(['route' => ['itemRemove', 'method' => 'post', $data['session_products_id']]]) !!}
+                  {{ Form::submit('削除', ['name' => 'delete_products_id', 'class' => 'btn btn-danger']) }}
+                  {{ Form::hidden('product_id', $data['session_products_id']) }}
+                  {{ Form::hidden('product_quantity', $data['session_quantity']) }}
+                  {!! Form::close() !!}
                 </td>
               </tr>
             </tbody>
@@ -92,7 +96,7 @@
               {!! link_to_route('show', '買い物を続ける', [], ['class' => 'text-white d-inline']) !!}
             </button>
             <button class="btn btn-primary mx-3">
-              {!! link_to_route('login', '注文を確定する', [], ['class' => 'text-white d-inline']) !!}
+              {!! link_to_route('checkout', '注文を確定する', [], ['class' => 'text-white d-inline']) !!}
             </button>
           </div>
         </div>
