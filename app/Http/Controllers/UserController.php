@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
+use App\User;
 
 class UserController extends Controller
 {
@@ -16,7 +17,7 @@ class UserController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('auth/user_info', [ 'user' => $user ]);
+        return view('auth/user_info', [ 'user' => $user]);
     }
 
     /*==================================
@@ -50,13 +51,13 @@ class UserController extends Controller
     /*==================================
     ユーザ情報削除
     ==================================*/
-    public function delete(Request $request)
+    public function index(Request $request)
     {
         $user = Auth::user();
         return view('auth/user_delete', [ 'user' => $user ]);
     }
 
-    public function remove(Request $request)
+    public function delete(Request $request)
     {
         $user = Auth::user();
         $user->delete();

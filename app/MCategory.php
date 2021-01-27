@@ -13,7 +13,7 @@ class MCategory extends Model
 
         return $categories;
     }
-    //「カテゴリ(category)はたくさんの商品(products)をもつ」というリレーション関係を定義する
+    // 「カテゴリ(category)はたくさんの商品(products)をもつ」というリレーション関係を定義する
     public function products()
     {
         return $this->hasMany(MProduct::class);
