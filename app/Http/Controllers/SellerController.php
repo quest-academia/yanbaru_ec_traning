@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\MProduct;
 use App\MCategory;
 
@@ -50,12 +49,12 @@ class SellerController extends Controller
 
         $query = MProduct::query();
         // 商品名が入力された場合、m_productsテーブルから一致する商品を検索する
-        if(isset($searchWord)){
+        if (isset($searchWord)) {
             $query->where('product_name', 'like', '%' . self::escapeLike($searchWord) . '%');
         }
 
         // カテゴリが選択された場合、m_categoriesテーブルからcategory_idが一致する商品を検索する
-        if(isset($categoryId)){
+        if (isset($categoryId)) {
             $query->where('category_id', $categoryId);
         }
 
