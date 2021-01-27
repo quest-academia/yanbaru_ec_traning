@@ -73,4 +73,4 @@ Route::group(["prefix" => 'iteminfo'], function () {
         return view('no_cart_list');
     })->name('noCart');
 });
-Route::post('/checkout', 'CartController@checkout')->name('checkout');
+Route::get('/checkout', 'CartController@checkout')->name('checkout');

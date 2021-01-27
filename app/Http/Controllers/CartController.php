@@ -192,7 +192,7 @@ class CartController extends Controller
             return view('no_cart_list', compact('user'));
         }
     }
-    public function checkout(Cart $cart)
+    public function checkout()
     {
         return view('checkout');
     }
