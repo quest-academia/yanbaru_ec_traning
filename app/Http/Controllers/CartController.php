@@ -52,23 +52,6 @@ class CartController extends Controller
         //POST送信された情報をsessionに保存 'users_id'(key)に$request内の'users_id'をセット
         $request->session()->put('users_id', ($request->users_id));
         return redirect()->route('cartlist.index');
-
-
-
-
-        // //セッションに商品idと注文個数の変数を定義する
-        // //飛んできた$requestの中のname属性をそれぞれ指定
-        // $sessionProductId = $request->productId; //商品id
-        // $sessionProductQuantity = $request->quantity; //注文個数
-
-        // $sessionData = array(); //配列の入れ物を作る（初期化）
-        // //$sessionData(配列)に、compact関数を用いてidと個数の変数をまとめる（””は変数の意味）
-        // $sessionData = compact("sessionProductId", "sessionProductQuantity");
-
-        // //session_dataというキーで、$sessionDataをセッションに登録
-        // $request->session()->push('session_data', $sessionData);
-
-        // return redirect('cartitem');
     }
 
     public function index(Request $request)
@@ -106,40 +89,7 @@ class CartController extends Controller
                 return view('products.no_cart_list', compact('user'));
             }
         }
-
-
-
-
-
-
-
-
-
-        // //セッション$sessionDataに保存していた値を取得し、変数として定義
-        // $sessionData = $request->session()->get('session_data');
-        // //セッションデータのなかのそれぞれのデータを抽出
-        // $sessionProductId = array_column($sessionData, 'sessionProductId');
-        // $sessionProductQuantity = array_column($sessionData, 'sessionProductQuantity');
-        // //viewで表示するための変数を定義
-        // //取得してきたidより、Productモデルから商品を特定
-        // $productInfo = array();
-        // $productInfo = MProduct::findOrFail($sessionProductId);
-        // // dd($sessionData);
-        // //m_categoriesテーブルからgetLists()関数でcategory_nameとidを取得する
-        // $category = new MCategory;
-        // $categories = $category->getCategories();
-
-
         // dd($productInfo);
-
-        return view(
-            'cartlist',
-            [
-                // 'productInfo' => $productInfo,
-                // 'categories' => $categories,
-                // 'sessionProductQuantity' => $sessionProductQuantity,
-            ]
-        );
     }
     /*==================================
     商品詳細画面
@@ -192,9 +142,16 @@ class CartController extends Controller
             return view('no_cart_list', compact('user'));
         }
     }
+
     public function checkout()
     {
-        return view('checkout');
+        $orderDitailNumber = "12345678";
+        return view(
+            'checkout',
+            [
+                'orderDitailNumber' => $orderDitailNumber,
+            ]
+        );
     }
 
     //     public function store(Request $request)
