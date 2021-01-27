@@ -111,4 +111,6 @@ Route::group(["prefix" => 'iteminfo'], function() {
     Route::post('/add', 'CartController@addCart')->name('addcart');
 });
 
+Route::get('purchase_completed', 'CartController@showPurchaseCompleted')->name('purchase_completed');
+
 

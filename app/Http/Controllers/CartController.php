@@ -151,4 +151,14 @@ class CartController extends Controller
     {
         //
     }
+
+    public function showPurchaseCompleted()
+    {
+        $orderDitailNumber = 123456789;
+
+        return view('purchase_completed', 
+        [
+            'orderDitailNumber' => $orderDitailNumber
+        ]);
+    }
 }
