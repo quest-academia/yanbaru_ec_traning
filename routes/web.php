@@ -35,7 +35,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return redirect('/login');
+    return view('before_login');
 });
 
 
@@ -88,9 +88,6 @@ Route::get('/delete', 'UserController@delete')->name('user_delete');
 Route::post('/remove', 'UserController@remove')->name('user_remove');
 
 
-
-//商品検索機能
-Route::get('show', 'ProductController@index')->name('show');
 
 /*
 |--------------------------------------------------------------------------
