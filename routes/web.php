@@ -46,6 +46,7 @@ Route::get('/', function () {
 */
 Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth', 'can:edit']], function () {
     Route::resource('items', 'SellerController');
+    Route::get('seller_search', 'SellerController@search')->name('seller_search');
     Route::get('product/edit/{id}', 'BackProductController@edit')->name('back_product_edit');
     Route::put('product/update/{id}', 'BackProductController@update')->name('back_product_update');
     Route::delete('product/delete/{id}', 'BackProductController@destroy')->name('back_product_delete');
@@ -65,9 +66,10 @@ Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| ユーザ情報一覧
+| ユーザ情報一覧、編集、削除
 |--------------------------------------------------------------------------
 */
+<<<<<<< HEAD
 Route::get('/user_info', 'UserController@show')->name('user_info');
 
 /*
@@ -88,6 +90,15 @@ Route::get('/delete', 'UserController@delete')->name('user_delete');
 Route::post('/remove', 'UserController@remove')->name('user_remove');
 
 
+=======
+Route::group(['prefix' => 'user'], function(){
+    Route::get('info', 'UserController@show')->name('user/info');
+    Route::get('edit', 'UserController@edit')->name('user/edit');
+    Route::put('update', 'UserController@update')->name('user/update');
+    Route::get('delete', 'UserController@index')->name('user/delete');
+    Route::post('delete', 'UserController@delete')->name('delete');
+});
+>>>>>>> develop_alpha
 
 /*
 |--------------------------------------------------------------------------
