@@ -7,7 +7,7 @@
         <nav>
             <ul>
                 <li class="nav-item">{!! link_to_route('o_history', '商品出品', [], ['class' => 'nav-link']) !!}</li>
-                <li class="nav-item">{!! link_to_route('o_history', '商品検索', [], ['class' => 'nav-link']) !!}</li>
+                <li class="nav-item">{!! link_to_route('seller_search', '商品検索', [], ['class' => 'nav-link']) !!}</li>
                 <li class="nav-item">{!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
         </nav>
     @else
