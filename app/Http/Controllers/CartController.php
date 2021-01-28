@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 
 use App\MProduct;
 use App\MCategory;
-//use App\Http\Controllers\Controller;
+use App\TOrderDetail;
+use App\TOrder;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -152,13 +154,31 @@ class CartController extends Controller
         //
     }
 
-    public function showPurchaseCompleted()
+    public function showPurchaseCompleted(Request $request)
     {
-        $orderDitailNumber = 123456789;
-
-        return view('purchase_completed', 
-        [
-            'orderDitailNumber' => $orderDitailNumber
-        ]);
+        //$orderId = $request->order_id;
+        $orderId = 6;//これをパラメータ？から受け取ることができれば完成！！
+        
+        //ログインユーザーidの定義
+        $userId = Auth::user()->id;
+        //注文を定義
+        $order = TOrder::find($orderId);
+        //注文ユーザの定義
+        $orderUserId = $order->user_id;
+        
+        
+        if($userId == $orderUserId){
+            //注文詳細を注文idから定義する
+            $productOrderDitail = TOrderDetail::find($orderId);
+            //注文番号の定義
+            $orderDitailNumber = $productOrderDitail->order_detail_number;
+            // dd($orderDitailNumber);
+            return view('purchase_completed', 
+            [
+                'orderDitailNumber' => $orderDitailNumber
+            ]);
+        }else{
+            return view('item_notfound');
+        }
     }
 }
