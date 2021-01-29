@@ -27,7 +27,7 @@ class CreateTOrdersDetailsTable extends Migration
             $table->foreign('shipment_status_id')
             ->references('id')->on('m_shipments_statuses');
             $table->foreign('products_id')
-            ->references('id')->on('m_products');
+            ->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 

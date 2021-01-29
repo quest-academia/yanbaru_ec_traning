@@ -16,4 +16,20 @@ class MProduct extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function saleStatus()
+    {
+        return $this->belongsTo(MSalesStatus::class);
+    }
+
+    public function productStatus()
+    {
+        return $this->belongsTo(MProductStatus::class);
+    }
+    //カート内商品小計の合計を算出する
+    public function subtotal()
+    {
+        $result = $this->item->price * $this->quantity;
+        return $result;
+    }
 }

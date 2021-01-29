@@ -37,7 +37,7 @@ class M_UsersTableSeeder extends Seeder
             'apartments' => 'テナントB',
             'email' => 'sample2@sample.com',
             'phone_number' => '2222222222',
-            'user_classification_id' => '1',
+            'user_classification_id' => '2',
             'company_name' => '宮代精肉店',
             'delete_flag' => '0'
         ]);

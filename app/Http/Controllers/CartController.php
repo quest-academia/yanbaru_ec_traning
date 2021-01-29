@@ -176,41 +176,5 @@ class CartController extends Controller
             dd($order);
             dd($orderDetail);
         }
-
-
-        return view(
-            'checkout',
-            [
-                'orderDitailNumber' => $orderDitailNumber,
-            ]
-        );
     }
-
-    // public function store(Request $request)
-    // {
-    //     $cartData = $request->session()->get('cartData');
-
-    //     $now = Carbon::now();
-
-    //     $order = new \App\Order;
-    //     $order->user_id = Auth::user()->id;
-    //     $order->order_date = $now;
-    //     $order->order_number = rand();
-    //     $order->save();
-
-    //     $savedOrder = Order::where('order_number', $order->order_number)->get();
-    //     dd($savedOrder);
-
-    //     foreach ($cartData as $data) {
-    //         $orderDetail = new \App\OrderDetail;
-    //         $orderDetail->product_id = $savedOrder->id;
-    //         $orderDetail->order_id = $savedOrder->id;
-    //         $orderDetail->shipment_status_id = 1;
-    //         $orderDetail->order_quantity = $data['session_quantity'];
-    //         $orderDetail->shipment_date = $now;
-    //         $orderDetail->save();
-    //         dd($order);
-    //         dd($orderDetail);
-    //     }
-    // }
 }
