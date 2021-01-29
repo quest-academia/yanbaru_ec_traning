@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +25,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $userRoleId = $this->guard()->user()->user_classification_id;
+        if ($userRoleId == config('const.USER_CLASSIFICATIONS.SELLER') || $userRoleId == config('const.USER_CLASSIFICATIONS.ADMIN')) {
+            // 編集可能ユーザー;
+            return '/seller/items';
+        } else {
+            // 一般購入ユーザー;
+            return '/home';
+        }
+    }
 
     /**
      * Create a new controller instance.
@@ -35,5 +45,14 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    // ログインのバリデーションをオーバーライド
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|email',
+            'password' => 'required|string|alpha_num_check',
+        ]);
     }
 }

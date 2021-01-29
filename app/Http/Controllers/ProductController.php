@@ -19,7 +19,7 @@ class ProductController extends Controller
     {
         //フォームを機能させるために各情報を取得し、viewに返す
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
 
@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         //m_categoriesテーブルからgetLists()関数でcategory_nameとidを取得する
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
         return view('searchproduct', [
             'products' => $products,

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MCategory extends Model
 {
     //m_categoriesテーブルから::pluckでcategory_nameとidを抽出し、$categoriesに返す関数を作る
-    public function getLists()
+    public function getCategories()
     {
         $categories = MCategory::pluck('category_name', 'id');
 

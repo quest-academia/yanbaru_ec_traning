@@ -18,7 +18,17 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            // 会員登録ページやログインページのmiddlewareで会員状態をチェックしてリダイレクト先を出し分ける
+            $userRoleId = Auth::guard()->user()->user_classification_id;
+            if ($userRoleId == config('const.USER_CLASSIFICATIONS.SELLER')
+                || $userRoleId == config('const.USER_CLASSIFICATIONS.ADMIN')
+                ) {
+                // 編集可能ユーザー;
+                return redirect('/seller/items');
+            } else {
+                // 一般購入ユーザー;
+                return redirect('/home');
+            }
         }
 
         return $next($request);

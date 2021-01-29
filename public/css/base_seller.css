@@ -15,7 +15,7 @@
         width: 100%;
         height: auto !important;
         height: 100%;
-        min-height: 100%; 
+        min-height: 100%;
     }
 
     .wrapper {
@@ -29,14 +29,15 @@
     }
     a {
         text-decoration: none;
-        color: #4b4b4b;
+        color: #fff;
     }
     /******ヘッダーデザイン******/
     header {
         width: 100%;
         padding: 10px 10px;
         z-index:10;
-        background-color: #ffd900;
+        background-color: #000;
+        color: #fff;
         position: fixed;
         top: 0;
         display: flex;
@@ -45,10 +46,12 @@
     header h1 {
         padding: 0;
         font-size: 20px;
+        color: #fff;
         font-weight: bold;
     }
     header p {
         position: absolute;
+        color: #fff;
         top: 0;
         right: 0;
         margin-right: 10px;
@@ -95,14 +98,16 @@
     }
 
     .table-header {
-        background-color: #ffd900;
+        color: #fff;
+        background-color: #000;
     }
 
     /****フッター*******/
     footer {
         width: 100%;
         padding: 5px 10px;
-        background-color: #ffd900;
+        background-color: #000;
+        color: #fff;
         position: fixed;
         bottom: 0;
         z-index: 1000;
