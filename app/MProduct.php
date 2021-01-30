@@ -25,6 +25,13 @@ class MProduct extends Model
         return $this->belongsTo(User::class);
     }
 
+    // 出品者側の商品検索機能実装のために追加
+    public function getLists()
+    {
+        $products = MProduct::pluck('price', 'product_name');
+        return $products;
+    }
+
     public function saleStatus()
     {
         return $this->belongsTo(MSalesStatus::class);

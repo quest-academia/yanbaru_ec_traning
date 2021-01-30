@@ -13,15 +13,9 @@
     <body>
         <div class="all">
             @include('commons.header')
-
             <div class="wrapper">
-
-                @include('commons.error_messages')
-
                 @yield('content')
-
             </div>
-
             @include('commons.footer')
         </div>
 

@@ -41,11 +41,11 @@
             </div>
 
             <div class="text-center mt-2">
-                <form action="{{ route('user_remove') }}" method="post">
+                <form action="{{ route('delete') }}" method="post">
                     {{ csrf_field() }}
                     <input type="submit" value="は　い" class="btn btn-danger">
                 </form>
-                    {!! link_to_route('user_edit', 'いいえ', [], ['class' => 'btn btn-primary mt-2']) !!}
+                    {!! link_to_route('user/edit', 'いいえ', [], ['class' => 'btn btn-primary mt-2']) !!}
             </div>
             
         </div>
