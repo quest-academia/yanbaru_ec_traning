@@ -1,16 +1,24 @@
 @extends('layouts.seller_app')
 @section('content')
-<main>
 
+@if (session('flash_info'))
+    <div id="flash_message" class="flash_message alert alert-info">
+        {{ session('flash_info') }}
+    </div>
+@endif
+@if (session('flash_error'))
+    <div id="flash_message" class="alert alert-danger">
+        {{ session('flash_error') }}
+    </div>
+@endif
+
+<main>
     <div class="page-header mt-5 text-center">
         <h4>商品情報登録</h4>
     </div>
-
-
     <div class="row mt-5 mb-5">
         <div class="col-sm-5 mx-auto">
-
-            {!! Form::open(['route' => ['back_product_update', $product->id]]) !!}
+            {!! Form::open(['route' => ['back_product_store']]) !!}
                 <div class="form-group-sm">
                     {!! Form::label('productName', '商品名', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
@@ -22,18 +30,16 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group-sm">
                     {!! Form::label('categoryName', '商品カテゴリ', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
                         <select class="form-control d-inline w-100" name="categoryId">
-                        {{-- <option value={{ $categoryId }}>{{ $categoryName }}</option>
-                            @foreach($categories as $id => $category_Name)
-                                <option>
-                                    {{ $category_Name }}
+                            @foreach($categories as $categoryId => $categoryName)
+                                <option value="{{ $categoryId }}">
+                                    {{ $categoryName }}
                                 </option>
                             @endforeach,
-                        </select> --}}
+                        </select>
                     </div>
                     <div class="mt-1 text-right text-danger">
                         @if($errors->has('categoryId'))
@@ -41,7 +47,6 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group-sm">
                     {!! Form::label('price', '販売単価', ['class' => 'd-block mt-2 mb-0']) !!}
                     {!! Form::text('price', '', ['class' => 'ml-3 mr-2 form-control col-sm-8 d-inline'])."円" !!}
@@ -51,16 +56,14 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group-sm">
                     {!! Form::label('saleStatusName', '販売状態', ['class' => 'd-block mt-2 mb-0']) !!}
                     <select class="ml-3 form-control col-sm-8" name="saleStatusId">
-                        {{-- <option value="{{ $saleStatusId }}">{{ $saleStatusName }}</option> --}}
-                            {{-- @foreach($saleStatuses as $id => $sale_StatusName)
-                                <option value="{{ $id }}">
-                                    {{ $sale_StatusName }}
+                            @foreach($saleStatuses as $saleStatusId => $saleStatusName)
+                                <option value="{{ $saleStatusId }}">
+                                    {{ $saleStatusName }}
                                 </option>
-                            @endforeach, --}}
+                            @endforeach,
                     </select>
                     <div class="mt-1 text-right text-danger">
                         @if($errors->has('saleStatusId'))
@@ -68,16 +71,14 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group-sm">
                     {!! Form::label('productStatusName', '商品状態', ['class' => 'd-block mt-2 mb-0']) !!}
                     <select class="ml-3 form-control col-sm-8" name="productStatusId">
-                        {{-- <option value="{{ $productStatusId }}">{{$productStatusName}}</option>
-                            @foreach($productStatuses as $id => $product_StatusName)
-                                <option value="{{ $id }}">
-                                    {{ $product_StatusName }}
+                            @foreach($productStatuses as $productStatusId => $productStatusName)
+                                <option value="{{ $productStatusId }}">
+                                    {{ $productStatusName }}
                                 </option>
-                            @endforeach, --}}
+                            @endforeach
                     </select>
                     <div class="mt-1 text-right text-danger">
                         @if($errors->has('productStatusId'))
@@ -85,7 +86,6 @@
                         @endif
                     </div>
                 </div>
-
                 <div class="form-group-sm">
                     {!! Form::label('description', '商品説明', ['class' => 'mt-2 mb-0']) !!}
                     <div class="pl-3">
@@ -97,30 +97,15 @@
                         @endif
                     </div>
                 </div>
-
                 <div>
-                    <div class="w-50 float-left">
+                    <div class="w-100">
                         <div class="text-center mt-5">
-                            {!! Form::submit('登録', ['class' => 'button btn btn-primary mt-2']) !!}
-                        </div>
-                    </div>
-                    {!! Form::close() !!}
-
-                    {{-- {!! Form::open(['route' => ['back_product_delete', $product->id]]) !!} --}}
-                    {{ method_field('DELETE') }}
-                    <div class="w-50 float-right">
-                        <div class="text-center mt-5">
-                            {!! Form::submit('削除', ['class' => 'button btn btn-danger mt-2']) !!}
+                            {!! Form::submit('登録', ['class' => 'button btn btn-primary mt-2 w-25']) !!}
                         </div>
                     </div>
                 </div>
             {!! Form::close() !!}
-
         </div>
     </div>
-
-
-
 </main>
-
 @endsection
