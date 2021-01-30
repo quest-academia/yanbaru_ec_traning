@@ -29,7 +29,7 @@ class BackProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         // 初期化
         $message = '';
