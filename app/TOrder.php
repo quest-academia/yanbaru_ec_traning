@@ -15,6 +15,8 @@ class TOrder extends Model
      * @param string $orderDetailNumber
      * @return Obj
      */
+    public $timestamps = false;
+
     public static function getDetails($userId, $orderBaseNumber = null, $orderDetailNumber = null)
     {
         $orderBaseSql = DB::table('t_orders as base')
@@ -158,5 +160,9 @@ class TOrder extends Model
             $result = $deleteCount > 0 ? true : false;
         }
         return $result;
+    }
+    public function orders()
+    {
+        return $this->hasMany(TOrderDetail::class);
     }
 }

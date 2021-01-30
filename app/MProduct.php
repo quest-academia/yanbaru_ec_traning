@@ -17,6 +17,13 @@ class MProduct extends Model
         return $this->belongsTo(User::class);
     }
 
+    // 出品者側の商品検索機能実装のために追加
+    public function getLists()
+    {
+        $products = MProduct::pluck('price', 'product_name');
+        return $products;
+    }
+
     public function saleStatus()
     {
         return $this->belongsTo(MSalesStatus::class);
@@ -25,11 +32,5 @@ class MProduct extends Model
     public function productStatus()
     {
         return $this->belongsTo(MProductStatus::class);
-    }
-    //カート内商品小計の合計を算出する
-    public function subtotal()
-    {
-        $result = $this->item->price * $this->quantity;
-        return $result;
     }
 }
