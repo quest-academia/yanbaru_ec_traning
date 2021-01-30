@@ -13,7 +13,7 @@ class CreateTOrdersDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_orders_details', function (Blueprint $table) {
+        Schema::create('t_order_details', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('products_id');
             $table->unsignedInteger('order_id');
@@ -22,12 +22,12 @@ class CreateTOrdersDetailsTable extends Migration
             $table->Integer('order_quantity');
             $table->timestamp('shipment_date');
             $table->foreign('order_id')
-            ->references('id')->on('t_orders')
-            ->onDelete('cascade');
+                ->references('id')->on('t_orders')
+                ->onDelete('cascade');
             $table->foreign('shipment_status_id')
-            ->references('id')->on('m_shipments_statuses');
+                ->references('id')->on('m_shipments_statuses');
             $table->foreign('products_id')
-            ->references('id')->on('m_products')->onDelete('cascade');
+                ->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 

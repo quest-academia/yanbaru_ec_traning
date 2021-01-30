@@ -105,7 +105,7 @@ Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 Route::resource('cartlist', 'CartController', ['only' => ['index']]);
 
 Route::group(["prefix" => 'iteminfo'], function () {
-    Route::get('/{id}', 'CartController@show');
+    Route::get('/{id}', 'CartController@show')->name('iteminfo');
     Route::post('/add', 'CartController@addCart')->name('addcart');
     Route::post('prodinfo/cartListRemove', 'CartController@remove')->name('itemRemove');
     Route::get('noCartList', function () {

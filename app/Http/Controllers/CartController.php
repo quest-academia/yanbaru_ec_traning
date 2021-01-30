@@ -6,10 +6,11 @@ use App\User;
 use App\MProduct;
 use App\MCategory;
 use App\TOrder;
-use App\TOrderDetail;
+use App\TOrdersDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+// use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -54,7 +55,7 @@ class CartController extends Controller
         }
         //POST送信された情報をsessionに保存 'users_id'(key)に$request内の'users_id'をセット
         $request->session()->put('users_id', ($request->users_id));
-        return redirect()->route('cartlist.index');
+        return redirect()->route('cartlist');
     }
 
     public function index(Request $request)
@@ -84,13 +85,11 @@ class CartController extends Controller
             $user = Auth::user();
 
             //Productテーブルに該当IDが存在しない場合、戻り値としてnullが返される → issetで条件分岐を指定し例外処理を行う
-            if (isset($sessionProducts)) {
-                //&& $user == $sessionUsers
-                return view('cartlist', compact('sessionUsers', 'cartData', 'totalPrice', 'user'));
-            } else {
-                $user = Auth::user();
-                return view('products.no_cart_list', compact('user'));
-            }
+            //&& $user == $sessionUsers
+            return view('cartlist', compact('sessionUsers', 'cartData', 'totalPrice', 'user'));
+        } else {
+            $user = Auth::user();
+            return view('no_cart_list', compact('user'));
         }
         // dd($productInfo);
     }
@@ -159,22 +158,37 @@ class CartController extends Controller
         $order = new \App\TOrder;
         $order->user_id = Auth::user()->id;
         $order->order_date = $now;
-        $order->order_number = rand();
+        // dd($order);
         $order->save();
 
-        $savedOrder = Order::where('order_number', $order->order_number)->get();
-        dd($savedOrder);
+        // $orderBaseSql = DB::table('t_orders')->get();
+        // dd($orderBaseSql);
+        $savedOrder = TOrder::where('id', $order->id)->get();
+        // dd($savedOrder);
+        // $savedOrder = TOrderDetail::where('order_detail_number', $order->order_detail_number)->get();
+        $savedOrderId = $savedOrder->pluck('id')->toArray();
+        // dd($savedOrderId);
 
         foreach ($cartData as $data) {
-            $orderDetail = new \App\TOrderDetail;
-            $orderDetail->product_id = $savedOrder->id;
-            $orderDetail->order_id = $savedOrder->id;
+            $orderDetail = new \App\TOrdersDetail; //DBに接続できてない
+
+            $orderDetail->products_id = $data['session_products_id'];
+            $orderDetail->order_id = $savedOrderId[0];
             $orderDetail->shipment_status_id = 1;
+            $orderDetail->order_detail_number = rand();
+            // dd($orderDetail);
+
+            // dd($orderDetail);
             $orderDetail->order_quantity = $data['session_quantity'];
             $orderDetail->shipment_date = $now;
+            // dd($orderDetail);
             $orderDetail->save();
-            dd($order);
-            dd($orderDetail);
+            // dd($order);
+            // dd($orderDetail);
         }
+
+        $request->session()->forget('cartData');
+
+        return view('checkout', compact('orderDetail'));
     }
 }
