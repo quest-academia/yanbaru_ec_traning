@@ -7,7 +7,7 @@
         <h4>ユーザ情報</h4>
     </div>
 
-        <div class="row mt-5 mb-5">
+    <div class="row mt-5 mb-5">
         <div class="col-sm-6 mx-auto">
 
             <div class="mb-3">
@@ -41,14 +41,14 @@
             </div>
 
             <div class="text-center mt-2">
-                <form action="{{ route('user_remove') }}" method="post">
+                <form action="{{ route('delete') }}" method="post">
                     {{ csrf_field() }}
                     <input type="submit" value="は　い" class="btn btn-danger">
                 </form>
-                    {!! link_to_route('user_edit', 'いいえ', [], ['class' => 'btn btn-primary mt-2']) !!}
+                {!! link_to_route('user/edit', 'いいえ', [], ['class' => 'btn btn-primary mt-2']) !!}
             </div>
-            
+
         </div>
-        </div>
-</main>            
+    </div>
+</main>
 @endsection
