@@ -85,7 +85,6 @@ class CartController extends Controller
             $user = Auth::user();
 
             //Productテーブルに該当IDが存在しない場合、戻り値としてnullが返される → issetで条件分岐を指定し例外処理を行う
-            //&& $user == $sessionUsers
             return view('cartlist', compact('sessionUsers', 'cartData', 'totalPrice', 'user'));
         } else {
             $user = Auth::user();
@@ -106,12 +105,9 @@ class CartController extends Controller
             $user = Auth::user();
             return view('iteminfo', compact('product', 'category_name', 'user'));
         }
-        // else {
-        //     return redirect()->route('noProd');
-        // }
     }
     /*==================================
-    商品をカートに入れるメソッド(iteminfo/id)
+    カート内商品削除
     ==================================*/
     public function remove(Request $request)
     {
@@ -144,40 +140,35 @@ class CartController extends Controller
             return view('no_cart_list', compact('user'));
         }
     }
-
-    //注文完了画面へ遷移
+    /*==================================
+    注文完了画面 注文データベースに注文詳細情報を保存
+    ==================================*/
     public function checkout(Request $request)
     {
-        $orderDitailNumber = "12345678";
-
+        //カート内情報を取得
         $cartData = $request->session()->get('cartData');
         // dd($cartData);
-
         $now = Carbon::now();
-
+        //t_ordersテーブルに接続したインスタンスを作り、id情報と注文日を入力する
         $order = new \App\TOrder;
         $order->user_id = Auth::user()->id;
         $order->order_date = $now;
         // dd($order);
-        $order->save();
+        $order->save(); //↑の情報を保存する
 
-        // $orderBaseSql = DB::table('t_orders')->get();
         // dd($orderBaseSql);
         $savedOrder = TOrder::where('id', $order->id)->get();
         // dd($savedOrder);
-        // $savedOrder = TOrderDetail::where('order_detail_number', $order->order_detail_number)->get();
         $savedOrderId = $savedOrder->pluck('id')->toArray();
         // dd($savedOrderId);
 
         foreach ($cartData as $data) {
-            $orderDetail = new \App\TOrdersDetail; //DBに接続できてない
+            $orderDetail = new \App\TOrdersDetail;
 
             $orderDetail->products_id = $data['session_products_id'];
             $orderDetail->order_id = $savedOrderId[0];
             $orderDetail->shipment_status_id = 1;
             $orderDetail->order_detail_number = rand();
-            // dd($orderDetail);
-
             // dd($orderDetail);
             $orderDetail->order_quantity = $data['session_quantity'];
             $orderDetail->shipment_date = $now;
@@ -186,7 +177,7 @@ class CartController extends Controller
             // dd($order);
             // dd($orderDetail);
         }
-
+        //カート内情報を削除
         $request->session()->forget('cartData');
 
         return view('checkout', compact('orderDetail'));

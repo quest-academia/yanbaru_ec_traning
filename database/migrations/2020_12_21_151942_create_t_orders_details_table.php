@@ -13,7 +13,7 @@ class CreateTOrdersDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_order_details', function (Blueprint $table) {
+        Schema::create('t_orders_details', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('products_id');
             $table->unsignedInteger('order_id');
