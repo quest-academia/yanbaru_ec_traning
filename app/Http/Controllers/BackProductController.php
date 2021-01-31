@@ -31,11 +31,6 @@ class BackProductController extends Controller
      */
     public function create()
     {
-        // 初期化
-        $message = '';
-        $message_code = '';
-        $success = '1';
-        $fail    = '0';
         //category関連の定義
         $categories = MCategory::getLists();
         //sale_status関連の定義
@@ -62,9 +57,9 @@ class BackProductController extends Controller
 
         $user = Auth::user();
         if ($user->id) {
-            $user_id = $user->id;
+            $userId = $user->id;
         }
-        if ($user_id) {
+        if ($userId) {
             $data = [
                 'product_name'      => $request->productName,
                 'category_id'       => $request->categoryId,
@@ -72,7 +67,7 @@ class BackProductController extends Controller
                 'sale_status_id'    => $request->saleStatusId,
                 'product_status_id' => $request->productStatusId,
                 'description'       => $request->description,
-                'user_id'           => $user_id,
+                'user_id'           => $userId,
                 'resist_date'       => date('Y-m-d H:i:s'),
                 'delete_flag'       => '',
             ];
