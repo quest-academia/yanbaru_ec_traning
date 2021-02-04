@@ -23,7 +23,7 @@ class SellerController extends Controller
 
         // カテゴリの情報を取得
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
