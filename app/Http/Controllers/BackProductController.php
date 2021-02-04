@@ -31,7 +31,19 @@ class BackProductController extends Controller
      */
     public function create()
     {
-        //
+        //category関連の定義
+        $categories = MCategory::getLists();
+        //sale_status関連の定義
+        $saleStatuses = MSalesStatus::getLists();
+        //product_status関連の定義
+        $productStatuses = MProductStatus::getLists();
+        // 配列化
+        $data = [
+            'categories' => $categories,
+            'saleStatuses' => $saleStatuses,
+            'productStatuses' => $productStatuses,
+        ];
+        return view('seller.back_product_create', $data);
     }
 
     /**
@@ -40,9 +52,34 @@ class BackProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+
+        $user = Auth::user();
+        if ($user->id) {
+            $userId = $user->id;
+        }
+        if ($userId) {
+            $data = [
+                'product_name'      => $request->productName,
+                'category_id'       => $request->categoryId,
+                'price'             => $request->price,
+                'sale_status_id'    => $request->saleStatusId,
+                'product_status_id' => $request->productStatusId,
+                'description'       => $request->description,
+                'user_id'           => $userId,
+                'resist_date'       => date('Y-m-d H:i:s'),
+                'delete_flag'       => '',
+            ];
+            $result = MProduct::create($data);
+            // 商品保存後の可否でメッセージを出しわける
+            if ($result->exists()) {
+                $request->session()->flash('flash_info', '商品の登録が完了しました。');
+            } else {
+                $request->session()->flash('flash_error', '商品の登録に失敗しました。');
+            };
+            return redirect()->route('back_product_create');
+        }
     }
 
     /**
@@ -65,12 +102,12 @@ class BackProductController extends Controller
     public function edit($id)
     {
         $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
-        
+
         //category関連の定義
         $categories = MCategory::getLists();
         $categoryName = MCategory::find($product->category_id)->category_name;
         $categoryId = $product->category_id;
-        
+
         //sale_status関連の定義
         $saleStatuses = MSalesStatus::getLists();
         $saleStatusName = MSalesStatus::find($product->sale_status_id)->sale_status_name;
@@ -106,7 +143,7 @@ class BackProductController extends Controller
     public function update(CreateProductRequest $request, $id)
     {
         $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
-        
+
         $product->product_name = $request->productName;
         $product->category_id = $request->categoryId;
         $product->price = $request->price;
@@ -128,7 +165,7 @@ class BackProductController extends Controller
     {
         $product = MProduct::find($request->id);
         $product->delete();
-        
+
         return redirect('seller/items');
     }
 }
