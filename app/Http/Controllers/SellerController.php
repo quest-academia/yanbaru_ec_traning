@@ -63,7 +63,7 @@ class SellerController extends Controller
 
         // category_nameとidを取得
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
         return view('seller/seller_search_product', [
             'products' => $products,
