@@ -26,7 +26,7 @@ class MProduct extends Model
     }
 
     // 出品者側の商品検索機能実装のために追加
-    public function getCategories()
+    public function getProductsInfo()
     {
         $products = MProduct::pluck('price', 'product_name');
         return $products;

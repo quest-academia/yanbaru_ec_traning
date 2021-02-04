@@ -10,7 +10,6 @@ use App\TOrdersDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-// use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -20,21 +19,17 @@ class CartController extends Controller
     //商品詳細画面でカートに商品と個数を入れる処理を実行
     public function addCart(Request $request)
     {
-        // dd($_POST);
         $cartData = [
             'session_products_id' => $request->products_id,
             'session_quantity' => $request->product_quantity,
         ];
-        // dd($cartData);
         //session情報にcartDataという連想配列が「無い」場合
         if (!$request->session()->has('cartData')) {
             //商品情報の配列 cartData(key名)に、$cartData(配列)をSessionに追加
             $request->session()->push('cartData', $cartData);
-        } else {
             //session情報にcartDataという連想配列が「有る」場合、情報取得
+        } else {
             $sessionCartData = $request->session()->get('cartData');
-            // dd($cartData);
-            // dd($sessionCartData);
             //flag定義 product_id同一確認フラグ = 同一ではない状態
 
             $flag = false;
@@ -51,7 +46,6 @@ class CartController extends Controller
             if ($flag === false) {
                 $request->session()->push('cartData', $cartData);
             }
-            // dd($sessionCartData);
         }
         //POST送信された情報をsessionに保存 'users_id'(key)に$request内の'users_id'をセット
         $request->session()->put('users_id', ($request->users_id));
@@ -63,7 +57,6 @@ class CartController extends Controller
         //渡されたセッション情報をkey（名前）用いそれぞれ取得し変数に代入
         $cartData = $request->session()->get('cartData');
         $sessionUsersId = $request->session()->get('users_id');
-        // dd($cartData);
         if (!empty($cartData)) {
             foreach ($cartData as &$data) {
                 //二次元目の配列を指定している$dataに'product'というkeyを生成しそこに値として$productを代入
@@ -72,15 +65,12 @@ class CartController extends Controller
                 $itemPrice = $data['product']->price * $data['session_quantity'];
                 $data['itemPrice'] = $itemPrice;
             }
-            //dd($cartData);
             //第二引数に指定したkeyの値を配列として変数に入れる
             $sessionProductsId = array_column($cartData, 'session_products_id');
             $sessionQuantity = array_column($cartData, 'session_quantity');
-            // dd($sessionProductsId);
 
             //取得したidを元に各テーブルのカラムデータをDBから取得
             $sessionProducts = MProduct::find($sessionProductsId);
-            // dd($sessionProducts);
             $sessionUsers = User::find($sessionUsersId);
             $user = Auth::user();
 
@@ -90,7 +80,6 @@ class CartController extends Controller
             $user = Auth::user();
             return view('no_cart_list', compact('user'));
         }
-        // dd($productInfo);
     }
     /*==================================
     商品詳細画面
@@ -128,7 +117,6 @@ class CartController extends Controller
             $result2 = $sessionCartData['session_quantity'] - $removeCartItem['session_quantity'];
             return $result1 + $result2;
         });
-        //dd($newCartData);
 
         $request->session()->put('cartData', $newCartData);
         $cartData = $request->session()->get('cartData');
@@ -147,20 +135,15 @@ class CartController extends Controller
     {
         //カート内情報を取得
         $cartData = $request->session()->get('cartData');
-        // dd($cartData);
         $now = Carbon::now();
         //t_ordersテーブルに接続したインスタンスを作り、id情報と注文日を入力する
         $order = new \App\TOrder;
         $order->user_id = Auth::user()->id;
         $order->order_date = $now;
-        // dd($order);
         $order->save(); //↑の情報を保存する
 
-        // dd($orderBaseSql);
         $savedOrder = TOrder::where('id', $order->id)->get();
-        // dd($savedOrder);
         $savedOrderId = $savedOrder->pluck('id')->toArray();
-        // dd($savedOrderId);
 
         foreach ($cartData as $data) {
             $orderDetail = new \App\TOrdersDetail;
@@ -169,13 +152,9 @@ class CartController extends Controller
             $orderDetail->order_id = $savedOrderId[0];
             $orderDetail->shipment_status_id = 1;
             $orderDetail->order_detail_number = rand();
-            // dd($orderDetail);
             $orderDetail->order_quantity = $data['session_quantity'];
             $orderDetail->shipment_date = $now;
-            // dd($orderDetail);
             $orderDetail->save();
-            // dd($order);
-            // dd($orderDetail);
         }
         //カート内情報を削除
         $request->session()->forget('cartData');
