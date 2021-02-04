@@ -32,7 +32,7 @@ class BackProductController extends Controller
     public function create()
     {
         //category関連の定義
-        $categories = MCategory::getLists();
+        $categories = MCategory::getCategories();
         //sale_status関連の定義
         $saleStatuses = MSalesStatus::getLists();
         //product_status関連の定義
@@ -104,7 +104,7 @@ class BackProductController extends Controller
         $product = MProduct::with(['category', 'saleStatus', 'productStatus'])->find($id);
 
         //category関連の定義
-        $categories = MCategory::getLists();
+        $categories = MCategory::getCategories();
         $categoryName = MCategory::find($product->category_id)->category_name;
         $categoryId = $product->category_id;
 
@@ -118,7 +118,9 @@ class BackProductController extends Controller
         $productStatusName = MProductStatus::find($product->product_status_id)->product_status_name;
         $productStatusId = $product->product_status_id;
 
-        return view('seller.back_product_edit',[
+        return view(
+            'seller.back_product_edit',
+            [
                 'product' => $product,
                 'categories' => $categories,
                 'categoryName' => $categoryName,

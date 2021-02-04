@@ -7,7 +7,7 @@
         <h4>ユーザ情報</h4>
     </div>
 
-    {!! Form::open(['route' => 'user/info']) !!}
+    {!! Form::open(['route' => 'user_info']) !!}
     <div class="row mt-5 mb-5">
         <div class="col-sm-6 mx-auto">
 
@@ -38,7 +38,7 @@
             </div>
 
             <div class="text-center mt-5">
-                {!! link_to_route('user/edit', '修正/退会する', [], ['class' => 'btn btn-primary']) !!}
+                {!! link_to_route('user_edit', '修正/退会する', [], ['class' => 'btn btn-primary']) !!}
             </div>
         </div>
     </div>
