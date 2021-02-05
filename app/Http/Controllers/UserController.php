@@ -17,7 +17,7 @@ class UserController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('auth/user_info', [ 'user' => $user]);
+        return view('auth/user_info', ['user' => $user]);
     }
 
     /*==================================
@@ -26,7 +26,7 @@ class UserController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        return view('auth/user_edit', [ 'user' => $user ]); 
+        return view('auth/user_edit', ['user' => $user]);
     }
 
     // フォームリクエストを使用してバリデーション実装
@@ -43,9 +43,9 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->save();
-        
+
         $user = Auth::user();
-        return view('auth/user_info', [ 'user' => $user ]);
+        return view('auth/user_info', ['user' => $user]);
     }
 
     /*==================================
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        return view('auth/user_delete', [ 'user' => $user ]);
+        return view('auth/user_delete', ['user' => $user]);
     }
 
     public function delete(Request $request)
