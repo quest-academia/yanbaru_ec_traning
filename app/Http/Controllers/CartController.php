@@ -5,14 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\MProduct;
 use App\MCategory;
-<<<<<<< HEAD
-use App\TOrderDetail;
-use App\TOrder;
-
-=======
 use App\TOrder;
 use App\TOrdersDetail;
->>>>>>> develop_alpha
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
