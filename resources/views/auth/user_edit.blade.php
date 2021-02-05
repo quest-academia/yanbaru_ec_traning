@@ -12,7 +12,7 @@
                 <div class="row mt-5 mb-5">
                     <div class="col-sm-6 mx-auto">
             
-                    {!! Form::open(['route' => 'user/update', 'method'=>'put']) !!}
+                    {!! Form::open(['route' => 'user_update', 'method'=>'put']) !!}
                         @method('PUT')
                         @csrf
                             <div class="form-group-sm">
@@ -164,7 +164,7 @@
                                 </div>
 
                             {!! Form::close() !!}
-                            {!! Form::open(['route' => 'user/delete', 'method'=>'get', 'class' => 'd-inline-block']) !!}
+                            {!! Form::open(['route' => 'user_delete', 'method'=>'get', 'class' => 'd-inline-block']) !!}
 
                                 <div class="d-inline-block">
                                     {!! Form::submit('退会', ['class' => 'btn btn-danger ml-5']) !!}
