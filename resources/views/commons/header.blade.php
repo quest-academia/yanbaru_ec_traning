@@ -9,13 +9,34 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ url('') }}">ログイン</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ url('') }}">新規登録</a>
-                </li>
+
+                @if (Auth::check())
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">商品検索</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">カート</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">注文履歴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">ユーザ情報</a>
+                    </li>
+                    <li class="nav-item">{!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link active']) !!}</li>
+
+                @else
+
+                    <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link active']) !!}</li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">新規登録</a>
+                    </li>
+
+                @endif
+
             </ul>
         </div>
+        
     </nav>
 </header>
