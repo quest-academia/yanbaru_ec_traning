@@ -27,11 +27,10 @@ class CartController extends Controller
         if (!$request->session()->has('cartData')) {
             //商品情報の配列 cartData(key名)に、$cartData(配列)をSessionに追加
             $request->session()->push('cartData', $cartData);
-            //session情報にcartDataという連想配列が「有る」場合、情報取得
+        //session情報にcartDataという連想配列が「有る」場合、情報取得
         } else {
             $sessionCartData = $request->session()->get('cartData');
             //flag定義 product_id同一確認フラグ = 同一ではない状態
-
             $flag = false;
             foreach ($sessionCartData as $index => $sessionData) {
                 //product_idが同一であれば、フラグをtrueにする → 個数の合算処理、及びセッション情報更新。更新は一度のみ
