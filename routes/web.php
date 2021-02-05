@@ -12,27 +12,27 @@
 */
 
 /*
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 | ユーザ登録機能
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 */
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 /*
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 | ログイン機能
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 */
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 /*
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 | ルートディレクトリへのアクセス時
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
 */
 Route::get('/', function () {
     return view('before_login');
@@ -54,9 +54,10 @@ Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth'
     Route::delete('product/delete/{id}', 'BackProductController@destroy')->name('back_product_delete');
 });
 
+
 /*
 |--------------------------------------------------------------------------
-| ログイン後
+| 出品者(管理者含む)のみのルーティング
 |--------------------------------------------------------------------------
 */
 Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
@@ -68,39 +69,60 @@ Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| ユーザ情報一覧、編集、削除
+| ユーザ情報一覧
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'user'], function(){
-    Route::get('info', 'UserController@show')->name('user/info');
-    Route::get('edit', 'UserController@edit')->name('user/edit');
-    Route::put('update', 'UserController@update')->name('user/update');
-    Route::get('delete', 'UserController@index')->name('user/delete');
-    Route::post('delete', 'UserController@delete')->name('delete');
-});
+Route::get('/user_info', 'UserController@show')->name('user_info');
 
 /*
 |--------------------------------------------------------------------------
-| 商品検索機能
+| ユーザ情報編集
 |--------------------------------------------------------------------------
+*/
+Route::get('/user_edit', 'UserController@edit')->name('user_edit');
+Route::put('/user_update', 'UserController@update')->name('user_update');
+
+
+/*
+|--------------------------------------------------------------------------
+| ユーザ情報削除
+|--------------------------------------------------------------------------
+*/
+Route::get('/delete', 'UserController@delete')->name('user_delete');
+Route::post('/remove', 'UserController@remove')->name('user_remove');
+
+
+
+/*
+|-----------------------------------------------------------------
+| 商品検索機能
+|-----------------------------------------------------------------
 */
 Route::get('show', 'ProductController@index')->name('show');
 Route::get('searchproduct', 'ProductController@search')->name('searchproduct');
 
-
-
 /*
-|--------------------------------------------------------------------------
-| カート機能
-|--------------------------------------------------------------------------
+|-----------------------------------------------------------------
+| カート内商品一覧
+|-----------------------------------------------------------------
 */
-Route::resource('cartitem', 'CartController', ['only' => ['index']]);
+Route::resource('cartlist', 'CartController', ['only' => ['index']]);
 
-Route::group(["prefix" => 'iteminfo'], function() {
+Route::group(["prefix" => 'iteminfo'], function () {
     Route::get('/{id}', 'CartController@show')->name('iteminfo');
     Route::post('/add', 'CartController@addCart')->name('addcart');
+    Route::post('prodinfo/cartListRemove', 'CartController@remove')->name('itemRemove');
+    Route::get('noCartList', function () {
+        return view('no_cart_list');
+    })->name('noCart');
 });
+Route::get('cartlist', 'CartController@index')->name('cartlist');
+Route::post('prodinfo/cartListRemove', 'CartController@remove')->name('itemRemove');
+Route::get('noCartList', function () {
+    return view('no_cart_list');
+})->name('noCart');
 
 Route::get('purchase_completed', 'CartController@showPurchaseCompleted')->name('purchase_completed');
 
 
+Route::get('checkout', 'CartController@checkout')->name('checkout');

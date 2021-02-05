@@ -23,7 +23,7 @@ class SellerController extends Controller
 
         // カテゴリの情報を取得
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
         $searchWord = $request->input('searchWord');
         $categoryId = $request->input('categoryId');
@@ -31,7 +31,7 @@ class SellerController extends Controller
         // ページネーション
         $query = MProduct::query();
         $products = $query->orderBy('category_id', 'asc')->paginate(15);
-        
+
         return view('seller/seller_search_product', [
             'categories' => $categories,
             'products' => $products,
@@ -60,10 +60,10 @@ class SellerController extends Controller
 
         // category_idの昇順に並び替える('asc')
         $products = $query->orderBy('category_id', 'asc')->paginate(15);
-        
+
         // category_nameとidを取得
         $category = new MCategory;
-        $categories = $category->getLists();
+        $categories = $category->getCategories();
 
         return view('seller/seller_search_product', [
             'products' => $products,
@@ -76,7 +76,7 @@ class SellerController extends Controller
     public static function escapeLike($str)
     {
         return str_replace(['\\', '%', '_'], ['\\\\', '\%', '\_'], $str);
-    } 
+    }
 
 
     /**

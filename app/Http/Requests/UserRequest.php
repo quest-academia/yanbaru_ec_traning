@@ -14,7 +14,7 @@ class UserRequest extends FormRequest
      * @return bool
      */
     public function authorize()
-    {   
+    {
         // デフォルトのfalseからtrueに変更
         return true;
     }
@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $user = Auth::user();
-        
+
         return [
 
             // バリデーションルールについて記述
@@ -46,7 +46,7 @@ class UserRequest extends FormRequest
     // バリデーション日本語表示
     public function messages()
     {
-        return[
+        return [
             'last_name.required' => '姓を入力してください。',
             'last_name.string' => '文字列を入力してください。',
             'last_name.max' => '姓は10文字以内でお願いします。',

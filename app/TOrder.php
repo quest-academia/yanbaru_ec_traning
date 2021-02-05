@@ -15,6 +15,8 @@ class TOrder extends Model
      * @param string $orderDetailNumber
      * @return Obj
      */
+    public $timestamps = false;
+
     public static function getDetails($userId, $orderBaseNumber = null, $orderDetailNumber = null)
     {
         $orderBaseSql = DB::table('t_orders as base')
@@ -36,7 +38,7 @@ class TOrder extends Model
                 'detail.shipment_date'
             ) //メインでクエリ結合に必要なカラムを記述
             ->toSql();
-        $orderHistoryData = DB::table(DB::raw('('.$orderBaseSql.') AS orderBase'))
+        $orderHistoryData = DB::table(DB::raw('(' . $orderBaseSql . ') AS orderBase'))
             ->leftJoin('m_shipments_statuses', 'orderBase.shipment_status_id', '=', 'm_shipments_statuses.id')
             ->leftJoin('m_products', 'orderBase.products_id', '=', 'm_products.id')
             ->leftJoin('m_categories', 'm_products.category_id', '=', 'm_categories.id')
@@ -117,7 +119,7 @@ class TOrder extends Model
             )
             ->toSql();
         // 上記のクエリをサブクエリとして以下のクエリに注入
-        $orderHistoryData = DB::table(DB::raw('('.$orderBaseSql.') AS orderBase'))
+        $orderHistoryData = DB::table(DB::raw('(' . $orderBaseSql . ') AS orderBase'))
             ->leftJoin('m_users', 'orderBase.user_id', '=', 'm_users.id')
             ->leftJoin('m_users_classifications', 'm_users.user_classification_id', '=', 'm_users_classifications.id')
             ->select(
@@ -135,7 +137,7 @@ class TOrder extends Model
                 'company_name', //企業名
                 'phone_number' //電話番号
             ) //描画に使う値を記述
-            ->setBindings([':user_id'=>$userId, ':termFrom'=>$termFrom, ':termTo'=>$termTo])
+            ->setBindings([':user_id' => $userId, ':termFrom' => $termFrom, ':termTo' => $termTo])
             ->paginate($maxCountPerPage);
         return $orderHistoryData;
     }
@@ -152,11 +154,15 @@ class TOrder extends Model
         $result = false;
         if ($userId && $orderBaseNumber) {
             $deleteCount = DB::table('t_orders')
-            ->where('id', '=', $orderBaseNumber)
-            ->where('user_id', '=', $userId)
-            ->delete();
+                ->where('id', '=', $orderBaseNumber)
+                ->where('user_id', '=', $userId)
+                ->delete();
             $result = $deleteCount > 0 ? true : false;
         }
         return $result;
+    }
+    public function orders()
+    {
+        return $this->hasMany(TOrderDetail::class);
     }
 }

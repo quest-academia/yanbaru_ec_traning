@@ -18,8 +18,8 @@ class CreateTOrdersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->timestamp('order_date');
             $table->foreign('user_id')
-            ->references('id')->on('m_users')
-            ->onDelete('cascade');
+                ->references('id')->on('m_users')
+                ->onDelete('cascade');
         });
     }
 
