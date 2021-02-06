@@ -54,12 +54,6 @@ Route::group(['prefix' => 'seller', 'name' => 'seller.', 'middleware' => ['auth'
     Route::delete('product/delete/{id}', 'BackProductController@destroy')->name('back_product_delete');
 });
 
-
-/*
-|--------------------------------------------------------------------------
-| 出品者(管理者含む)のみのルーティング
-|--------------------------------------------------------------------------
-*/
 Route::group(['middleware' => ['auth', 'can:onlyShow']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/order-history', 'OrderController@showOrderHistory')->name('o_history');
@@ -121,8 +115,5 @@ Route::post('prodinfo/cartListRemove', 'CartController@remove')->name('itemRemov
 Route::get('noCartList', function () {
     return view('no_cart_list');
 })->name('noCart');
-
-Route::get('purchase_completed', 'CartController@showPurchaseCompleted')->name('purchase_completed');
-
 
 Route::get('checkout', 'CartController@checkout')->name('checkout');

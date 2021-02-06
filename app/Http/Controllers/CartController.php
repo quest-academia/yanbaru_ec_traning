@@ -160,32 +160,4 @@ class CartController extends Controller
 
         return view('checkout', compact('orderDetail'));
     }
-
-    public function showPurchaseCompleted(Request $request)
-    {
-        //$orderId = $request->order_id;
-        $orderId = 6;//これをパラメータ？から受け取ることができれば完成！！
-        
-        //ログインユーザーidの定義
-        $userId = Auth::user()->id;
-        //注文を定義
-        $order = TOrder::find($orderId);
-        //注文ユーザの定義
-        $orderUserId = $order->user_id;
-        
-        
-        if($userId == $orderUserId){
-            //注文詳細を注文idから定義する
-            $productOrderDitail = TOrderDetail::find($orderId);
-            //注文番号の定義
-            $orderDitailNumber = $productOrderDitail->order_detail_number;
-            // dd($orderDitailNumber);
-            return view('purchase_completed', 
-            [
-                'orderDitailNumber' => $orderDitailNumber
-            ]);
-        }else{
-            return view('item_notfound');
-        }
-    }
 }
