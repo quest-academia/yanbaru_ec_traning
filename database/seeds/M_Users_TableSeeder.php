@@ -17,7 +17,7 @@ class M_Users_TableSeeder extends Seeder
                 'last_name' => '太郎',
                 'first_name' => '田中',
                 'zipcode' => '0000001',
-                'prefecture' => '東京都', 
+                'prefecture' => '東京都',
                 'municipality' => '足立区',
                 'address' => '1-1-1',
                 'apartments' => '101号室',
@@ -32,7 +32,7 @@ class M_Users_TableSeeder extends Seeder
                 'last_name' => '優',
                 'first_name' => '斎藤',
                 'zipcode' => '0000002',
-                'prefecture' => '神奈川県', 
+                'prefecture' => '神奈川県',
                 'municipality' => '横浜市',
                 'address' => '2-2-2',
                 'apartments' => '202号室',
@@ -47,7 +47,7 @@ class M_Users_TableSeeder extends Seeder
                 'last_name' => '紘',
                 'first_name' => '西野',
                 'zipcode' => '0000003',
-                'prefecture' => '埼玉県', 
+                'prefecture' => '埼玉県',
                 'municipality' => 'さいたま市',
                 'address' => '3-3-3',
                 'apartments' => '303号室',
@@ -57,6 +57,6 @@ class M_Users_TableSeeder extends Seeder
                 'company_name' => '株式会社C',
                 'delete_flag' => '0',
             ],
-        ]); 
+        ]);
     }
 }
