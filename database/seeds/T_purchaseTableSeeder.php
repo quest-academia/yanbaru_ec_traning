@@ -39,23 +39,23 @@ class T_purchaseTableSeeder extends Seeder
                 'product_id' => '3'
             ],
 
-            [
-                'purchase_price' => '400',
-                'purchase_quantity' => '1',
-                'purchase_company' => '仕入先会社4',
-                'order_date' => date('Y-m-d H:i:s'),
-                'purchase_date' => date('Y-m-d H:i:s'),
-                'product_id' => '4'
-            ],
+            // [
+            //     'purchase_price' => '400',
+            //     'purchase_quantity' => '1',
+            //     'purchase_company' => '仕入先会社4',
+            //     'order_date' => date('Y-m-d H:i:s'),
+            //     'purchase_date' => date('Y-m-d H:i:s'),
+            //     'product_id' => '4'
+            // ],
 
-            [
-                'purchase_price' => '500',
-                'purchase_quantity' => '5',
-                'purchase_company' => '仕入先会社5',
-                'order_date' => date('Y-m-d H:i:s'),
-                'purchase_date' => date('Y-m-d H:i:s'),
-                'product_id' => '5'
-            ],
+            // [
+            //     'purchase_price' => '500',
+            //     'purchase_quantity' => '5',
+            //     'purchase_company' => '仕入先会社5',
+            //     'order_date' => date('Y-m-d H:i:s'),
+            //     'purchase_date' => date('Y-m-d H:i:s'),
+            //     'product_id' => '5'
+            // ],
         ]);
 
     }

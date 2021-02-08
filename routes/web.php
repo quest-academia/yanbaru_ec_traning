@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/detail/{id}', 'MProductController@show')->name('detail');
+Route::post('/addCart', 'CartController@addCart')->name('addCart');
+Route::get('/cart/list','CartController@CartList')->name('cart.list');

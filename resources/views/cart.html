@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+      }
+  
+      .navbar {
+        box-shadow: 0px 8px 8px -5px #333;
+      }
+  
+      .navbar-brand {
+        display: inline-block;
+        transition: all .3s ease 0s;
+        text-decoration: none;
+        text-align: left;
+      }
+  
+      .navbar-brand:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
+  
+      .nav-link {
+        display: inline-block;
+        transition: all .3s ease 0s;
+        text-decoration: none;
+        color: #333;
+        text-align: right;
+      }
+  
+      .nav-link:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        color: #333;
+      }
+
+      .address {
+        padding: 20px;
+        width: 90%;
+        border: 2px solid #333333;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border-collapse: collapse;
+      }
+
+      table tr {
+        height: 80px;
+
+      }
+
+      thead tr {
+        height: 40px;
+      }
+
+      table th {
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+      }
+
+      tfoot tr {
+        border-top: 2px solid black;
+      }
+
+      footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: #ffc107;
+        height: 100px;
+        box-shadow: 0px -8px 8px -5px #333;
+      }
+  
+      h5 {
+        font-size: 21px;
+        padding: 10px 5px 5px 20px;
+      }
+  
+  
+      footer p {
+        text-align: right;
+        font-size: 19px;
+        font-weight: bold;
+        margin-top: 22px;
+        margin-right: 20px;
+      }
+    </style>
+    <title>やんばるエキスパート ECサイト</title>
+    </head>
+    <body>
+      <header class="mb-5">
+            <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+                <a class="navbar-brand" href="{{ url('') }}">やんばるエキスパート</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="nav-bar">
+                <ul class="navbar-nav mr-auto"></ul>
+                <div class="d-flex flex-column">
+                    <p class="text-right flex-column mr-4">○○   ☓☓さん</p>      
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">商品検索</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">カート</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">注文履歴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">ユーザ情報</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url('') }}">ログアウト</a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
+      </header>
+        <div class="container">
+          <div class="address">
+            お届け先<br>
+            〒◯◯◯-◯◯◯◯ 沖縄県那覇市◯◯ ◯-◯-◯<br>
+                                    ◯◯ ×× 様
+          </div>
+          <div class="main mt-5">
+            <table>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>商品名</th>
+                  <th>商品カテゴリ</th>
+                  <th>値段</th>
+                  <th>個数</th>
+                  <th>小計</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>商品1</td>
+                  <td>食料品</td>
+                  <td>1000円</td>
+                  <td><input type="text" class="quantity text-center" size="10" name="quantity" value="5" style="width:40px;">個</td>
+                  <td>5000円</td>
+                  <td><button class="btn btn-danger">削除</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>商品2</td>
+                  <td>食料品</td>
+                  <td>2000円</td>
+                  <td><input type="text" class="quantity text-center" size="10" name="quantity" value="2" style="width:40px;">個</td>
+                  <td>4000円</td>
+                  <td><button class="btn btn-danger">削除</button></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td>合計</td>
+                  <td>9000円</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="button text-center">
+            <button class="btn btn-info mx-5">買い物を続ける</button>
+            <button class="btn btn-primary mx-5">注文を確定する</button>
+          </div>
+        </div>
+      <footer>
+        <h5>やんばるエキスパート</h5>
+        <p class="copyright">© 2020 QuestAcademia, All rights reserved.</p>
+      </footer>
+    </body>
+</html>
