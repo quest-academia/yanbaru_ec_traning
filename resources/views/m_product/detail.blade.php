@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container-fluid pt-3">
-        <section>
             <div class="row">
                 <div class="col-12">
                     <p class="h3 text-center font-weight-bold py-4">商品情報</p>                    
@@ -28,7 +26,5 @@
                     
                 </div>                 
             </div>
-        </section>
-    </div>
-
+        </div>
 @endsection

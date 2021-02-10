@@ -25,3 +25,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/detail/{id}', 'MProductController@show')->name('detail');
 Route::post('/addCart', 'CartController@addCart')->name('addCart');
 Route::get('/cart/list','CartController@CartList')->name('cart.list');
+
+// ログインユーザのみ
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('user/information', 'UserInformationController@show');
+});
