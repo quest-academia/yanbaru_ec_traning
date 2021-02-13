@@ -22,6 +22,9 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/detail/{id}', 'MProductController@show')->name('detail');
+Route::post('/addCart', 'CartController@addCart')->name('addCart');
+Route::get('/cart/list','CartController@CartList')->name('cart.list');
 
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
