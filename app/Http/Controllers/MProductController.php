@@ -9,8 +9,13 @@ class MProductController extends Controller
 {
     public function show($id)
     {
-        $m_product = MProduct::find($id);
-        return view('m_product/detail',compact('m_product'));
+        if ($product = !MProduct::find($id)){
+            return view('product/not_found');
+        }else{
+            $product = MProduct::find($id);
+            return view('product/detail', compact('product'));
+        };
+        // return view('product/detail',compact('product'));
     }
 
     

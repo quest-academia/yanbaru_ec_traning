@@ -12,7 +12,7 @@
           </tr>
           <tr>
             <th class="text-center" scope="row">氏名</th>
-            <td>{{ $user->last_name }}　{{ $user->first_name }}</td>
+            <td>{{ $user->last_name }}{{ $user->first_name }}</td>
           </tr>
           <tr>
             <th class="text-center" scope="row">住所</th>
