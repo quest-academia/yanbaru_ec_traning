@@ -44,10 +44,9 @@ class UserInformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $user = Auth::user();
-
+        $user = User::find($id);
         return view('user_information',['user' => $user]);
     }
 
@@ -59,8 +58,10 @@ class UserInformationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user_edit', ['user' => $user]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -71,8 +72,24 @@ class UserInformationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $requests = $request->validate ([
+            'last_name' => ['required', 'string', 'max:10'],
+            'first_name' => ['required', 'string', 'max:10'],
+            'zipcode' => ['required', 'digits:7'],
+            'prefecture' => ['required', 'string', 'max:5'],
+            'municipality' => ['required', 'string', 'max:10'],
+            'address' => ['required', 'string', 'max:15'],
+            'apartments' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email'],
+            'phone_number' => ['required', 'numeric', 'digits_between:1,15'],
+            ]);
+
+            $user = User::find($id);
+            $user->fill($requests)->save();
+            return back();
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -82,6 +99,8 @@ class UserInformationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/');
     }
 }
