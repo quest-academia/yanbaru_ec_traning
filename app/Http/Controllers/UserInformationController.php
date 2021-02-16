@@ -86,7 +86,7 @@ class UserInformationController extends Controller
 
             $user = User::find($id);
             $user->fill($requests)->save();
-            return back();
+            return redirect()->action('UserInformationController@show', ['id' => $user->id]);
     }
 
 
@@ -101,6 +101,6 @@ class UserInformationController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/');
+        return redirect('/')->with('flash_message', '退会完了しました');
     }
 }

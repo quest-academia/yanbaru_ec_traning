@@ -15,6 +15,11 @@
         @include('commons.header')
 
         <div class="container">
+            @if (session('flash_message'))
+                <div class="flash_message bg-success text-center py-3 my-0">
+                    {{ session('flash_message') }}
+                </div>
+            @endif
 
             @include('commons.error_messages')
 
