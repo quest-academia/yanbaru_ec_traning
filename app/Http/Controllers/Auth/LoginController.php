@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
 
     //ログイン後、商品検索画面に遷移予定
-    protected $redirectTo = '/';
+    protected $redirectTo = ('search');
 
     /**
      * Create a new controller instance.
