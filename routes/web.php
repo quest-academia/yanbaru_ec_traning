@@ -28,6 +28,5 @@ Route::get('/cart/list','CartController@CartList')->name('cart.list');
 
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
-    // ユーザー情報編集
     Route::resource('user/information', 'UserInformationController', ['only' => ['show', 'edit', 'update','destroy']]);
 });

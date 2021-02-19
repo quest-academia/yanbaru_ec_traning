@@ -62,7 +62,6 @@ class UserInformationController extends Controller
         return view('user_edit', ['user' => $user]);
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -82,14 +81,12 @@ class UserInformationController extends Controller
             'apartments' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email'],
             'phone_number' => ['required', 'numeric', 'digits_between:1,15'],
-            ]);
+        ]);
 
-            $user = User::find($id);
-            $user->fill($requests)->save();
-            return redirect()->action('UserInformationController@show', ['id' => $user->id]);
+        $user = User::find($id);
+        $user->fill($requests)->save();
+        return redirect()->route('information.show', $user->id);
     }
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -99,8 +96,7 @@ class UserInformationController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        User::find($id)->delete();
         return redirect('/')->with('flash_message', '退会完了しました');
     }
 }

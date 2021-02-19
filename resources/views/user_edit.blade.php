@@ -4,7 +4,7 @@
   <main style="padding-bottom: 100px; margin-bottom: 2%;">
     <h3 class="text-center">ユーザ情報修正</h3>
     <div class="container mt-4" style="width: 40%;">
-          {!! Form::open(['action' => ['UserInformationController@update', $user->id], 'method' => 'put']) !!}
+          {!! Form::open(['route' => ['information.update', $user->id], 'method' => 'put']) !!}
         <div class="row mt-3 pl-4">
           @method('PUT')
           <div class="col col-form-label" style="padding-left: 6%;">
@@ -82,7 +82,7 @@
           </div>
         {!! Form::close() !!}
           <div class="col-4 offset-4">
-            {!! Form::open(['action' => ['UserInformationController@destroy', $user->id]]) !!}
+            {!! Form::open(['route' => ['information.destroy', $user->id]]) !!}
               @method('DELETE')
               {!! Form::submit('退会', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}

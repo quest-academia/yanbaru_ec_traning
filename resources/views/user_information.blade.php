@@ -30,7 +30,7 @@
       </table>
     </div>
     <div class="d-flex justify-content-center">
-      <a class="btn btn-primary" href="{{ action('UserInformationController@edit', ['id' => Auth::user()->id]) }}">修正/退会する</a>
+      <a class="btn btn-primary" href="{{ route('information.edit', $user->id) }}">修正/退会する</a>
     </div>
 </main>
 @endsection
