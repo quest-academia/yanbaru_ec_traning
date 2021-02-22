@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class M_Category extends Model
 {
-    protected $fillable = ['category_name', 'id'];
+
+    protected $table = 'm_categories';
+
+    public function getLists()
+    {
+        $categories = M_Category::pluck('category_name', 'id');
+
+        return $categories;
+    }
 
     public function products()
         {
-            return $this->hasMany(Product::class);
+            return $this->hasMany(M_Product::class);
         }
 }
