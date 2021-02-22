@@ -29,4 +29,11 @@ Route::get('/cart/list','CartController@CartList')->name('cart.list');
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
     Route::get('user/information', 'UserInformationController@show');
+
+Route::get('/orders','OrdersController@orderHistory')->name('order_history');
+
+Route::get('/recently_orders','OrdersController@recentlyOrders')->name('recently_orders');
+
+Route::get('/order_detail','OrdersController@orderDetail')->name('order_detail');
+
 });
