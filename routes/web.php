@@ -29,4 +29,8 @@ Route::get('/cart/list','CartController@CartList')->name('cart.list');
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('user/information', 'UserInformationController', ['only' => ['show', 'edit', 'update','destroy']]);
+    //購入完了画面へ
+    Route::get('purchase/completed', function () {
+        return view('purchase_completed');
+    });
 });
