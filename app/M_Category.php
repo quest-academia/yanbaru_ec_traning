@@ -17,7 +17,7 @@ class M_Category extends Model
     }
 
     public function products()
-        {
-            return $this->hasMany(M_Product::class);
-        }
+    {
+        return $this->hasMany(M_Product::class);
+    }
 }

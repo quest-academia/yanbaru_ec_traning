@@ -24,7 +24,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 //検索機能
-Route::get('search', 'ProductsController@search')->name('search');
+Route::get('search', 'ProductController@search')->name('search');
 
 Route::get('/detail/{id}', 'MProductController@show')->name('detail');
 Route::post('/addCart', 'CartController@addCart')->name('addCart');
