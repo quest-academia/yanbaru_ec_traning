@@ -10,8 +10,7 @@
                         <p class="lead text-center font-weight-bold pt-5">商品画面に戻り、やり直してください</p>
                     </div>
                     <div class="d-flex justify-content-center pt-3">
-                        {{-- todo: 商品詳細画面実装後href部分変更予定 --}}
-                        <a class="btn btn-primary btn-lg" href="#" role="button">商品検索画面へ</a>
+                        {!! link_to_route('search', '商品検索画面へ', [], ['class' => 'btn btn-primary py-3']) !!}
                     </div>
                 </div>                 
             </div>

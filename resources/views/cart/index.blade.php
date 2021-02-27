@@ -61,8 +61,7 @@
             </table>
           </div>
           <div class="button text-center">
-            {{-- <a href="{{ route('serch') }}"><button class="btn btn-info mx-5">買い物を続ける</button></a> --}}
-            {{-- <a href="route{{ route('purchase/completed') }}"><button class="btn btn-primary mx-5">注文を確定する</button></a> --}}
+            {!! link_to_route('search', '商品検索', [], ['class' => 'btn btn-primary py-3']) !!}
             {!! Form::open(['route' => ['orderFinalized', 'method' => 'post', $data['session_products_id']]]) !!}
               {{ Form::submit('注文を確定する', ['name' => 'orderFinalized', 'class' => 'btn btn-primary']) }}
             {!! Form::close() !!}
