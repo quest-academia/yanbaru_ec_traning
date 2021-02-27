@@ -85,7 +85,6 @@ class CartController extends Controller
             return view('cart/index', compact('user_id','cartData', 'totalPrice'));
         } else {
 
-            // return view('cart/noData',  ['user' => Auth::user()]);
             return view('cart/noData',  compact('user_id'));
         }
     }   
@@ -112,10 +111,9 @@ class CartController extends Controller
         $request->session()->put('cartData', $deleteCompletedCartData);
         //上書き後のsession再取得
         $cartData = $request->session()->get('cartData');
-
         //session情報があればtrue
         if ($request->session()->has('cartData')) {
-            return view('cart/index', compact('user_id', 'cartData', 'totalPrice'));
+            return redirect()->route('cart.index');
         }
 
         return view('cart/noData', ['user' => Auth::user()]);
@@ -141,7 +139,7 @@ class CartController extends Controller
         $savedOrderId = $savedOrder->pluck('id')->toArray();
 
         //注文詳細情報保存を注文数分繰り返す １回のリクエストを複数カラムに分けDB登録
-        foreach ($cartData as $data) {
+        foreach ((array)$cartData as $data) {
             //注文詳細情報に関わるインスタンス生成
             $orderDetail = new \App\OrderDetail;
             $orderDetail->products_id = $data['session_products_id'];
@@ -149,14 +147,14 @@ class CartController extends Controller
             $orderDetail->shipment_status_id = 1;
             // rand()で乱数取得
             $orderDetail->order_detail_number = rand();
+            // dd($orderDetail);
             $orderDetail->order_quantity = $data['session_quantity'];
             $orderDetail->shipment_date = $now;
             $orderDetail->save();
-            // dd($orderDetail);
         }
 
         $request->session()->forget('cartData');
 
-        return view('purchase/completed', compact('orderDetail'));
+        return view('purchase_completed', compact('orderDetail'));
     }
 }

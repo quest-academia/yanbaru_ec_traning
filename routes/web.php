@@ -15,13 +15,17 @@ Route::get('/', function () {
     return view('top');
 });
 // ユーザー登録
-Route::get('signup', 'Auth\RegisterController@showRegistrationForm');
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 //ログイン
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+//検索機能
+Route::get('search', 'ProductController@search')->name('search');
+
 Route::get('/detail/{id}', 'MProductController@show')->name('detail');
 Route::post('/addCart', 'CartController@addCart')->name('addCart');
 Route::get('/cart/index','CartController@index')->name('cart.index');
@@ -31,5 +35,9 @@ Route::post('/orderFinalized', 'CartController@store')->name('orderFinalized');
 
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('user/information', 'UserInformationController@show');
+    Route::resource('user/information', 'UserInformationController', ['only' => ['show', 'edit', 'update','destroy']]);
+    //購入完了画面へ
+    Route::get('purchase/completed', function () {
+        return view('purchase_completed');
+    });
 });

@@ -17,5 +17,13 @@ class MProductController extends Controller
 
         return view('product/detail', compact('product'));
 
+        if ($product = !MProduct::find($id)){
+            // 商品IDがない時
+            return view('product/not_found');
+        }else{
+            $product = MProduct::find($id);
+            return view('product/detail', compact('product'));
+        };
     }
+
 }
