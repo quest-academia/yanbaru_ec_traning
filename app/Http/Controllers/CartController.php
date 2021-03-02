@@ -57,8 +57,9 @@ class CartController extends Controller
         //渡されたセッション情報をkey（名前）を用いそれぞれ取得、変数に代入
         // dd($userId);
         //removeメソッドでの配列削除時の配列連番抜け対策
-        if ($request->session()->has('cartData')) {
-            $cartData = array_values($request->session()->get('cartData'));
+        $session = $request->session();
+        if ($session->has('cartData')) {
+            $cartData = array_values($session->get('cartData'));
         }
         // dd($request);
         if (!empty($cartData)) {
@@ -85,8 +86,9 @@ class CartController extends Controller
 
     public function delete(Request $request)
     {
+        $session = $request->session();
         //session情報の取得（product_idと個数の2次元配列）
-        $sessionCartData = $request->session()->get('cartData');
+        $sessionCartData = $session->get('cartData');
 
         //削除ボタンから受け取ったproduct_idと個数を2次元配列に
         $deleteCartItem = [
@@ -102,11 +104,11 @@ class CartController extends Controller
         });
 
         //上記の抽出情報でcartDataを上書き処理
-        $request->session()->put('cartData', $deleteCompletedCartData);
+        $session->put('cartData', $deleteCompletedCartData);
         //上書き後のsession再取得
-        $cartData = $request->session()->get('cartData');
+        $cartData = $session->get('cartData');
         //session情報があればtrue
-        if ($request->session()->has('cartData')) {
+        if ($session->has('cartData')) {
             return redirect()->route('cart.index');
         }
 
@@ -115,7 +117,8 @@ class CartController extends Controller
 
     public function store(request $request)
     {
-        $cartData = $request->session()->get('cartData');
+        $session = $request->session();
+        $cartData = $session->get('cartData');
         // dd($cartData);
         // 現在の日時を取得
         $now = Carbon::now();
@@ -147,7 +150,7 @@ class CartController extends Controller
             $orderDetail->save();
         }
 
-        $request->session()->forget('cartData');
+        $session->forget('cartData');
 
         return view('purchase_completed', compact('orderDetail'));
     }
