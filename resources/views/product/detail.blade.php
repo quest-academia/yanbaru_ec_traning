@@ -19,12 +19,10 @@
                         <input type="number" id="number-of-unit" name="product_quantity" value="1" min="0" max="10" class="form-control input-number border-dark">
                         <label class="h5 px-lg-2">個</label>
                         <input type="hidden" name="products_id" value="{{ $product->id }}">
-                        <input class="btn btn-primary py-0 px-1 mx-2" type="submit" value="カートへ">
+                        <input class="btn btn-primary py-0 px-1 mx-4" type="submit" value="カートへ">
                     </div>
                 </form>            
             </div>                 
         </div>
     </div>
 @endsection
-
-

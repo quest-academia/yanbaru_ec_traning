@@ -8,7 +8,10 @@ class Category extends Model
 {
     protected $table = 'm_categories';
     public $timestamps = false;
-    protected $fillable = ['id', 'category_name',];
+    protected $fillable = [
+        'id', 
+        'category_name',
+    ];
 
     public function product()
     {

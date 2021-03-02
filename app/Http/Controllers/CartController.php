@@ -42,35 +42,29 @@ class CartController extends Controller
                     break;
                 }
             }
-
             //product_idが同一ではない状態を指定 その場合であればpushする
-            if ($isSameProductId === false) {
+            if (!$isSameProductId) {
                 $request->session()->push('cartData', $cartData);
             }
         }
-        // $request->session()->put('users_id', ($request->users_id));
         // dd($cartData);
         return redirect()->route('cart.index');
     }
     
     public function index(Request $request)
     {
-        $user_id = Auth::id();
+        $userId = Auth::id();
         //渡されたセッション情報をkey（名前）を用いそれぞれ取得、変数に代入
-        // $sessionUser = User::find($request->session()->get('users_id'));
-        // dd($sessionUser);
-        // dd($user_id);
+        // dd($userId);
         //removeメソッドでの配列削除時の配列連番抜け対策
         if ($request->session()->has('cartData')) {
             $cartData = array_values($request->session()->get('cartData'));
         }
         // dd($request);
-
         if (!empty($cartData)) {
             // array_column();を用い配列から、必要な値だけを抽出した配列に変換
             $sessionProductsId = array_column($cartData, 'session_products_id');
             $product = Product::with('category')->find($sessionProductsId);
-
             foreach ($cartData as $index => &$data) {
                 //二次元目の配列を指定している$dataに'product〜'key生成 Modelオブジェクト内の各カラムを代入
                 //＆で参照渡し 仮引数($data)の変更で実引数($cartData)を更新する
@@ -82,10 +76,10 @@ class CartController extends Controller
                 // dd($cartData);
             }
             unset($cartdata);
-            return view('cart/index', compact('user_id','cartData', 'totalPrice'));
+            return view('cart/index', compact('userId','cartData', 'totalPrice'));
         } else {
 
-            return view('cart/noData',  compact('user_id'));
+            return view('cart/noData',  compact('userId'));
         }
     }   
 

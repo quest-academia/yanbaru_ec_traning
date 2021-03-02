@@ -25,7 +25,7 @@ class OrderDetail extends Model
 
     public function order()
     {
-        return $this->belongsTo('Order::class');
+        return $this->belongsTo('App\Order');
     }
 
     public function shipmentStatuses()

@@ -80,7 +80,7 @@
                                         <td class="py-1" style="border: 1px solid #333; border-right-style:none;">{{ $product->product_name }}</td>
                                         <td class="py-1" style="border: 1px solid #333; border-left-style:none; border-right-style:none;">{{ $product->category->category_name }}</td>
                                         <td class="py-1" style="border: 1px solid #333; border-left-style:none; border-right-style:none;">{{ $product->price }}円</td>
-                                        <td class="py-1" style="border: 1px solid #333; border-left-style:none;"><a class="py-0 btn btn-primary" href="#" role="button">商品詳細</a></td>
+                                        <td class="py-1" style="border: 1px solid #333; border-left-style:none;"><a class="py-0 btn btn-primary" href="{{ route('detail', ['id' => $product->id])}}" role="button">商品詳細</a></td>
                                     </tr>
 
                                 @endforeach

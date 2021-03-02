@@ -13,9 +13,7 @@
                 @if (Auth::check())
 
                     <li class="nav-item">{!! link_to_route('search', '商品検索', [], ['class' => 'nav-link active']) !!}</li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('') }}">カート</a>
-                    </li>
+                    <li class="nav-item">{!! link_to_route('cart.index', 'カートへ', [], ['class' => 'nav-link active']) !!}</li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url('') }}">注文履歴</a>
                     </li>

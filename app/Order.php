@@ -9,7 +9,8 @@ class Order extends Model
     protected $table = 't_orders';
     public $timestamps = false;
     protected $fillable = [
-        'user_id', 'order_date'
+        'user_id', 
+        'order_date'
     ];
 
     public function users()
@@ -19,6 +20,6 @@ class Order extends Model
 
     public function orderDetails()
     {
-        return $this->hasMany('OrderDetail::class');
+        return $this->hasMany('App\OrderDetail');
     }
 }
