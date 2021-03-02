@@ -22,13 +22,13 @@ class CartController extends Controller
             'session_products_id' => $request->products_id,
             'session_quantity' => $request->product_quantity,
         ];
-
+        $session = $request->session();
         //sessionにcartData配列が「無い」場合、商品情報の配列をcartData(key)という名で$cartDataをSessionに追加
-        if (!$request->session()->has('cartData')) {
-            $request->session()->push('cartData', $cartData);
+        if (!$session->has('cartData')) {
+            $session->push('cartData', $cartData);
         } else {
             //sessionにcartData配列が「有る」場合、情報取得
-            $sessionCartData = $request->session()->get('cartData');
+            $sessionCartData = $session->get('cartData');
 
             //isSameProductId定義 product_id同一確認フラグ false = 同一ではない状態を指定
             $isSameProductId = false;
@@ -38,13 +38,13 @@ class CartController extends Controller
                     $isSameProductId = true;
                     $quantity = $sessionData['session_quantity'] + $cartData['session_quantity'];
                     //cartDataをrootとしたツリー状の多次元連想配列の特定のValueにアクセスし、指定の変数でValueの上書き処理
-                    $request->session()->put('cartData.' . $index . '.session_quantity', $quantity);
+                    $session->put('cartData.' . $index . '.session_quantity', $quantity);
                     break;
                 }
             }
             //product_idが同一ではない状態を指定 その場合であればpushする
             if (!$isSameProductId) {
-                $request->session()->push('cartData', $cartData);
+                $session->push('cartData', $cartData);
             }
         }
         // dd($cartData);
