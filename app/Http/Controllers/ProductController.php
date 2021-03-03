@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\M_Product;
+use App\Product;
 use App\M_Category;
 
 class ProductController extends Controller
@@ -54,5 +55,16 @@ class ProductController extends Controller
             'categoryId',
             'message'
         ));
+    }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            // 商品IDがない時
+            return view('product.not_found');
+        }
+
+        return view('product.detail', compact('product'));
     }
 }

@@ -8,6 +8,7 @@ use App\Product;
 use App\Category;
 use App\User;
 use App\Order;
+use App\OrderDetail;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -65,22 +66,22 @@ class CartController extends Controller
         if (!empty($cartData)) {
             // array_column();を用い配列から、必要な値だけを抽出した配列に変換
             $sessionProductsId = array_column($cartData, 'session_products_id');
-            $product = Product::with('category')->find($sessionProductsId);
+            $inCartProduct = Product::with('category')->find($sessionProductsId);
             foreach ($cartData as $index => &$data) {
                 //二次元目の配列を指定している$dataに'product〜'key生成 Modelオブジェクト内の各カラムを代入
                 //＆で参照渡し 仮引数($data)の変更で実引数($cartData)を更新する
-                $data['product_name'] = $product[$index]->product_name;
-                $data['category_name'] = $product[$index]['category']->category_name;
-                $data['price'] = $product[$index]->price;
+                $data['product_name'] = $inCartProduct[$index]->product_name;
+                $data['category_name'] = $inCartProduct[$index]['category']->category_name;
+                $data['price'] = $inCartProduct[$index]->price;
                 //商品小計の配列作成し、配列の追加
                 $data['itemPrice'] = $data['price'] * $data['session_quantity'];
                 // dd($cartData);
             }
             unset($cartdata);
-            return view('cart/index', compact('userId','cartData', 'totalPrice'));
+            return view('cart.index', compact('userId' , 'cartData' , 'totalPrice'));
         } else {
 
-            return view('cart/noData',  compact('userId'));
+            return view('cart.noData',  compact('userId'));
         }
     }   
 
@@ -112,7 +113,7 @@ class CartController extends Controller
             return redirect()->route('cart.index');
         }
 
-        return view('cart/noData', ['user' => Auth::user()]);
+        return view('cart.noData', ['user' => Auth::user()]);
     }
 
     public function store(request $request)
@@ -124,7 +125,7 @@ class CartController extends Controller
         $now = Carbon::now();
 
         //インスタンス生成
-        $order = new \App\Order;
+        $order = new Order;
         //指定値をインスタンス代入
         $order->user_id = Auth::user()->id;
         $order->order_date = $now;
@@ -138,7 +139,7 @@ class CartController extends Controller
         //注文詳細情報保存を注文数分繰り返す １回のリクエストを複数カラムに分けDB登録
         foreach ((array)$cartData as $data) {
             //注文詳細情報に関わるインスタンス生成
-            $orderDetail = new \App\OrderDetail;
+            $orderDetail = new OrderDetail;
             $orderDetail->products_id = $data['session_products_id'];
             $orderDetail->order_id = $savedOrderId[0];
             $orderDetail->shipment_status_id = 1;
