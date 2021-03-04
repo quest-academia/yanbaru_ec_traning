@@ -11,6 +11,12 @@ class Product extends Model
         'id'
     ];
 
+    protected $fillable = [
+        'product_name',
+        'category_id',
+        'price'
+    ];
+
     protected $table = 'm_products';
 
     public function category()
@@ -38,5 +44,6 @@ class Product extends Model
     {
         return $this->hasMany('App\OrderDetail');
     }
+
 }
 

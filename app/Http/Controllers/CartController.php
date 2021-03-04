@@ -67,6 +67,7 @@ class CartController extends Controller
             // array_column();を用い配列から、必要な値だけを抽出した配列に変換
             $sessionProductsId = array_column($cartData, 'session_products_id');
             $inCartProduct = Product::with('category')->find($sessionProductsId);
+
             foreach ($cartData as $index => &$data) {
                 //二次元目の配列を指定している$dataに'product〜'key生成 Modelオブジェクト内の各カラムを代入
                 //＆で参照渡し 仮引数($data)の変更で実引数($cartData)を更新する

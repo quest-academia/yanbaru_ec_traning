@@ -23,4 +23,11 @@ class Category extends Model
     {
         return self::pluck('category_name', 'id');
     }
+
+    public function getLists()
+    {
+        $categories = Category::pluck('category_name', 'id');
+
+        return $categories;
+    }
 }

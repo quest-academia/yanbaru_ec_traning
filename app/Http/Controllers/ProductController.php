@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\M_Product;
 use App\Product;
-use App\M_Category;
+use App\Category;
 
 class ProductController extends Controller
 {
@@ -20,7 +19,7 @@ class ProductController extends Controller
         $categoryId = $request->input('categoryId');
 
         //m_productsテーブルの情報を$queryに代入
-        $query = M_Product::query();
+        $query = Product::query();
 
         //以下それぞれの状況ごとの動き
 
@@ -44,7 +43,7 @@ class ProductController extends Controller
         }
 
         //M_Categoryモデル内getLists()関数を使用し、m_categoriesテーブルから「category_name」「id」を取得
-        $category = new M_Category;
+        $category = new Category;
         $categories = $category->getLists();
 
         //search.blade.phpに以下変数を渡す
@@ -54,7 +53,7 @@ class ProductController extends Controller
             'categories',
             'categoryId',
             'message'
-        ));
+        ));        
     }
 
     public function show($id)
