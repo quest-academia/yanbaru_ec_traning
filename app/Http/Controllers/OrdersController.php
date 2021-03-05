@@ -12,20 +12,20 @@ class OrdersController extends Controller
     public function orderHistory(Request $request)
     {
         $orderNumber = 0;
-        $order_information = Order::where('user_id' , Auth::id())->with(
+        $orderInformation = Order::where('user_id' , Auth::id())->with(
             ['user' , 'orderDetails.shipmentStatuses'])->orderBy('order_date', 'desc')->paginate(3);
 
-        return view('order_history',compact('orderNumber' , 'order_information'));
+        return view('order_history',compact('orderNumber' , 'orderInformation'));
     }
     
     public function recentlyOrders (Request $request)
     {
         $orderNumber = 0;
-        $past_3_month = today()->subMonth(3);
-        $order_information = Order::where('user_id' , Auth::id())->with(
-            ['user' , 'orderDetails.shipmentStatuses'])->where('order_date', '>', $past_3_month)->orderBy('order_date', 'desc')->paginate(3);
+        $past3Month = today()->subMonth(3);
+        $orderInformation = Order::where('user_id' , Auth::id())->with(
+            ['user' , 'orderDetails.shipmentStatuses'])->where('order_date', '>', $past3Month)->orderBy('order_date', 'desc')->paginate(3);
         
-            return view('recently_orders',compact('orderNumber' , 'order_information'));
+            return view('recently_orders',compact('orderNumber' , 'orderInformation'));
     }
 
     public function orderDetail (Request $request)

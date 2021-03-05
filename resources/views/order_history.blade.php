@@ -3,7 +3,7 @@
 
 @section('content')
 
-@if($order_information->isEmpty())
+@if($orderInformation->isEmpty())
     <h1 style="font-weight: bolder">注文履歴は存在しません</h1>
 @else
     <div class="container">
@@ -26,27 +26,27 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($order_information as $detailed_order_information)
+                @foreach ($orderInformation as $detailed_orderInformation)
                 <tr>
                 <th scope="row">{{ $orderNumber += 1}}</th>
-                    <td>{{$detailed_order_information->order_detail_number}}</td>
-                    <td>〒{{ $detailed_order_information->user->zipcode }}<br>
-                    {{ $detailed_order_information->user->prefecture }}{{ $detailed_order_information->user->municipality }}
-                    {{ $detailed_order_information->user->address }}　{{ $detailed_order_information->user->apartments }}<br>
-                    {{ $detailed_order_information->user->first_name }}　{{ $detailed_order_information->user->last_name }}　様</td>
-                    <td>注文日時:{{$detailed_order_information->order_date}} <br>
-                    @foreach ($detailed_order_information->orderDetails as $order_detail)
+                    <td>{{$detailed_orderInformation->order_detail_number}}</td>
+                    <td>〒{{ $detailed_orderInformation->user->zipcode }}<br>
+                    {{ $detailed_orderInformation->user->prefecture }}{{ $detailed_orderInformation->user->municipality }}
+                    {{ $detailed_orderInformation->user->address }}　{{ $detailed_orderInformation->user->apartments }}<br>
+                    {{ $detailed_orderInformation->user->first_name }}　{{ $detailed_orderInformation->user->last_name }}　様</td>
+                    <td>注文日時:{{$detailed_orderInformation->order_date}} <br>
+                    @foreach ($detailed_orderInformation->orderDetails as $order_detail)
                     注文状態：{{ $order_detail->shipmentStatuses->shipment_status_name}}
                     @endforeach
                     </td>
-                    <td><a class="btn btn-secondary" href="{{ route('order_detail' , ['id' => $detailed_order_information->order_detail_number]) }}" role="button">詳細</a></td>
+                    <td><a class="btn btn-secondary" href="{{ route('order_detail' , ['id' => $detailed_orderInformation->order_detail_number]) }}" role="button">詳細</a></td>
                 </tr>
                 @endforeach 
             </tbody>
             </table>
         </div>
         <div class="d-flex justify-content-center">
-            {{ $order_information->links() }}
+            {{ $orderInformation->links() }}
         </div>
         @endif
         </div>
