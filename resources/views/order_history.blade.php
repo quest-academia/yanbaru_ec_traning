@@ -28,7 +28,7 @@
             <tbody>
                 @foreach ($order_information as $detailed_order_information)
                 <tr>
-                <th scope="row">{{ $orderNumber += 1 }}</th>
+                <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $detailed_order_information->order_detail_number }}</td>
                     <td>〒{{ $detailed_order_information->user->zipcode }}<br>
                     {{ $detailed_order_information->user->prefecture }}{{ $detailed_order_information->user->municipality }}
