@@ -14,9 +14,9 @@ class M_Users_TableSeeder extends Seeder
         DB::table('m_users')->insert([
             [
                 'password' => bcrypt('sample1'),
-                'last_name' => '太郎',
-                'first_name' => '田中',
-                'zipcode' => '0000001',
+                'last_name' => '田中',
+                'first_name' => '太郎',
+                'zipcode' => '1111111',
                 'prefecture' => '東京都',
                 'municipality' => '足立区',
                 'address' => '1-1-1',
@@ -29,9 +29,9 @@ class M_Users_TableSeeder extends Seeder
             ],
             [
                 'password' => bcrypt('sample2'),
-                'last_name' => '優',
-                'first_name' => '斎藤',
-                'zipcode' => '2200032',
+                'last_name' => '斎藤',
+                'first_name' => '優',
+                'zipcode' => '2222222',
                 'prefecture' => '神奈川県',
                 'municipality' => '横浜市',
                 'address' => '2-2-2',
@@ -44,9 +44,9 @@ class M_Users_TableSeeder extends Seeder
             ],
             [
                 'password' => bcrypt('sample3'),
-                'last_name' => '紘',
-                'first_name' => '西野',
-                'zipcode' => '3300071',
+                'last_name' => '西野',
+                'first_name' => '紘',
+                'zipcode' => '3333333',
                 'prefecture' => '埼玉県',
                 'municipality' => 'さいたま市',
                 'address' => '3-3-3',
@@ -59,8 +59,8 @@ class M_Users_TableSeeder extends Seeder
             ],
             [
                 'password' => bcrypt('sample4'),
-                'last_name' => '凉',
                 'first_name' => '菅原',
+                'last_name' => '凉',
                 'zipcode' => '1350032',
                 'prefecture' => '東京都',
                 'municipality' => '江東区',

@@ -30,7 +30,7 @@
       </table>
     </div>
     <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">修正/退会する</button>
+      <a class="btn btn-primary" href="{{ route('information.edit', $user->id) }}">修正/退会する</a>
     </div>
 </main>
 @endsection

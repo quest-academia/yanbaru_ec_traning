@@ -36,4 +36,6 @@ Route::get('/recently_orders','OrdersController@recentlyOrders')->name('recently
 
 Route::get('/order_detail','OrdersController@orderDetail')->name('order_detail');
 
+    Route::resource('user/information', 'UserInformationController', ['only' => ['show', 'edit', 'update','destroy']]);
+
 });
