@@ -17,7 +17,7 @@ class OrdersController extends Controller
         return view('order_history', compact('order_information'));
     }
     
-    public function get3Month (Request $request)
+    public function get3MonthHistory (Request $request)
     {
         $past_3_month = today()->subMonth(3);
         $order_information = Order::where('user_id', Auth::id())->with(

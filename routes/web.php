@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/orders','OrdersController@getHistory')->name('order_history');
 
-Route::get('/recently_orders','OrdersController@get3Month')->name('recently_orders');
+Route::get('/recently_orders','OrdersController@get3MonthHistory')->name('recently_orders');
 
 Route::get('/order_detail','OrdersController@orderDetail')->name('order_detail');
 
