@@ -16,6 +16,7 @@ class CreateTOrdersTable extends Migration
         Schema::create('t_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->string('order_number', 64);            
             $table->timestamp('order_date');
 
             $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
