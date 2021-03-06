@@ -17,7 +17,7 @@
                         <a class="nav-link active" href="{{ url('') }}">カート</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('order_history') }}" role="button">注文履歴</a>
+                        <a class="nav-link active" href="{{ url('') }}">注文履歴</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('information.show', Auth::user()->id) }}">ユーザ情報</a>
