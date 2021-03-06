@@ -28,18 +28,18 @@
             <tbody>
                 @foreach ($order_information as $detailed_order_information)
                 <tr>
-                <th scope="row">{{ $orderNumber += 1}}</th>
-                    <td>{{$detailed_order_information->order_detail_number}}</td>
+                <th scope="row">{{ $orderNumber += 1 }}</th>
+                    <td>{{ $detailed_order_information->order_detail_number }}</td>
                     <td>〒{{ $detailed_order_information->user->zipcode }}<br>
                     {{ $detailed_order_information->user->prefecture }}{{ $detailed_order_information->user->municipality }}
                     {{ $detailed_order_information->user->address }}　{{ $detailed_order_information->user->apartments }}<br>
                     {{ $detailed_order_information->user->first_name }}　{{ $detailed_order_information->user->last_name }}　様</td>
                     <td>注文日時:{{$detailed_order_information->order_date}} <br>
                     @foreach ($detailed_order_information->orderDetails as $order_detail)
-                    注文状態：{{ $order_detail->shipmentStatuses->shipment_status_name}}
+                    注文状態：{{ $order_detail->shipmentStatuses->shipment_status_name }}
                     @endforeach
                     </td>
-                    <td><a class="btn btn-secondary" href="{{ route('order_detail' , ['id' => $detailed_order_information->order_detail_number]) }}" role="button">詳細</a></td>
+                    <td><a class="btn btn-secondary" href="{{ route('order_detail', ['id' => $detailed_order_information->order_detail_number]) }}" role="button">詳細</a></td>
                 </tr>
                 @endforeach 
             </tbody>

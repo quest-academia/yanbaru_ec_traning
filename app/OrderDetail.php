@@ -24,7 +24,7 @@ class OrderDetail extends Model
 
     public function shipmentStatuses()
     {
-        return $this->belongsTo('App\ShipmentStatus' , 'shipment_status_id');
+        return $this->belongsTo('App\ShipmentStatus', 'shipment_status_id');
     }
 
 }
