@@ -26,9 +26,12 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 //検索機能
 Route::get('search', 'ProductController@search')->name('search');
 
-Route::get('/detail/{id}', 'MProductController@show')->name('detail');
+Route::get('/detail/{id}', 'ProductController@show')->name('detail');
 Route::post('/addCart', 'CartController@addCart')->name('addCart');
-Route::get('/cart/list','CartController@CartList')->name('cart.list');
+Route::get('/cart/index','CartController@index')->name('cart.index');
+Route::post('/cart/list_delete', 'CartController@delete')->name('cartItemDelete');
+Route::post('/CartFinalized', 'CartController@store')->name('cartFinalized');
+
 
 // ログインユーザのみ
 Route::group(['middleware' => 'auth'], function(){
