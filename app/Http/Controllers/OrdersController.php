@@ -10,23 +10,21 @@ use App\Product;
 class OrdersController extends Controller
 {
 
-    public function orderHistory(Request $request)
+    public function getHistory(Request $request)
     {
-        $orderNumber = 0;
-        $order_information = Order::where('user_id' , Auth::id())->with(
-            ['user' , 'orderDetails.shipmentStatuses'])->orderBy('order_date', 'desc')->paginate(3);
-        //dd($order_information);
-        return view('order_history',compact('orderNumber' , 'order_information'));
+        $orderInformations = Order::where('user_id', Auth::id())->with(
+            ['user', 'orderDetails.shipmentStatuses'])->orderBy('order_date', 'desc')->paginate(3);
+
+        return view('order_history', compact('orderInformations'));
     }
     
-    public function recentlyOrders (Request $request)
+    public function get3MonthHistory (Request $request)
     {
-        $orderNumber = 0;
         $past_3_month = today()->subMonth(3);
-        $order_information = Order::where('user_id' , Auth::id())->with(
-            ['user' , 'orderDetails.shipmentStatuses'])->where('order_date', '>', $past_3_month)->orderBy('order_date', 'desc')->paginate(3);
+        $orderInformations = Order::where('user_id', Auth::id())->with(
+            ['user', 'orderDetails.shipmentStatuses'])->where('order_date', '>', $past_3_month)->orderBy('order_date', 'desc')->paginate(3);
         
-        return view('recently_orders',compact('orderNumber' , 'order_information'));
+            return view('recently_orders', compact('orderInformations'));
     }
 
     public function orderDetail (Request $request)

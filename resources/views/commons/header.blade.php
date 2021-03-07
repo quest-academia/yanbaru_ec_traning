@@ -1,7 +1,7 @@
 <header class="mb-5">
     <nav class="navbar navbar-expand-lg navbar-light bg-warning p-4">
         <a class="navbar-brand" href="/">やんばるエキスパート</a>
-        
+
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,10 +19,10 @@
                         <a class="nav-link active" href="{{ url('') }}">カート</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('order_history') }}" role="button">注文履歴</a>
+                        <a class="nav-link active" href="{{ route('order.history') }}" role="button">注文履歴</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('') }}">ユーザ情報</a>
+                        <a class="nav-link active" href="{{ route('information.show', Auth::user()->id) }}">ユーザ情報</a>
                     </li>
                     <li class="nav-item">{!! link_to_route('logout', 'ログアウト', [], ['class' => 'nav-link active']) !!}</li>
 
@@ -37,6 +37,6 @@
 
             </ul>
         </div>
-        
+
     </nav>
 </header>
