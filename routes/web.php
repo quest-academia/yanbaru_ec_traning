@@ -34,11 +34,14 @@ Route::get('/cart/list','CartController@CartList')->name('cart.list');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('user/information', 'UserInformationController@show');
     Route::resource('user/information', 'UserInformationController', ['only' => ['show', 'edit', 'update','destroy']]);
-<<<<<<< HEAD
-    Route::get('/orders','OrdersController@getHistory')->name('order.history');
-    Route::get('/recently_orders','OrdersController@get3MonthHistory')->name('order.Months-3');
-    Route::get('/order_detail','OrdersController@orderDetail')->name('order_detail');
-=======
+
+
+
+
+
+
+
+
     //注文履歴画面へ
     Route::get('/orders','OrdersController@getHistory')->name('order.history');
     Route::get('/recently_orders','OrdersController@get3MonthHistory')->name('order.Months-3');
@@ -48,5 +51,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('purchase/completed', function () {
         return view('purchase_completed');
     });
->>>>>>> 9bf2f5241d1231540724952505b81813b22a0812
+
+
+
+
 });
