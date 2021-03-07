@@ -12,14 +12,12 @@
 
                 @if (Auth::check())
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('') }}">商品検索</a>
-                    </li>
+                    <li class="nav-item">{!! link_to_route('search', '商品検索', [], ['class' => 'nav-link active']) !!}</li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url('') }}">カート</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('order_history') }}" role="button">注文履歴</a>
+                        <a class="nav-link active" href="{{ route('order.history') }}" role="button">注文履歴</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route('information.show', Auth::user()->id) }}">ユーザ情報</a>
@@ -29,9 +27,7 @@
                 @else
 
                     <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link active']) !!}</li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">新規登録</a>
-                    </li>
+                    <li class="nav-item">{!! link_to_route('signup', '新規登録', [], ['class' => 'nav-link active']) !!}</li>
 
                 @endif
 

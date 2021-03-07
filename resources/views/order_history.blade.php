@@ -10,7 +10,7 @@
         <div class="row">
             <div class="d-flex">
                 <div class="flex-row mb-3">
-                    <a class="btn btn-secondary" href="{{ route('recently_orders') }}" role="button">直近３か月の注文を表示</a>
+                    <a class="btn btn-secondary" href="{{ route('order.Months-3') }}" role="button">直近３か月の注文を表示</a>
                 </div>
             </div>
         </div>

@@ -25,8 +25,7 @@ class OrdersController extends Controller
         
             return view('recently_orders', compact('orderInformations'));
     }
-
-    public function orderDetail (Request $request)
+        public function orderDetail (Request $request)
     {
         $data = Order::where('user_id', Auth::id())->with(
             ['user', 'orderDetails.shipmentStatuses'])->where('order_detail_number', $request->id)->first();
