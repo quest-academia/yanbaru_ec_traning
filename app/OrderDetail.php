@@ -19,17 +19,16 @@ class OrderDetail extends Model
 
     public function order()
     {
-        return $this->belongsTo(Order::class,'order_id');
+        return $this->belongsTo('App\Order','order_id');
     }
 
     public function shipmentStatuses()
     {
-        return $this->belongsTo('App\ShipmentStatus' , 'shipment_status_id');
+        return $this->belongsTo('App\ShipmentStatus', 'shipment_status_id');
     }
 
     public function products()
     {
-        return $this->belongsTo('App\Product' , 'id');
+        return $this->belongsTo('App\Product', 'id');
     }
-
 }

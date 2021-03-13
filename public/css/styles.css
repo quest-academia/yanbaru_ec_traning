@@ -35,6 +35,13 @@ body {
     color: #333;
 }
 
+.address {
+    padding: 20px;
+    width: 90%;
+    border: 2px solid #333333;
+    border-radius: 10px;
+}
+
 footer {
     /* position: absolute; */
     /* bottom: 0; */

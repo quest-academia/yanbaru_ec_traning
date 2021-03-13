@@ -24,7 +24,7 @@ class m_productsTableSeeder extends Seeder
                 'delete_flag' => '0',
             ],
             [
-                'product_name' => 'ビタミンB郡',
+                'product_name' => 'ビタミンB群サプリ',
                 'category_id' => '3',
                 'price' => '860',
                 'description' => '８種のビタミンB郡を一粒で簡単補給',

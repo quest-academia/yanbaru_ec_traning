@@ -3,7 +3,13 @@
 @section('content')
 
 @if($orderInformations->isEmpty())
-    <h1 style="font-weight: bolder">注文履歴は存在しません</h1>
+    <h1 class="text-center py-5">該当の注文は見つかりませんでした･･･</h1>
+        <p class="text-center mt-5 h3">注文履歴画面に戻り､やり直してください</p>
+    <div class="d-flex justify-content-center">
+    <div class="flex-row py-5 text-center mx-5">
+        <a class="btn btn-primary" href="{{ route('order.history') }}" role="button">注文履歴画面へ</a>
+    </div>
+    </div>
 @else
     <div class="container">
         <div class="row">
@@ -28,18 +34,17 @@
                 @foreach  ($orderInformations as $order)
                 <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
-                @php dd($orderInformations) @endphp
                     <td>{{ $order->order_number }}</td>
                     <td>〒{{ $order->user->zipcode }}<br>
                     {{ $order->user->prefecture }}{{ $order->user->municipality }}
                     {{ $order->user->address }}　{{ $order->user->apartments }}<br>
                     {{ $order->user->first_name }}　{{ $order->user->last_name }}　様</td>
                     <td>注文日時:{{ $order->order_date }} <br>
-                    @foreach  ($order->orderDetails as $order_detail)
-                    注文状態：{{ $order_detail->shipmentStatuses->shipment_status_name }}
+                    @foreach  ($order->orderDetails as $orderDetail)
+                    注文状態：{{ $orderDetail->shipmentStatuses->shipment_status_name }}
                     @endforeach
                     </td>
-                    <td><a class="btn btn-secondary" href="{{ route('order_detail', ['id' => $order->order_detail_number]) }}" role="button">詳細</a></td>
+                    <td><a class="btn btn-secondary" href="{{ route('order.detail' , ['detail_number' => $order->order_number]) }}" role="button">詳細</a></td>
                 </tr>
                 @endforeach 
             </tbody>
@@ -48,7 +53,7 @@
         <div class="d-flex justify-content-center">
             {{ $orderInformations->links() }}
         </div>
-        @endif
-        </div>
+@endif
+</div>
 
-        @endsection
+@endsection

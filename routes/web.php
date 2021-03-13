@@ -33,7 +33,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/orders','OrdersController@getHistory')->name('order.history');
     Route::get('/recently_orders','OrdersController@get3MonthHistory')->name('order.Months-3');
     //注文詳細画面へ
-    Route::get('/order_detail','OrdersController@orderDetail')->name('order_detail');
+    Route::get('/order_detail','OrdersController@orderDetail')->name('order.detail');
+    //注文のキャンセル
+    Route::post('/cancel_order','OrdersController@cancelOrder')->name('cancel.order');
     //購入完了画面へ
     Route::get('purchase/completed', function () {
         return view('purchase_completed');
