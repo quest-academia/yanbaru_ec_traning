@@ -16,6 +16,6 @@ class M_Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(M_Category::class);
+        return $this->belongsTo('App\M_Category');
     }
 }
