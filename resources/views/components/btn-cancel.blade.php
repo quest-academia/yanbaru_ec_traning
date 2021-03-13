@@ -19,7 +19,7 @@
                     @csrf
                         <input type="hidden" name="orderId" value="{{ $orderId }}">
                         <input type="hidden" name="userId" value="{{ (int)$userId }}">
-                        <button type="submit" class="btn btn-danger">注文を削除</button>
+                        <button type="submit" class="btn btn-danger">注文をキャンセル</button>
                     </form>
                 </form>
             </div>
