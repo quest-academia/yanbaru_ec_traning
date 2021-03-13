@@ -43,7 +43,11 @@
                     <td>注文日時:{{$order->order_date}} <br>
                     @foreach ($order->orderDetails as $orderDetail)
                     @endforeach
+                    @if($checkInPreparation === 1)
+                    注文状態：準備中
+                    @else
                     注文状態：{{ $orderDetail->shipmentStatuses->shipment_status_name }}
+                    @endif
                     </td>
                     <td><a class="btn btn-secondary" href="{{ route('order.detail' , ['detail_number' => $order->order_number]) }}" role="button">詳細</a></td>
                 </tr>
