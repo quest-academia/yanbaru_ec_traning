@@ -47,7 +47,7 @@
                     注文状態：準備中
                     @else
                     注文状態：{{ $orderDetail->shipmentStatuses->shipment_status_name }}
-                    @end
+                    @endif
                     </td>
                     <td><a class="btn btn-secondary" href="" role="button">詳細</a></td>
                 </tr>
