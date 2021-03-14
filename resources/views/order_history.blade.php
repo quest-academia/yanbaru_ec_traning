@@ -3,7 +3,7 @@
 
 @section('content')
 
-@if($orderInformations->isEmpty())
+@if ($orderInformations->isEmpty())
     <h1 class="text-center py-5">該当の注文は見つかりませんでした･･･</h1>
         <p class="text-center mt-5 h3">注文履歴画面に戻り､やり直してください</p>
     <div class="d-flex justify-content-center">
@@ -43,7 +43,7 @@
                     <td>注文日時:{{$order->order_date}} <br>
                     @foreach ($order->orderDetails as $orderDetail)
                     @endforeach
-                    @if($checkInPreparation === 1)
+                    @if ($checkInPreparation === 1)
                     注文状態：準備中
                     @else
                     注文状態：{{ $orderDetail->shipmentStatuses->shipment_status_name }}

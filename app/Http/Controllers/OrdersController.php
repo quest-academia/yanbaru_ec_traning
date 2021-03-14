@@ -10,7 +10,7 @@ use App\OrderDetail;
 
 class OrdersController extends Controller
 {
-    public function getHistory(Request $request)
+    public function getHistory (Request $request)
     {
         //ログイン中のユーザーIDをもとに注文情報を取得する
         $orderInformations = Order::where('user_id', Auth::id())->with(
@@ -22,9 +22,9 @@ class OrdersController extends Controller
                 $query->where('shipment_status_id', '=', '1');})
             ->get();        
             
-                if($InPreparation->isEmpty()){
+                if ($InPreparation->isEmpty()){
                     $checkInPreparation = 0;
-                }else{
+                } else {
                     $checkInPreparation = 1;
                 }
 
@@ -34,10 +34,10 @@ class OrdersController extends Controller
     public function get3MonthHistory (Request $request)
     {
         //直近３ヶ月分の注文を取得する
-        $past_3_month = today()->subMonth(3);
+        $past3month = today()->subMonth(3);
         $orderInformations = Order::where('user_id', Auth::id())
             ->with(['user', 'orderDetails.shipmentStatuses'])
-            ->where('order_date', '>', $past_3_month)
+            ->where('order_date', '>', $past3month)
             ->orderBy('order_date', 'desc')
             ->paginate(3);
 
@@ -47,9 +47,9 @@ class OrdersController extends Controller
                 $query->where('shipment_status_id', '=', '1');})
             ->get();
 
-                if($InPreparation->isEmpty()){
+                if ($InPreparation->isEmpty()){
                     $checkInPreparation = 0;
-                }else{
+                } else {
                     $checkInPreparation = 1;
                 }
 
@@ -75,9 +75,9 @@ class OrdersController extends Controller
                 $query->where('shipment_status_id', '=', '1');})
             ->get();
 
-                    if($InPreparation->isEmpty()){
+                    if ($InPreparation->isEmpty()){
                         $checkInPreparation = 0;
-                    }else{
+                    } else {
                         $checkInPreparation = 1;
                     }
 
@@ -87,7 +87,7 @@ class OrdersController extends Controller
     //注文のキャンセル。発送状態が準備中ならキャンセルにできる。
     public function cancelOrder(Request $request)
     {
-        if(Auth::id() === (int)$request->userId){
+        if (Auth::id() === (int)$request->userId){
         $order = Order::where('user_id' , Auth::id())
             ->find($request->orderId);
         

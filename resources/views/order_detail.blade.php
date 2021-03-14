@@ -38,7 +38,7 @@ table {
 
 @section('content')
 
-@if($orderDetailData->isEmpty())
+@if ($orderDetailData->isEmpty())
     <h1 style="font-weight: bolder">注文履歴は存在しません</h1>
 @else
 <div class="container">
@@ -57,7 +57,7 @@ table {
         @endforeach
         注文状態：{{ $getDetail->shipmentStatuses->shipment_status_name }}
     </div>
-    @if($checkInPreparation === 1)
+    @if ($checkInPreparation === 1)
         @component('components.btn-cancel')
             @slot('controller', 'Orders')
             @slot('orderId', $detailData->id)

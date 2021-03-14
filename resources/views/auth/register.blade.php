@@ -99,7 +99,7 @@
     <div class="container mb-5" style="width: 30%;">
     {!! Form::open(['route' => 'signup.post']) !!}
 
-    @if($errors->any())
+    @if ($errors->any())
         <div class="alert alert-danger">
           <ul>
             @foreach($errors->all() as $error)

@@ -5,6 +5,5 @@ return [
     'Orders' => [
         'SUB_TOTAL' => 0,
         'TOTAL' => 0,
-        `NUMBER_LIST` =>array(),
     ],
 ];
