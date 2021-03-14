@@ -14,14 +14,27 @@ class T_OrdersTableSeeder extends Seeder
         DB::table('t_orders')->insert([
             [
                 'user_id' => 1,
-                'order_date' => date('Y-m-d H:i:s'),
+                'order_number' => 1,
+                'order_date' => date('2020-10-22 13:55:19'),
+            ],
+            [
+                'user_id' => 1,
+                'order_number' => 2,
+                'order_date' => date('2020-05-03 16:32:52'),
             ],
             [
                 'user_id' => 2,
+                'order_number' => 3,
                 'order_date' => date('Y-m-d H:i:s'),
             ],
             [
-                'user_id' => 3,
+                'user_id' => '3',
+                'order_number' => 4,
+                'order_date' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'user_id' => '4',
+                'order_number' => 5,
                 'order_date' => date('Y-m-d H:i:s'),
             ],
         ]);
