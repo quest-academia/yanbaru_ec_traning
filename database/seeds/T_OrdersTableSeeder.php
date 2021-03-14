@@ -38,4 +38,5 @@ class T_OrdersTableSeeder extends Seeder
                 'order_date' => date('Y-m-d H:i:s'),
             ],
         ]);
-    }}
+    }
+}

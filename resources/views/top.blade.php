@@ -6,7 +6,7 @@
     <div class="d-flex justify-content-center">
         <div class="flex-row py-5 text-center mx-5">
             <p class="lead">まだアカウントを<br>お持ちでない方はこちら</p>
-            <a type="button" class="btn btn-primary py-3" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">新規登録</a>
+            {!! link_to_route('signup', '新規登録', [], ['class' => 'btn btn-primary py-3']) !!}
         </div>
         <div class="flex-row py-5 text-center mx-5">
             <p class="lead">すでにアカウントを<br>お持ちの方はこちら</p>

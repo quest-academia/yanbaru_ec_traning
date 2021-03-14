@@ -8,7 +8,9 @@ class ShipmentStatus extends Model
 {
     protected $table = 'm_shipment_statuses';
 
-    protected $fillable = ['shipment_status_name'];
+    protected $fillable = [
+        'shipment_status_name',
+    ];
 
     public function orderDetails()
     {
