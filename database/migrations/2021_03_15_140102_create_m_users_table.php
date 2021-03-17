@@ -14,6 +14,7 @@ class CreateMUsersTable extends Migration
     public function up()
     {
         Schema::create('m_users', function (Blueprint $table) {
+            $table->increments('id'); //主キー追記
             $table->string('password', 64);
             $table->string('last_name', 16);
             $table->string('first_name', 16);
@@ -26,7 +27,7 @@ class CreateMUsersTable extends Migration
             $table->integer('phone_number');
             $table->integer('user_classification_id'); //ユーザ種別
             $table->string('company_name', 128);
-            $table->char('delete_flag', 1);
+            $table->char('delete_flag', 1)->default(0); //デリートフラグ修正
         });
     }
 
