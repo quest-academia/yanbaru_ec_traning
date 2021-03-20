@@ -12,7 +12,7 @@ class T_OrdersTableSeeder extends Seeder
     public function run()
     {
         DB::table('t_orders')->insert([
-            'user_id' => '01',
+            'user_id' => 1,
             'order_date' => new DateTime()
         ]);
     }

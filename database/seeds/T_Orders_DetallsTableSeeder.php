@@ -12,11 +12,11 @@ class T_Orders_DetallsTableSeeder extends Seeder
     public function run()
     {
         DB::table('t_orders_detalls')->insert([
-            'products_id' => '001',
-            'order_id' => '0001',
-            'shipment_status_id' => '00001',
-            'order_detail_number' => '000001',
-            'order_quantity' => '1',
+            'products_id' => 1,
+            'order_id' => 1,
+            'shipment_status_id' => 1,
+            'order_detail_number' => 1,
+            'order_quantity' => 1,
             'shipment_date' => new DateTime()
         ]);
     }
