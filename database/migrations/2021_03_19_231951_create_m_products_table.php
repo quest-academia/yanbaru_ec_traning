@@ -23,7 +23,7 @@ class CreateMProductsTable extends Migration
             $table->unsignedInteger('product_status_id');
             $table->timestamp('regist_date');
             $table->unsignedInteger('user_id');
-            // $table->char('delete_flag', 1)->default(0);
+            $table->char('delete_flag', 1)->default(0);
 
             // $table->foreign('id')->references('products_id')->on('t_order_detalls')->onDelete('cascade');
             // $table->foreign('id')->references('product_id')->on('t_purchases')->onDelete('cascade');
