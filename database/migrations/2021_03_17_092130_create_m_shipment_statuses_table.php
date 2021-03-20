@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTOrdersTable extends Migration
+class CreateMShipmentStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_orders', function (Blueprint $table) {
+        Schema::create('m_shipment_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            //$table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
-            $table->timestamp('order_date');
+            $table->string('shipment_status_name', 32);
         });
     }
 
@@ -28,6 +26,6 @@ class CreateTOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_orders');
+        Schema::dropIfExists('m_shipment_statuses');
     }
 }
