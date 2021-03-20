@@ -13,8 +13,8 @@ class PurchasesTableSeeder extends Seeder
     public function run()
     {
         DB::table('t_purchases')->insert([
-            'purchase_price' => '10000',
-            'purchase_quantity' => '10',
+            'purchase_price' => 10000,
+            'purchase_quantity' => 10,
             'purchase_company' => 'やんばる株式会社',
             'order_date' => Carbon::yesterday(),
             'purchase_date' => Carbon::now(),
