@@ -25,10 +25,8 @@ class CreateMProductsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->char('delete_flag', 1)->default(0);
 
-            // $table->foreign('id')->references('products_id')->on('t_order_detalls')->onDelete('cascade');
-            // $table->foreign('id')->references('product_id')->on('t_purchases')->onDelete('cascade');
             // $table->foreign('user_id')->references('id')->on('m_users')->onDelete('cascade');
-            // $table->foreign('category_id')->references('id')->on('m_categorles')->onDelete('cascade');
+            // $table->foreign('category_id')->references('id')->on('m_categories')->onDelete('cascade');
             // $table->foreign('sale_status_id')->references('id')->on('m_sale_statuses')->onDelete('cascade');
             // $table->foreign('product_status_id')->references('id')->on('m_product_statuses')->onDelete('cascade');
         });
