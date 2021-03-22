@@ -16,6 +16,8 @@ class CreateMProductStatusesTable extends Migration
         Schema::create('m_product_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_status_name', 32);
+
+            // $table->foreign('id')->references('product_status_id')->on('m_products')->onDelete('cascade');
         });
     }
 
