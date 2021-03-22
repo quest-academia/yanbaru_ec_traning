@@ -10,6 +10,7 @@
                 <div class="col-3 text-center">
                     <h3>まだアカウントを<br>お持ちでない方はこちら</h3>
                     <button type="button" class="btn btn-primary">新規登録</button>
+
                 </div>
                 <div class="col-3 text-center">
                     <h3>すでにアカウントを<br>お持ちの方はこちら</h3>
