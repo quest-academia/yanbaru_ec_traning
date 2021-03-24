@@ -25,5 +25,6 @@ class M_Sale_StatusesTableSeeder extends Seeder
                 'sale_status_name' => '完売',
             ],
         ]);
+
     }
 }

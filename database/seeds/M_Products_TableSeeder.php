@@ -74,5 +74,6 @@ class M_Products_TableSeeder extends Seeder
             'user_id' => '1',
         ],
         ]);
+
     }
 }

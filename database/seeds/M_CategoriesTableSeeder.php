@@ -37,5 +37,6 @@ class M_CategoriesTableSeeder extends Seeder
                 'category_name' => '福岡',
             ],
         ]);
+
     }
 }
