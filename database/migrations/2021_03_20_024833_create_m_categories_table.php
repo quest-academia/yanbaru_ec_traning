@@ -16,8 +16,6 @@ class CreateMCategoriesTable extends Migration
         Schema::create('m_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('category_name', 32);
-
-            // $table->foreign('id')->references('category_id')->on('m_products')->onDelete('cascade');
         });
     }
 
