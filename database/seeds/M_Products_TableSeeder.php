@@ -62,7 +62,6 @@ class M_Products_TableSeeder extends Seeder
             'regist_date' => new DateTime(),
             'user_id' => '1',
         ],
-
         [
             'product_name' => 'むなかた牛 塩もつ鍋セット',
             'category_id' => '6',
@@ -74,6 +73,5 @@ class M_Products_TableSeeder extends Seeder
             'user_id' => '1',
         ],
         ]);
-
     }
 }

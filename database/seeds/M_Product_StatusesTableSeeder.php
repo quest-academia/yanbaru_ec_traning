@@ -21,6 +21,5 @@ class M_Product_StatusesTableSeeder extends Seeder
                 'product_status_name' => '今だけお得商品',
             ],
         ]);
-
     }
 }
