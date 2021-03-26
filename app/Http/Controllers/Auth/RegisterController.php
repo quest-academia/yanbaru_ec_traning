@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/login';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -56,8 +56,8 @@ class RegisterController extends Controller
             'prefecture' => ['required', 'string', 'max:5'],
             'municipality' => ['required', 'string', 'max:10'],
             'address' => ['required', 'string', 'max:15'],
-            'apartments' => ['required', 'string', 'max:20'],
-            'email' => ['required', 'string', 'email'],
+            'apartments' => ['required', 'string', 'max:32'],
+            'email' => ['required', 'string', 'unique:users','email'], //ユニーク追記
             'phone_number' => ['required', 'numeric', 'max:15'],
 
         ]);
@@ -72,7 +72,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
             'last_name' => $data['last_name'],
             'first_name' => $data['first_name'],
             'zipcode' => $data['zipcode'],

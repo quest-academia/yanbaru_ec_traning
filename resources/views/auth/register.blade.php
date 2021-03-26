@@ -120,8 +120,6 @@
   </style>
 </head>
 
-
-
 <body>
   <!--ログイン前-->
   <!--ログイン後-->
@@ -224,11 +222,7 @@
                 <a href="#" class="text-primary d-inline">ログインはこちらから</a>
               </p>
             </div>
-
-
-
           </form>
-
         </div>
       </div>
 
