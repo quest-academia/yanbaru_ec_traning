@@ -13,10 +13,10 @@ class CreateTOrdersDetallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('t_orders_detalls', function (Blueprint $table) {
+        Schema::create('t_orders_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('products_id');
-            //$table->foreign('products_id')->references('id')->on('m_products')->onDelete('cascade');
+            $table->unsignedInteger('product_id');//products_id　から修正
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');//products_id　から修正
             $table->unsignedInteger('order_id');
             $table->foreign('order_id')->references('id')->on('t_orders')->onDelete('cascade');
             $table->unsignedInteger('shipment_status_id');
@@ -34,6 +34,6 @@ class CreateTOrdersDetallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_orders_detalls');
+        Schema::dropIfExists('t_orders_details');
     }
 }

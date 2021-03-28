@@ -22,7 +22,7 @@ class M_UsersTableSeeder extends Seeder
             'apartments' => 'sampleマンション',
             'email' => 'sample@sample.co.jp',
             'phone_number' => '01234567',
-            'user_classification_id' => '1',
+            'user_classification_id' => '2',
             'company_name' => 'sample株式会社',
         ]);
     }

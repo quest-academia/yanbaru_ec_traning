@@ -22,7 +22,7 @@ class CreatePurchasesTable extends Migration
             $table->timestamp('purchase_date')->useCurrent();
             $table->integer('product_id')->unsigned();
 
-            //$table->foreign('product_id')->references('id')->on(m_products)->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('m_products')->onDelete('cascade');
         });
     }
 
