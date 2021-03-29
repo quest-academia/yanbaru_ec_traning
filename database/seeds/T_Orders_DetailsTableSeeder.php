@@ -15,7 +15,7 @@ class T_Orders_DetailsTableSeeder extends Seeder
             'product_id' => 1,//products_id　から修正
             'order_id' => 1,
             'shipment_status_id' => 1,
-            'order_detail_number' => 1,
+            'order_detail_number' => '1',
             'order_quantity' => 1,
             'shipment_date' => new DateTime()
         ]);
