@@ -12,7 +12,14 @@ class M_Users_ClassificationsTableSeeder extends Seeder
     public function run()
     {
         DB::table('m_user_classifications')->insert([
-            'user_classification_name' => 'sample1'
+            [
+                'id' => 1,
+                'user_classification_name' => '管理者',
+            ],
+            [
+                'id' => 2,
+                'user_classification_name' => '一般',
+            ],
         ]);
     }
 }
