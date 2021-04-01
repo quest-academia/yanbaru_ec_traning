@@ -16,11 +16,11 @@
                         </div>
                     </div>
                     @if ($errors->has('email'))
-                    <div class="row justify-content-center">
-                        <div class="cal-xs-4">
-                            <span style="color:red">{{ $errors->first('email') }}</span>
+                        <div class="row justify-content-center">
+                            <div class="cal-xs-4">
+                                <span style="color:red">{{ $errors->first('email') }}</span>
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
 
