@@ -16,4 +16,16 @@ Route::get('/', function () {
 });
 
 // ユーザ登録
-Auth::routes();
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+
+//カート内商品一覧
+Route::view('cart', 'cart.cart_list');
+Route::get('cart', 'CartController@index')->name('cartindex');
+
+
+
+
+// Route::get('/cart', function () {
+// 	return view('cart.cart_list');
+// });
