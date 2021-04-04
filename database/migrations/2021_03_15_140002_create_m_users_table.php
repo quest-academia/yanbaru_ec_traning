@@ -27,8 +27,7 @@ class CreateMUsersTable extends Migration
             $table->integer('phone_number');
             $table->integer('user_classification_id')->unsigned(); //ユーザ種別 ->unsigned()追加
             $table->foreign('user_classification_id')->references('id')->on('m_user_classifications');//m_user_classificationsのidを参照する
-
-            $table->string('company_name', 128);
+            $table->string('company_name', 128)->nullable();
             $table->char('delete_flag', 1)->default(0); //デリートフラグ修正
         });
     }
