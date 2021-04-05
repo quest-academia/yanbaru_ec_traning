@@ -8,7 +8,6 @@
         </div>
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
             <div class="form-group">
                 <div class="row justify-content-center">
                     <div class="cal-xs-4">
@@ -42,7 +41,7 @@
             </div>
 
             <div class="text-center">
-                <button type="button" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary">
                     {{ __('ログイン') }}
                 </button>
             </div>

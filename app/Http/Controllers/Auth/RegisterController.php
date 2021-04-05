@@ -52,14 +52,13 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:6', 'max:15', 'confirmed'],
             'last_name' => ['required', 'string', 'max:10'],
             'first_name' => ['required', 'string', 'max:10'],
-            'zipcode' => ['required', 'numeric', 'max:7'],
+            'zipcode' => ['required', 'numeric', 'digits_between:1,7'],
             'prefecture' => ['required', 'string', 'max:5'],
             'municipality' => ['required', 'string', 'max:10'],
             'address' => ['required', 'string', 'max:15'],
             'apartments' => ['required', 'string', 'max:32'],
-            'email' => ['required', 'string', 'unique:users','email'], //ユニーク追記
-            'phone_number' => ['required', 'numeric', 'max:15'],
-
+            'email' => ['required', 'string', 'unique:users','email'], 
+            'phone_number' => ['required', 'numeric', 'digits_between:1,11'],
         ]);
     }
 
@@ -82,6 +81,7 @@ class RegisterController extends Controller
             'apartments' => $data['apartments'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
+            'user_classification_id' => 2,
         ]);
     }
 }
