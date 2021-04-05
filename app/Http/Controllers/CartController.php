@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function index()
     {   
-        dd(Auth::user());
-        return view('cart.cart_list');
+        $auth = Auth::user();
+        return view('cart.cart_list',[ 'auth' => $auth ]);
     }
 }
