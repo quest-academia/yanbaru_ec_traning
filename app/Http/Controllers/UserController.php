@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = Auth::user();
+        return view('auth/user_edit', ['user' => $user]);
     }
 
     /**
