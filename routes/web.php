@@ -25,4 +25,4 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ユーザ情報確認
-Route::get('/user_info', 'UserController@show')->name('user_info');
+Route::get('/user_info', 'UserController@show')->name('user.info');
