@@ -23,3 +23,6 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// ユーザ情報確認
+Route::get('/user_info', 'UserController@show')->name('user.info');
