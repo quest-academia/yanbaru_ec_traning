@@ -24,6 +24,18 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        $data = $request->validate([
+            'last_name' => ['required', 'string', 'max:10'],
+            'first_name' => ['required', 'string', 'max:10'],
+            'zipcode' => ['required', 'numeric', 'digits_between:1,7'],
+            'prefecture' => ['required', 'string', 'max:5'],
+            'municipality' => ['required', 'string', 'max:10'],
+            'address' => ['required', 'string', 'max:15'],
+            'apartments' => ['required', 'string', 'max:32'],
+            'email' => ['required', 'string', 'unique:users','email'],
+            'phone_number' => ['required', 'numeric', 'digits_between:1,11'],
+        ]);
+
         $user = Auth::user();
         $user->fill($request->input());
         $user->save();
@@ -37,4 +49,5 @@ class UserController extends Controller
         $user->delete();
         return redirect('login');
     }
+
 }
