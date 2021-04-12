@@ -29,7 +29,7 @@ header {
       padding: 10px 10px;
       z-index: 10;
       background-color: #ffd900;
-      position: fixed;
+      position: flex;
       top: 0;
       display: flex;
       align-items: center;
@@ -60,6 +60,37 @@ header nav {
       margin: 0 0 0 auto;
 }
 
+main h2 {
+      text-align: center;
+      margin: 30px 0 50px 0;
+}
+
+main h3 {
+      text-align: center;
+}
+
+
+
+.itemCategory {
+      text-align: right;
+}
+
+.quantitySelection {
+      margin: 50px 0;
+}
+
+.inputNumber {
+      width: 60px;
+      margin: 0 10px;
+}
+
+.itemTable {
+      margin-top: 10px;
+}
+
+.table-header {
+      background-color: #ffd900;
+}
     /****フッター*******/
 footer {
       width: 100%;

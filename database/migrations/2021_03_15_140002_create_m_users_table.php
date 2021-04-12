@@ -24,7 +24,7 @@ class CreateMUsersTable extends Migration
             $table->string('address', 32);
             $table->string('apartments', 32);
             $table->string('email', 128);
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->integer('user_classification_id')->unsigned(); //ユーザ種別 ->unsigned()追加
             $table->foreign('user_classification_id')->references('id')->on('m_user_classifications');//m_user_classificationsのidを参照する
             $table->string('company_name', 128)->nullable();

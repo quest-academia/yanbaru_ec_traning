@@ -26,3 +26,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ユーザ情報確認
 Route::get('/user_info', 'UserController@show')->name('user.info');
+
+//商品詳細画面表示
+Route::get('product', 'ProductDetailsController@index')->name('product');
+Route::post('addCart', 'ProductDetailsController@addCart')->name('addCart');
