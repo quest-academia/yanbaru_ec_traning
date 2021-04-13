@@ -28,4 +28,4 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/user_info', 'UserController@show')->name('user.info');
 
 //商品検索画面
-Route::get('products', 'ProductsController@index');
+Route::get('products', 'ProductsController@index')->name('search.product');

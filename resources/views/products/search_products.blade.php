@@ -9,7 +9,7 @@
           <br>
           <div class="row">
             <div class="col-sm">
-            <form action="{{ url('/products') }}" method="GET">
+            <form action="{{ route('search.product') }}" method="GET">
                 <div class="form-group row">
                   <label class="col-sm-2 col-form-label">商品名</label>
                   <div class="col-sm-5">
@@ -46,14 +46,14 @@
                 <th></th>
               </tr>
             </thead>
-                @foreach ($products_details as $product_details)
+              @foreach ($products_details as $product_details)
                 <tr>
-                  <td>{{$product_details->product_name}}</td>
-                  <td>{{$product_details->category_name}}</td>
-                  <td>{{$product_details->price}}</td>
+                  <td>{{ $product_details->product_name }}</td>
+                  <td>{{ $product_details->category_name }}</td>
+                  <td>{{ $product_details->price }}</td>
                   <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
                 </tr>
-                @endforeach
+              @endforeach
           </table>
             @if ($products_details->count() == 0)
               <div class="mt-5">
