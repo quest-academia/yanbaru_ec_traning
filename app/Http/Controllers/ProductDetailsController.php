@@ -53,8 +53,7 @@ class ProductDetailsController extends Controller
         ];
         
         //cartDataが入ってない場合、そのままsessionへ（初めて商品を追加する場合）
-        if (!$request->session()->has('cartData'))
-        {
+        if (!$request->session()->has('cartData')) {
             $request->session()->push('cartData', $addData);
         }else{
             //cartDataが既に入ってる場合、まず情報取得して代入
@@ -63,8 +62,8 @@ class ProductDetailsController extends Controller
             //代入値を番号付きでループ処理
             foreach ($sessionCartData as $key => $sessionData) {
                 //もともとの入ってる商品と追加しようとする商品が同じ場合（同じ商品を追加する場合）
-                if ($sessionData['session_products_id'] === $addData['session_products_id'])
-                {
+                if ($sessionData['session_products_id'] === $addData['session_products_id']) {
+                    
                     //個数の合算処理
                     $quantity = $sessionData['session_products_quantity'] + $addData['session_products_quantity'];
                     
@@ -76,14 +75,13 @@ class ProductDetailsController extends Controller
                 }
             }
             //もともとの入ってる商品と追加しようとする商品が違う場合（違う商品を追加する場合）
-            if ($sessionData['session_products_id'] !== $addData['session_products_id'])
-            {
+            if ($sessionData['session_products_id'] !== $addData['session_products_id']) {
                 $request->session()->push('cartData', $addData);
             }
         }
         //$keyにユーザー情報をsession保存（ユーザー情報の移動作業）
         $request->session()->put('users_id', ($request->users_id));
         //保存完了したらカート内商品一覧画面にリダイレクト
-        return redirect('/Cart');
+        return redirect()->route('cart.index');
     }
 }
