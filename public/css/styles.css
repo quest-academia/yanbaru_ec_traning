@@ -1,15 +1,15 @@
-    /*****リセット用CSS*****/
+/*****リセット用CSS*****/
 * {
       box-sizing: border-box;
       /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
-    
+
 body {
       margin: 0;
       padding: 0;
       font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-    /******全体のデザイン******/
+/******全体のデザイン******/
 .wrapper {
       min-height: 100vh;
       /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
@@ -23,7 +23,7 @@ a {
       text-decoration: none;
       color: #4b4b4b;
 }
-    /******ヘッダーデザイン******/
+/******ヘッダーデザイン******/
 header {
       width: 100%;
       padding: 10px 10px;
@@ -60,7 +60,7 @@ header nav {
       margin: 0 0 0 auto;
 }
 
-    /****フッター*******/
+/****フッター*******/
 footer {
       width: 100%;
       padding: 5px 10px;

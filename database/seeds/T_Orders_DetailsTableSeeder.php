@@ -12,7 +12,7 @@ class T_Orders_DetailsTableSeeder extends Seeder
     public function run()
     {
         DB::table('t_orders_details')->insert([
-            'product_id' => 1,//products_id　から修正
+            'product_id' => 1,//products_idから修正
             'order_id' => 1,
             'shipment_status_id' => 1,
             'order_detail_number' => '1',

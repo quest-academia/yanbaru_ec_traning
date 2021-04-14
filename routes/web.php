@@ -21,15 +21,16 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
 
 //カート内商品一覧
-Route::view('cart', 'cart.cart_list');
-Route::get('cart', 'CartController@index')->name('cartindex');
+Route::get('cart', 'ProductDetailsController@takeCart')->name('cart.index');
+
+//商品詳細画面表示
+Route::get('product', 'ProductDetailsController@index')->name('product.index');
+Route::post('addCart', 'ProductDetailsController@addCart');
 
 
 
 
-// Route::get('/cart', function () {
-// 	return view('cart.cart_list');
-// });
+
 
 // ログイン機能
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
