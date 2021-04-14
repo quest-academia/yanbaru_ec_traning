@@ -11,7 +11,7 @@ class Product extends Model
     // Userモデルを親に持つことを明記
     public function user()
     {
-        //return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\User');
     }
     
     // Categoryモデルを親に持つことを明記
