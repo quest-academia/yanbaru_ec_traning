@@ -122,9 +122,13 @@ class ProductDetailsController extends Controller
                 $data['price'] = $product[$index]->price;
                 //商品小計の配列作成し、配列の追加
                 $data['itemPrice'] = $data['price'] * $data['session_products_quantity'];
+                $data['totalPrice'] = number_format(array_sum(array_column($cartData, 'itemPrice')));
+                
+
             }
 
             return view('products.cart_list', compact('sessionUser', 'cartData', 'totalPrice' , 'auth'));
+            
 
         } else {
 
@@ -133,5 +137,45 @@ class ProductDetailsController extends Controller
 
         }
 
+
+        /*
+    |--------------------------------------------------------------------------
+    | カート内商品の削除
+    |--------------------------------------------------------------------------
+    */
+    public function remove(Request $request)
+    {
+        //session情報の取得（product_idと個数の2次元配列）
+        $sessionCartData = $request->session()->get('cartData');
+        
+
+        //削除ボタンから受け取ったproduct_idと個数を2次元配列に
+        $removeCartItem = [
+            ['session_products_id' => $request->product_id, 
+            'session_products_quantity' => $request->product_quantity]
+        ];
+        
+
+        //sessionデータと削除対象データを比較、重複部分を削除し残りの配列を抽出
+        $removeCompletedCartData = array_udiff($sessionCartData, $removeCartItem, function ($sessionCartData, $removeCartItem) {
+            $result1 = $sessionCartData['session_products_id'] - $removeCartItem['session_products_id'];
+            $result2 = $sessionCartData['session_products_quantity'] - $removeCartItem['session_products_quantity'];
+            return $result1 + $result2;
+
+            
+        });
+
+        //上記の抽出情報でcartDataを上書き処理
+        $request->session()->put('cartData', $removeCompletedCartData);
+        //上書き後のsession再取得
+        $cartData = $request->session()->get('cartData');
+
+        //session情報があればtrue
+        if ($request->session()->has('cartData')) {
+            return redirect()->route('cart.index');
+        }
+
+        return view('products.no_cart_list', ['user' => Auth::user()]);
+    }
 
 }

@@ -89,6 +89,16 @@
 
                                     
                                     
+
+                                    <form  class="quantitySelection" action="itemRemove" method="POST">
+                                        @csrf
+                                        <td class="col-1 px-0 text-center">
+                                            <input type="submit" name="delete_products_id" class="btn btn-danger" value="削除" >
+                                        </td>
+                                        <input id="product_id" name="product_id" type="hidden" value="{{  $data['session_products_id'] }}">
+                                        <input id="product_quantity" name="product_quantity" type="hidden" value="{{  $data['session_products_quantity'] }}">
+                                    </form>
+
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -96,7 +106,12 @@
                             <!-- 合計 -->
                             <div class="col-12 row justify-content-end m-0 p-0">
                                 <div class="col-2 text-center px-0">合計</div>
-                                <div class="col-2 text-center px-0">9000円</div>
+                                @php
+                                    $totalPrice = number_format(array_sum(array_column($cartData, 'itemPrice')))
+                                @endphp
+                                <div class="col-2 text-center px-0">
+                                ¥{{ $totalPrice }}円
+                                </div>
                                 <div class="col-1 text-center"></div>
                             </div>
                             <!-- ボタン -->
