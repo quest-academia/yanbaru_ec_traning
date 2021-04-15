@@ -16,7 +16,7 @@ class UserController extends Controller
         return view('auth/user_info', ['user' => $user]);
     }
 
-    public function edit(User $user)
+    public function edit()
     {
         $user = Auth::user();
         return view('auth/user_edit', ['user' => $user]);
