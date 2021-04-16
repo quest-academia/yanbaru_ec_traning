@@ -26,3 +26,6 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ユーザ情報確認
 Route::get('/user_info', 'UserController@show')->name('user.info');
+
+// 注文履歴
+Route::get('/orders', 'OrdersController@show')->name('product.history');
