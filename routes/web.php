@@ -33,3 +33,8 @@ Route::put('/user_update', 'UserController@update')->name('user.update');
 
 // ユーザー情報削除
 Route::get('/delete', 'UserController@delete')->name('user.delete');
+// 注文履歴
+Route::get('/orders', 'OrdersController@show')->name('product.history');
+
+// オーダー情報詳細画面
+Route::get('/order_detail', 'OrderController@showOrderDetail')->name('order.detail');
