@@ -90,7 +90,7 @@
                                     
                                     
 
-                                    <form  class="quantitySelection" action="itemRemove" method="POST">
+                                    <form  class="quantitySelection" action='{{ route('itemRemove') }}' method="POST">
                                         @csrf
                                         <td class="col-1 px-0 text-center">
                                             <input type="submit" name="delete_products_id" class="btn btn-danger" value="削除" >
