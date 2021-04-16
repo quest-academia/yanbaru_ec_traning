@@ -3,7 +3,7 @@
 @section('content')
 
     <main>
-        <div class="container mt-5 pt-5 text-center">
+        <div class="container mt-5 text-center">
             <h2>ログイン画面</h2>
         </div>
         <form method="POST" action="{{ route('login') }}">
