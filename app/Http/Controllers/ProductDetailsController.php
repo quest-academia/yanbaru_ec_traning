@@ -28,7 +28,7 @@ class ProductDetailsController extends Controller
             return view('products.infoItem', compact('user', 'product', 'category_name'));
         }else{
             //該当商品なければ表示
-            return view('products.notFoundItem', compact('user'));
+            return view('products.noFoundItem', compact('user'));
         }
     }
     */
