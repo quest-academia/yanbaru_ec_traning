@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\StoreBlogPost;
+use App\Http\Requests\BlogRequest;
 
 class UserController extends Controller
 {
@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     // フォームリクエストでバリデーション
-    public function update(StoreBlogPost $request)
+    public function update(BlogRequest $request)
     {
         $user = Auth::user();
         $user->fill($request->input());
