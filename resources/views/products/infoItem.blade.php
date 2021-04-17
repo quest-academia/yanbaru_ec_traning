@@ -25,7 +25,7 @@
             <form class="quantitySelection" action="addCart" method="post">
               @csrf
               //session保存でカート内画面遷移時にデータを送信
-              <input id="products_id" name="products_id" type="hidden" value="{{ $products[2]->category_id }}">
+              <input id="products_id" name="products_id" type="hidden" value="{{ $products[1]->category_id }}">
               <input id="users_id" name="users_id" type="hidden" value="{{ $user->id }}">
 
               <div class="form-group row justify-content-center">

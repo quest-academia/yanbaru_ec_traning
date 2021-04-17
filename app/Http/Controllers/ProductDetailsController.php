@@ -54,7 +54,6 @@ class ProductDetailsController extends Controller
     public function addCart(Request $request)
     {
          //POSTで送信する商品IDと注文個数をセッション変数で定義&格納
-        
         $addData = [
             'session_products_id' => $request->products_id,
             'session_products_quantity' => $request->products_quantity
@@ -92,7 +91,6 @@ class ProductDetailsController extends Controller
          //$keyにユーザー情報をsession保存（ユーザー情報の移動作業）
         $request->session()->put('users_id', ($request->users_id));
         
-        
          //保存完了したらカート内商品一覧画面にリダイレクト
         return redirect()->route('cart.index');
     }
@@ -123,16 +121,13 @@ class ProductDetailsController extends Controller
                 //商品小計の配列作成し、配列の追加
                 $data['itemPrice'] = $data['price'] * $data['session_products_quantity'];
                 $data['totalPrice'] = number_format(array_sum(array_column($cartData, 'itemPrice')));
-                
-
             }
 
             return view('products.cart_list', compact('sessionUser', 'cartData', 'totalPrice' , 'auth'));
-            
 
         } else {
 
-            return view('products.no_cart_list',  ['user' => Auth::user()]);
+            return view('products.no_cart_list',  compact('auth'));
         }
 
         }
@@ -147,7 +142,6 @@ class ProductDetailsController extends Controller
     {
         //session情報の取得（product_idと個数の2次元配列）
         $sessionCartData = $request->session()->get('cartData');
-        
 
         //削除ボタンから受け取ったproduct_idと個数を2次元配列に
         $removeCartItem = [
@@ -160,9 +154,7 @@ class ProductDetailsController extends Controller
         $removeCompletedCartData = array_udiff($sessionCartData, $removeCartItem, function ($sessionCartData, $removeCartItem) {
             $result1 = $sessionCartData['session_products_id'] - $removeCartItem['session_products_id'];
             $result2 = $sessionCartData['session_products_quantity'] - $removeCartItem['session_products_quantity'];
-            return $result1 + $result2;
-
-            
+            return $result1 + $result2;   
         });
 
         //上記の抽出情報でcartDataを上書き処理
@@ -175,7 +167,7 @@ class ProductDetailsController extends Controller
             return redirect()->route('cart.index');
         }
 
-        return view('products.no_cart_list', ['user' => Auth::user()]);
+        return view('products.no_cart_list', compact('auth'));
     }
 
 }
