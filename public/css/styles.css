@@ -69,7 +69,9 @@ main h3 {
       text-align: center;
 }
 
-
+.toSearchItem {
+      margin-top: 40px;
+}
 
 .itemCategory {
       text-align: right;
