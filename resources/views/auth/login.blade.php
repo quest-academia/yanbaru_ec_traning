@@ -3,12 +3,8 @@
 @section('content')
 
     <main>
-<<<<<<< HEAD
-        <div class="container mt-5 text-center">
-=======
     @include('commons.error_messages') 
         <div class="container mt-5 pt-5 text-center">
->>>>>>> develop_5term
             <h2>ログイン画面</h2>
         </div>
         <form method="POST" action="{{ route('login') }}">
