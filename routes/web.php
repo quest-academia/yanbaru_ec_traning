@@ -26,3 +26,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // ユーザ情報確認
 Route::get('/user_info', 'UserController@show')->name('user.info');
+
+// ユーザー情報編集
+Route::get('/user_edit', 'UserController@edit')->name('user.edit');
+Route::put('/user_update', 'UserController@update')->name('user.update');
+
+// ユーザー情報削除
+Route::get('/delete', 'UserController@delete')->name('user.delete');
