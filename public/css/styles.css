@@ -1,15 +1,16 @@
-    /*****リセット用CSS*****/
+/*****リセット用CSS*****/
 * {
       box-sizing: border-box;
       /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
-    
+
 body {
       margin: 0;
       padding: 0;
       font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-    /******全体のデザイン******/
+      
+      /******全体のデザイン******/
 .wrapper {
       min-height: 100vh;
       /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
@@ -19,11 +20,13 @@ body {
       padding-bottom: 70px;
       /* ヘッダー、フッターの高さを指定 */
 }
+
 a {
       text-decoration: none;
       color: #4b4b4b;
 }
-    /******ヘッダーデザイン******/
+      
+/******ヘッダーデザイン******/
 header {
       width: 100%;
       padding: 10px 10px;
@@ -33,67 +36,59 @@ header {
       top: 0;
       display: flex;
       align-items: center;
+      z-index: 10;
 }
+
 header h1 {
       padding: 0;
       font-size: 20px;
       font-weight: bold;
 }
+      
 header p {
       position: absolute;
       top: 0;
       right: 0;
       margin-right: 10px;
 }
+
 header ul {
       list-style: none;
       margin: 0;
       display: flex;
 }
+
 header li {
       margin: 0 0 0 15px;
       font-size: 14px;
       font-weight: bold;
       padding-top: 20px;
 }
+
 header nav {
       margin: 0 0 0 auto;
 }
 
-main h2 {
-      text-align: center;
-      margin: 30px 0 50px 0;
+/****main*******/
+.user-info{
+      width: 100%;
+      height: 35px;
 }
 
-main h3 {
-      text-align: center;
+.user-info input{
+      margin-left: 30px;
 }
 
-.toSearchItem {
-      margin-top: 40px;
+.width-control{
+      padding-left: 30px;
 }
 
-.itemCategory {
-      text-align: right;
+.content-width{
+      width: 100%;
+      margin: 0 !important;
 }
 
-.quantitySelection {
-      margin: 50px 0;
-}
-
-.inputNumber {
-      width: 60px;
-      margin: 0 10px;
-}
-
-.itemTable {
-      margin-top: 10px;
-}
-
-.table-header {
-      background-color: #ffd900;
-}
-    /****フッター*******/
+/****フッター*******/
 footer {
       width: 100%;
       padding: 5px 10px;
@@ -101,11 +96,13 @@ footer {
       position: absolute;
       bottom: 0;
 }
+
 footer h1 {
       padding: 0;
       font-size: 20px;
       font-weight: bold;
 }
+
 footer p {
       text-align: right;
       font-weight: bold;
