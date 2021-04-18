@@ -37,4 +37,4 @@ Route::get('/delete', 'UserController@delete')->name('user.delete');
 Route::get('/orders', 'OrdersController@show')->name('product.history');
 
 // オーダー情報詳細画面
-Route::get('/order_detail', 'OrderController@showOrderDetail')->name('order.detail');
+Route::get('/order_detail', 'OrderDetailController@showOrderDetail')->name('order.detail');
