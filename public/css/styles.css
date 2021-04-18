@@ -1,16 +1,16 @@
-    /*****リセット用CSS*****/
-* {
+/*****リセット用CSS*****/
+ * {
       box-sizing: border-box;
       /* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
-}
-    
-body {
+      }
+
+      body {
       margin: 0;
       padding: 0;
       font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-    /******全体のデザイン******/
-.wrapper {
+      }
+      /******全体のデザイン******/
+      .wrapper {
       min-height: 100vh;
       /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
       position: relative;
@@ -18,63 +18,63 @@ body {
       padding-top: 70px;
       padding-bottom: 70px;
       /* ヘッダー、フッターの高さを指定 */
-}
-a {
+      }
+      a {
       text-decoration: none;
       color: #4b4b4b;
-}
-    /******ヘッダーデザイン******/
-header {
+      }
+      /******ヘッダーデザイン******/
+      header {
       width: 100%;
       padding: 10px 10px;
-      z-index: 10;
       background-color: #ffd900;
       position: fixed;
       top: 0;
       display: flex;
       align-items: center;
-}
-header h1 {
+      z-index: 10;
+      }
+      header h1 {
       padding: 0;
       font-size: 20px;
       font-weight: bold;
-}
-header p {
+      }
+      header p {
       position: absolute;
       top: 0;
       right: 0;
       margin-right: 10px;
-}
-header ul {
+      }
+      header ul {
       list-style: none;
       margin: 0;
       display: flex;
-}
-header li {
+      }
+      header li {
       margin: 0 0 0 15px;
       font-size: 14px;
       font-weight: bold;
       padding-top: 20px;
-}
-header nav {
+      }
+      header nav {
       margin: 0 0 0 auto;
-}
+      }
 
-    /****フッター*******/
-footer {
+      /****フッター*******/
+      footer {
       width: 100%;
       padding: 5px 10px;
       background-color: #ffd900;
       position: absolute;
       bottom: 0;
-}
-footer h1 {
+      }
+      footer h1 {
       padding: 0;
       font-size: 20px;
       font-weight: bold;
-}
-footer p {
+      }
+      footer p {
       text-align: right;
       font-weight: bold;
       margin: 0 auto;
-}
+      }
