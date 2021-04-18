@@ -3,6 +3,7 @@
 @section('content')
 
     <main>
+    @include('commons.error_messages') 
         <div class="container mt-5 pt-5 text-center">
             <h2>ログイン画面</h2>
         </div>
@@ -15,13 +16,13 @@
                         <input type="text" name="email" class="form-control">
                     </div>
                 </div>
-                @if ($errors->has('email'))
+                <!-- @if ($errors->has('email'))
                     <div class="row justify-content-center">
                         <div class="cal-xs-4">
                             <span style="color:red">{{ $errors->first('email') }}</span>
                         </div>
                     </div>
-                @endif
+                @endif -->
             </div>
 
             <div class="form-group">
@@ -31,13 +32,13 @@
                         <input type="text" name="password" class="form-control">
                     </div>
                 </div>
-                @if ($errors->has('password'))
+                <!-- @if ($errors->has('password'))
                     <div class="row justify-content-center">
                         <div class="cal-xs-4">
                             <span style="color:red">{{ $errors->first('password') }}</span>
                         </div>
                     </div>
-                @endif
+                @endif -->
             </div>
 
             <div class="text-center">
