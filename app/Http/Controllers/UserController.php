@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\BlogRequest;
 
 class UserController extends Controller
 {
@@ -13,6 +15,29 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return view('auth/user_info', ['user' => $user]);
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        return view('auth/user_edit', ['user' => $user]);
+    }
+
+    // フォームリクエストでバリデーション
+    public function update(BlogRequest $request)
+    {
+        $user = Auth::user();
+        $user->fill($request->input());
+        $user->save();
+        return view('auth/user_info', ['user' => $user]);
+
+    }
+
+    public function delete()
+    {
+        $user = Auth::user();
+        $user->delete();
+        return redirect('login');
     }
 
 }

@@ -16,7 +16,7 @@
 
                 <div class="mb-3">
                     <p class="contents">氏名</p>
-                    <p class="contents-text"> {{$user->last_name}} {{$user->first_name}}</p>
+                    <p class="contents-text"> {{ $user->last_name }} {{ $user->first_name }}</p>
                 </div>
 
                 <div class="mb-3">
@@ -24,23 +24,23 @@
                         住所
                     </p>
                     <div class="contents-text">
-                        <p class="mb-1">〒{{$user->zipcode}}</p>
-                        <p class="mb-1">{{$user->prefecture}}{{$user->municipality}}{{$user->address}}{{$user->apartments}}</p>
+                        <p class="mb-1">〒{{ $user->zipcode }}</p>
+                        <p class="mb-1">{{ $user->prefecture }}{{ $user->municipality }}{{ $user->address }}{{ $user->apartments }}</p>
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <p class="contents">電話番号</p>
-                    <p class="contents-text">{{$user->phone_number}}</p>
+                    <p class="contents-text">{{ $user->phone_number }}</p>
                 </div>
 
                 <div class="mb-3">
                     <p class="contents">メールアドレス</p>
-                    <p class="contents-text">{{$user->email}}</p>
+                    <p class="contents-text">{{ $user->email }}</p>
                 </div>
 
                 <div class="text-center mt-5 ">
-                    <button type="submit" class="btn btn-primary w-25">修正/退会する</button>
+                    <button type="submit" class="btn btn-primary w-25" onclick=location.href='user_edit'>修正/退会する</button>
                 </div>
             </div>
         </div>
