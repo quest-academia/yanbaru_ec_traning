@@ -22,7 +22,7 @@ class ProductDetailsController extends Controller
         //idでプロダクトを検索
         $product = Product::find($id);
         $category_name = Category::find($product->category_id);
-        // dd($product);
+        
         //該当商品あれば表示
         if (isset($product)) {
             return view('products.infoItem', compact('user', 'product', 'category_name'));
@@ -31,7 +31,7 @@ class ProductDetailsController extends Controller
             return view('products.noFoundItem', compact('user'));
         }
     }
-    
+
     //session保存処理
     public function addCart(Request $request)
     {
