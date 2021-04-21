@@ -96,7 +96,7 @@ class ProductDetailsController extends Controller
     }
 
     //session情報を取り出す
-    public function takeCart(Request $request){
+    public function takeCart(Request $request) {
         //カート内商品一覧
         $auth = Auth::user();
 

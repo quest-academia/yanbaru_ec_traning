@@ -13,12 +13,12 @@
                     </h5>
                     <div class="px-3 py-1">
                         <div class="col-12 row px-3">
-                            <div class="col-2"><span id="postal_code">〒{{$auth->zipcode}}</span></div>
-                            <div class="col-8" id="address">{{$auth->prefecture}}{{$auth->municipality}}{{$auth->address}}{{$auth->apartments}}</div>
+                            <div class="col-2"><span id="postal_code">〒{{ $auth->zipcode }}</span></div>
+                            <div class="col-8" id="address">{{ $auth->prefecture }}{{ $auth->municipality }}{{ $auth->address }}{{ $auth->apartments }}</div>
                         </div>
                         <div class="col-12 row px-3">
                             <div class="col-2"></div>
-                            <div class="col-8" id="name">{{$auth->last_name}} {{$auth->first_name}}<span class="ml-1">様</span></div>
+                            <div class="col-8" id="name">{{ $auth->last_name }} {{ $auth->first_name }}<span class="ml-1">様</span></div>
                         </div>
                     </div>
                 </div>
