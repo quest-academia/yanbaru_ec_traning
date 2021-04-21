@@ -29,3 +29,14 @@ Route::get('/user_info', 'UserController@show')->name('user.info');
 
 //商品検索画面
 Route::get('products', 'ProductsController@index')->name('search.product');
+
+//商品詳細画面表示
+Route::get('product', 'ProductDetailsController@index')->name('product.index');
+Route::post('addCart', 'ProductDetailsController@addCart')->name('cart.index');
+
+// ユーザー情報編集
+Route::get('/user_edit', 'UserController@edit')->name('user.edit');
+Route::put('/user_update', 'UserController@update')->name('user.update');
+
+// ユーザー情報削除
+Route::get('/delete', 'UserController@delete')->name('user.delete');
