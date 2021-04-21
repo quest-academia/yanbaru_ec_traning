@@ -11,5 +11,4 @@ class OrderDetail extends Model
     public function orders() {
         return $this->belongsTo('App\Models\Order');
     }
-
 }
