@@ -31,7 +31,7 @@ Route::get('/user_info', 'UserController@show')->name('user.info');
 Route::get('products', 'ProductsController@index')->name('search.product');
 
 //商品詳細画面表示
-Route::get('product', 'ProductDetailsController@index')->name('product.index');
+Route::get('products/{id}', 'ProductDetailsController@show')->name('product.show');
 Route::post('addCart', 'ProductDetailsController@addCart')->name('cart.index');
 
 // ユーザー情報編集

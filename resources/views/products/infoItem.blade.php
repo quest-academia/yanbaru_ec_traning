@@ -5,27 +5,27 @@
     <main>
         <div class="container">
             <div class="mx-auto">
-              
+            
                 <h2>商品情報</h2>
-                <h3>{{ $products[0]->product_name }}</h3>
+                <h3>{{ $product->product_name }}</h3>
                 
                 <div class="row">
                     <div class="col-sm">
                         <div>
-                          
-                            <p class="itemCategory">商品カテゴリ:{{ $categories[0]->category_name }}</p>
-                         
+                        
+                            <p class="itemCategory">商品カテゴリ:{{ $category_name->category_name }}</p>
+                        
                             <p>商品説明</p>
-                            <p>{{ $products[0]->description }}</p>
+                            <p>{{ $product->description }}</p>
                             
                             <br>
-                            <p>価格:{{ $products[0]->price }}</p>
-                          
+                            <p>価格:{{ $product->price }}</p>
+                        
                         </div>
                         <form class="quantitySelection" action="addCart" method="post">
                             @csrf
-                            //session保存でカート内画面遷移時にデータを送信
-                            <input id="products_id" name="products_id" type="hidden" value="{{ $products[0]->category_id }}">
+                            <!-- //session保存でカート内画面遷移時にデータを送信 -->
+                            <input id="products_id" name="products_id" type="hidden" value="{{ $product->category_id }}">
                             <input id="users_id" name="users_id" type="hidden" value="{{ $user->id }}">
                             
                             <div class="form-group row justify-content-center">
@@ -44,5 +44,5 @@
             </div>
         </div>
     </main>
-  
+
 @endsection

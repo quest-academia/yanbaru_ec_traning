@@ -15,14 +15,14 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class ProductDetailsController extends Controller
 {
-    /*
     //商品検索画面からPOSTされたデータをviewへ送信
-    public function index($id)
+    public function show($id)
     {
         $user = Auth::user();
         //idでプロダクトを検索
         $product = Product::find($id);
         $category_name = Category::find($product->category_id);
+        // dd($product);
         //該当商品あれば表示
         if (isset($product)) {
             return view('products.infoItem', compact('user', 'product', 'category_name'));
@@ -30,17 +30,6 @@ class ProductDetailsController extends Controller
             //該当商品なければ表示
             return view('products.noFoundItem', compact('user'));
         }
-    }
-    */
-    
-    //削除予定(仮データで処理)
-    public function index()
-    {
-        $user = Auth::user();
-        $products = Product::all();
-        $categories = Category::all();
-        
-        return view('products.infoItem', compact('products', 'categories', 'user'));
     }
     
     //session保存処理
