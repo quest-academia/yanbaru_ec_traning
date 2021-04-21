@@ -50,9 +50,9 @@
                     @foreach ($products_details as $product_details)
                         <tr>
                             <td>{{ $product_details->product_name }}</td>
-                            <td>{{ $product_details->category_name }}</td>
+                            <td>{{ $product_details->Category->category_name }}</td>
                             <td>{{ $product_details->price }}</td>
-                            <td><a href="#" class="btn btn-primary btn-sm">商品詳細</a></td>
+                            <td><a href="{{ route('product.show', ['id' => $product_details->id]) }}" class="btn btn-primary btn-sm">商品詳細</a></td>
                         </tr>
                     @endforeach
                 </table>

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Models\Category;
 class ProductsController extends Controller
 {
     public function index(Request $request)
     {
-        $products_details = Product::Join('m_categories', 'm_products.category_id', '=', 'm_categories.id')
+        $products_details = Product::with('Category')
                                 ->when($request->product_name, function ($query) use ($request) {
                                     return $query->where('product_name', 'like', "%$request->product_name%");
                                 })
@@ -19,7 +19,7 @@ class ProductsController extends Controller
                                 ->orderByRaw("category_id ASC, product_name ASC")
                                 ->paginate(15);
 
-        $all_products_categories = ProductCategory::get();
+        $all_products_categories = Category::get();
         return view('products.search_products', compact('products_details', 'all_products_categories'));
     }
 }
