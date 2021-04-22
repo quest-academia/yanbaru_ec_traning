@@ -16,6 +16,13 @@
                         <label for="formGroupExampleInput2" class="mt-3 mb-0">商品名</label>
                         <div class="product-info width-control">
                             <input type="text" name="product_name" class="content-half-width form-control-sm d-inline">
+                            <!-- @if ($errors->has('product_name'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('product_name') }}</span>
+                                    </div>
+                                </div>
+                            @endif -->
                         </div>
                     </div>
         
@@ -23,6 +30,13 @@
                         <label for="formGroupExampleInput2" class="mt-3 mb-0">商品説明</label>
                         <div class="product-info width-control">
                             <textarea name="description" class="content-width form-control-sm"></textarea>
+                            <!-- @if ($errors->has('description'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('description') }}</span>
+                                    </div>
+                                </div>
+                            @endif -->
                         </div>
                     </div>
                     
@@ -30,6 +44,13 @@
                         <label for="formGroupExampleInput2" class="mt-3 mb-0">価格</label>
                         <div class="product-info width-control">
                             <input type="text" name="price" class="content-half-width form-control-sm d-inline">
+                            <!-- @if ($errors->has('price'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('price') }}</span>
+                                    </div>
+                                </div>
+                            @endif -->
                         </div>
                     </div>
                     

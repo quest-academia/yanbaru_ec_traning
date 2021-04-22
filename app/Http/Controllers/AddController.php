@@ -22,6 +22,14 @@ class AddController extends Controller
     
     public function store(Request $request)
     {
+        $rules = [
+        'product_name' => ['required'],
+        'description' => ['required'],
+        'price' => ['required'],
+        ];
+        
+        $this->validate($request, $rules);
+        
         $newProduct = new Product;
         $newProduct->product_name = $request->product_name;
         $newProduct->description = $request->description;
