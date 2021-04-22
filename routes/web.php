@@ -40,5 +40,5 @@ Route::put('/user_update', 'UserController@update')->name('user.update');
 Route::get('/delete', 'UserController@delete')->name('user.delete');
 
 //商品追加
-Route::get('newAdd', 'AddController@index')->name('newAdd.index');
+Route::get('products/add', 'AddController@index')->name('newAdd.index');
 Route::post('newProduct', 'AddController@store')->name('newProduct.post');
