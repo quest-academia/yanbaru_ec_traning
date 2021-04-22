@@ -62,7 +62,7 @@
                                 
                                 <option value="">未選択</option>
                                 @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                 @endforeach
                                 
                             </select>
@@ -77,7 +77,7 @@
                                 
                                 <option value="">未選択</option>
                                 @foreach ($products_status as $product_status)
-                                <option value="{{ $product_status->id }}">{{ $product_status->product_status_name }}</option>
+                                    <option value="{{ $product_status->id }}">{{ $product_status->product_status_name }}</option>
                                 @endforeach
                                 
                             </select>
@@ -92,7 +92,7 @@
                                 
                                 <option value="">未選択</option>
                                 @foreach ($sales as $sale)
-                                <option value="{{ $sale->id }}">{{ $sale->sale_status_name }}</option>
+                                    <option value="{{ $sale->id }}">{{ $sale->sale_status_name }}</option>
                                 @endforeach
                                 
                             </select>

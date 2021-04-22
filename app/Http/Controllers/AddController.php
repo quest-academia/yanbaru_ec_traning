@@ -46,7 +46,4 @@ class AddController extends Controller
         
         return view('welcome');
     }
-    
-
-    
 }
