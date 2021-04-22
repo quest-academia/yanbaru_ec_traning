@@ -69,6 +69,36 @@
                         </dov>
                     </div>
                     
+                    <div class="form-group-sm clearfix">
+                        <label for="formGroupExampleInput2" class="mt-3 mb-0">商品状態</label>
+                        
+                        <div class="product-info width-control">
+                            <select class="content-half-width form-control-sm d-inline" id="changeSelect" name="product_status_id" onchange="entryChange2();">
+                                
+                                <option value="">未選択</option>
+                                @foreach ($products_status as $product_status)
+                                <option value="{{ $product_status->id }}">{{ $product_status->product_status_name }}</option>
+                                @endforeach
+                                
+                            </select>
+                        </dov>
+                    </div>
+                    
+                    <div class="form-group-sm clearfix">
+                        <label for="formGroupExampleInput2" class="mt-3 mb-0">販売状態</label>
+                        
+                        <div class="product-info width-control">
+                            <select class="content-half-width form-control-sm d-inline" id="changeSelect" name="sale_status_id" onchange="entryChange2();">
+                                
+                                <option value="">未選択</option>
+                                @foreach ($sales as $sale)
+                                <option value="{{ $sale->id }}">{{ $sale->sale_status_name }}</option>
+                                @endforeach
+                                
+                            </select>
+                        </dov>
+                    </div>
+                    
                     <div class="text-center mt-5">
                         <button type="submit" class="btn btn-primary w-50">追加</button>
                         <p class="mt-5">

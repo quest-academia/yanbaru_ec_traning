@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductStatus;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +18,10 @@ class AddController extends Controller
     {
         $user = Auth::user();
         $categories = Category::all();
+        $products_status = ProductStatus::all();
+        $sales = Sale::all();
         
-        return view('products.newAdd', compact('categories', 'user'));
+        return view('products.newAdd', compact('categories', 'user', 'sales', 'products_status'));
     }
     
     public function store(Request $request)
@@ -35,6 +39,8 @@ class AddController extends Controller
         $newProduct->description = $request->description;
         $newProduct->price = $request->price;
         $newProduct->category_id = $request->category_id;
+        $newProduct->product_status_id = $request->product_status_id;
+        $newProduct->sale_status_id = $request->sale_status_id;
         $newProduct->user_id = Auth::user()->id;
         $newProduct->save();
         
