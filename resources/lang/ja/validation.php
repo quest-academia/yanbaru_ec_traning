@@ -160,6 +160,9 @@ return [
         'product_name'=>'商品名',
         'description'=>'商品説明',
         'price'=>'価格',
+        'category_id'=>'商品カテゴリー',
+        'product_status_id'=>'商品状態',
+        'sale_status_id'=>'販売状態',
     ],
 
 ];

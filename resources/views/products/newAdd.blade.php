@@ -64,6 +64,13 @@
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                 @endforeach
+                                <!-- @if ($errors->has('category_id'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('category_id') }}</span>
+                                    </div>
+                                </div>
+                                @endif -->
                                 
                             </select>
                         </dov>
@@ -79,6 +86,13 @@
                                 @foreach ($products_status as $product_status)
                                     <option value="{{ $product_status->id }}">{{ $product_status->product_status_name }}</option>
                                 @endforeach
+                                <!-- @if ($errors->has('product_status_id'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('product_status_id') }}</span>
+                                    </div>
+                                </div>
+                                @endif -->
                                 
                             </select>
                         </dov>
@@ -94,6 +108,13 @@
                                 @foreach ($sales as $sale)
                                     <option value="{{ $sale->id }}">{{ $sale->sale_status_name }}</option>
                                 @endforeach
+                                <!-- @if ($errors->has('sale_status_id'))
+                                <div class="row justify-content-center">
+                                    <div class="cal-xs-4">
+                                        <span style="color:red">{{ $errors->first('sale_status_id') }}</span>
+                                    </div>
+                                </div>
+                                @endif -->
                                 
                             </select>
                         </dov>

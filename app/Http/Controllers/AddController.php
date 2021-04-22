@@ -30,6 +30,9 @@ class AddController extends Controller
         'product_name' => ['required'],
         'description' => ['required'],
         'price' => ['required'],
+        'category_id' => ['required'],
+        'product_status_id' => ['required'],
+        'sale_status_id' => ['required'],
         ];
         
         $this->validate($request, $rules);
