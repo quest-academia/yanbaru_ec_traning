@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <main>
         <div class="container">
             <div class="mx-auto">
@@ -44,5 +45,4 @@
             </div>
         </div>
     </main>
-
 @endsection
