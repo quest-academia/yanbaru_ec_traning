@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main>
+    <main>
 
       <div class="page-header mt-5 text-center">
         <h4>お客様情報登録</h4>
@@ -162,5 +162,5 @@
       </div>
 
     </main>
-    @endsection 
 
+@endsection

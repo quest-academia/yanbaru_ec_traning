@@ -14,27 +14,19 @@ class M_CategoriesTableSeeder extends Seeder
         DB::table('m_categories')->insert([
             [
                 'id' => 1,
-                'category_name' => '沖縄',
+                'category_name' => '魚介類',
             ],
             [
                 'id' => 2,
-                'category_name' => '北海道',
+                'category_name' => '粉物',
             ],
             [
                 'id' => 3,
-                'category_name' => '東京',
+                'category_name' => '鍋類',
             ],
             [
                 'id' => 4,
-                'category_name' => '大阪',
-            ],
-            [
-                'id' => 5,
-                'category_name' => '名古屋',
-            ],
-            [
-                'id' => 6,
-                'category_name' => '福岡',
+                'category_name' => '肉類',
             ],
         ]);
     }

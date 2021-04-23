@@ -54,6 +54,7 @@ class ProductDetailsController extends Controller
     public function addCart(Request $request)
     {
          //POSTで送信する商品IDと注文個数をセッション変数で定義&格納
+
         $addData = [
             'session_products_id' => $request->products_id,
             'session_products_quantity' => $request->products_quantity
@@ -84,6 +85,7 @@ class ProductDetailsController extends Controller
                 }
             }
              //もともとの入ってる商品と追加しようとする商品が違う場合（違う商品を追加する場合）
+
             if ($sessionData['session_products_id'] !== $addData['session_products_id']) {
                 $request->session()->push('cartData', $addData);
             }
