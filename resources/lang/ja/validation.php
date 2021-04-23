@@ -157,12 +157,6 @@ return [
         'phone_number'=>'電話番号',
         'password'=>'パスワード',
         'password_confirmation'=>'パスワード確認',
-        'product_name'=>'商品名',
-        'description'=>'商品説明',
-        'price'=>'価格',
-        'category_id'=>'商品カテゴリー',
-        'product_status_id'=>'商品状態',
-        'sale_status_id'=>'販売状態',
     ],
 
 ];

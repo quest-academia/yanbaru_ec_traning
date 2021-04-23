@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\ProductStatus;
 use App\Models\Sale;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreProduct;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -24,19 +25,8 @@ class AddController extends Controller
         return view('products.newAdd', compact('categories', 'user', 'sales', 'products_status'));
     }
     
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
-        $rules = [
-        'product_name' => ['required'],
-        'description' => ['required'],
-        'price' => ['required'],
-        'category_id' => ['required'],
-        'product_status_id' => ['required'],
-        'sale_status_id' => ['required'],
-        ];
-        
-        $this->validate($request, $rules);
-        
         $newProduct = new Product;
         $newProduct->product_name = $request->product_name;
         $newProduct->description = $request->description;
@@ -46,6 +36,8 @@ class AddController extends Controller
         $newProduct->sale_status_id = $request->sale_status_id;
         $newProduct->user_id = Auth::user()->id;
         $newProduct->save();
+        
+        $validated = $request->validated();
         
         return view('welcome');
     }
