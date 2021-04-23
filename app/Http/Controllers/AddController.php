@@ -15,15 +15,16 @@ use App\Http\Controllers\Controller;
 
 class AddController extends Controller
 {
-    public function index(Request $request)
+      public function index(Request $request)
     {
-        $user = Auth::user();
-        $categories = Category::all();
-        $products_status = ProductStatus::all();
-        $sales = Sale::all();
-        
-        return view('products.newAdd', compact('categories', 'user', 'sales', 'products_status'));
+        return view('products.newAdd', [
+            'user' => Auth::user(),
+            'categories' => Category::all(),
+            'products_status'  => ProductStatus::all(),
+            'sales' => Sale::all(),
+        ]);
     }
+
     
     public function store(StoreProduct $request)
     {
