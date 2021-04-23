@@ -7,10 +7,10 @@
                 <div class="col-12">
                     <!-- 直近3ヶ月表示ボタン -->
                     <div class="col-12 ">
-                    @if ($term_flg)
-                        <a class="btn btn-secondary btn-sm" href="{{ route('order.history', ['term_flg' => 'false']) }}" role="button" name="term">直近3ヶ月の注文を表示</a>
+                    @if ($termFlg)
+                        <a class="btn btn-secondary btn-sm" href="{{ route('order.history', ['termFlg' => 'false']) }}" role="button" name="term">直近3ヶ月の注文を表示</a>
                     @else
-                        <a class="btn btn-secondary btn-sm" href="{{ route('order.history', ['term_flg' => 'true']) }}" role="button" name="term">全件を表示</a>
+                        <a class="btn btn-secondary btn-sm" href="{{ route('order.history', ['termFlg' => 'true']) }}" role="button" name="term">全件を表示</a>
                     @endif
                     </div>
                     @if ($orders->isEmpty())
@@ -32,8 +32,8 @@
                                     <tr class="d-flex">
                                         <th scope="row" class="col-1 px-0 text-center">{{ $loop->iteration }}</th>
                                             <td class="col-2 px-0 text-center" id="order_number_1">
-                                            @foreach ($order->orderDetails as $order_detail)
-                                                {{ $order_detail->order_detail_number }}<br>
+                                            @foreach ($order->orderDetails as $orderDetail)
+                                                {{ $orderDetail->order_detail_number }}<br>
                                             @endforeach
                                             </td>
                                         <td class="col-4 px-2">
@@ -51,7 +51,7 @@
                                         </td>
                                         <td class="col-3 px-0">
                                             <div>注文日時：<span id="order_date_2">{{ $order->order_date->format('Y-m-d') }}</span></div>
-                                            @if ($shipment_status_flg)
+                                            @if ($preparationFlg)
                                                 <div>注文状態：<span id="order_status_2">準備中</span></div>
                                             @else
                                                 <div>注文状態：<span id="order_status_2">発送済</span></div>
