@@ -28,25 +28,37 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+<<<<<<< HEAD
     
     // Saleモデルを親に持つことを明記
     public function sale()
+=======
+
+    // Sale_statusモデルを親に持つことを明記
+    public function sale_status()
+>>>>>>> develop_5term
     {
         return $this->belongsTo('App\Models\Sale');
     }
+<<<<<<< HEAD
     
     // ProductStatusモデルを親に持つことを明記
     public function productstatus()
+=======
+
+    // Product_statusモデルを親に持つことを明記
+    public function product_statuse()
+>>>>>>> develop_5term
     {
         return $this->belongsTo('App\Models\ProductStatus');
     }
-    
+
     // Detailモデルを子に持つことを記述
     public function details()
     {
         //return $this->hasMany('App\Models\Detail');
     }
-    
+
     // Purchaseモデルを子に持つことを記述
     public function purchases()
     {
