@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <main>
         <div class="container pt-5">
             <div class="mx-auto">
