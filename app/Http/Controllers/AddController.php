@@ -8,14 +8,14 @@ use App\Models\Category;
 use App\Models\ProductStatus;
 use App\Models\Sale;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProduct;
+use App\Http\Requests\ProductRequests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AddController extends Controller
 {
-      public function index(Request $request)
+    public function index(Request $request)
     {
         return view('products.newAdd', [
             'user' => Auth::user(),
@@ -26,7 +26,7 @@ class AddController extends Controller
     }
 
     
-    public function store(StoreProduct $request)
+    public function store(ProductRequests $request)
     {
         $newProduct = new Product;
         $newProduct->product_name = $request->product_name;
