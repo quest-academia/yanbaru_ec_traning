@@ -25,8 +25,8 @@
                                 <div class="col-sm-3">
                                     <select name="product_category" value="{{ request('product_category') }}" class="form-control">
                                         <option value="">未選択</option>
-                                        @foreach ($all_products_categories as $product_category)
-                                            <option value="{{ $product_category->id }}">{{ $product_category->category_name }}</option>
+                                        @foreach ($allProductsCategories as $productCategory)
+                                            <option value="{{ $productCategory->id }}">{{ $productCategory->category_name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -37,7 +37,7 @@
             </div>
             <!--テーブル-->
             <div class="itemTable">
-                <p>全{{ $products_details->count() }}件</p>
+                <p>全{{ $productsDetails->count() }}件</p>
                 <table class="table table-hover">
                     <thead>
                         <tr class="table-header">
@@ -47,16 +47,16 @@
                             <th></th>
                         </tr>
                     </thead>
-                    @foreach ($products_details as $product_details)
+                    @foreach ($productsDetails as $productDetails)
                         <tr>
-                            <td>{{ $product_details->product_name }}</td>
-                            <td>{{ $product_details->Category->category_name }}</td>
-                            <td>{{ $product_details->price }}</td>
-                            <td><a href="{{ route('product.show', ['id' => $product_details->id]) }}" class="btn btn-primary btn-sm">商品詳細</a></td>
+                            <td>{{ $productDetails->product_name }}</td>
+                            <td>{{ $productDetails->Category->category_name }}</td>
+                            <td>{{ $productDetails->price }}</td>
+                            <td><a href="{{ route('product.show', ['id' => $productDetails->id]) }}" class="btn btn-primary btn-sm">商品詳細</a></td>
                         </tr>
                     @endforeach
                 </table>
-                @if ($products_details->count() == 0)
+                @if ($productsDetails->count() == 0)
                     <div class="mt-5">
                         <div class="text-center">
                             <p class="h2">検索結果がありませんでした</p>
@@ -69,7 +69,7 @@
             <div>
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
-                        {{ $products_details->links() }}
+                        {{ $productsDetails->links() }}
                     </ul>
                 </nav>
             </div>

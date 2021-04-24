@@ -22,11 +22,11 @@ class ProductDetailsController extends Controller
         $user = Auth::user();
         //idでプロダクトを検索
         $product = Product::find($id);
-        $category_name = Category::find($product->category_id);
+        $categoryName = Category::find($product->category_id);
         
         //該当商品あれば表示
         if (isset($product)) {
-            return view('products.infoItem', compact('user', 'product', 'category_name'));
+            return view('products.infoItem', compact('user', 'product', 'categoryName'));
         }else{
             //該当商品なければ表示
             return view('products.noFoundItem', compact('user'));

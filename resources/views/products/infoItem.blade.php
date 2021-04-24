@@ -14,7 +14,7 @@
                     <div class="col-sm">
                         <div>
                         
-                            <p class="itemCategory">商品カテゴリ:{{ $category_name->category_name }}</p>
+                            <p class="itemCategory">商品カテゴリ:{{ $categoryName->category_name }}</p>
                         
                             <p>商品説明</p>
                             <p>{{ $product->description }}</p>
