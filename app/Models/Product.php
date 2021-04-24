@@ -16,29 +16,29 @@ class Product extends Model
         'description',
         'price',
     ];
-    
+
     // Userモデルを親に持つことを明記
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    
+
     // Categoryモデルを親に持つことを明記
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
-    
-    // Saleモデルを親に持つことを明記
-    public function sale()
+
+    // Sale_statusモデルを親に持つことを明記
+    public function sale_status()
     {
-        return $this->belongsTo('App\Models\Sale');
+        return $this->belongsTo('App\Models\Sale_status');
     }
-    
-    // ProductStatusモデルを親に持つことを明記
-    public function productstatus()
+
+    // Product_statusモデルを親に持つことを明記
+    public function product_status()
     {
-        return $this->belongsTo('App\Models\ProductStatus');
+        return $this->belongsTo('App\Models\Product_status');
     }
 
     // Detailモデルを子に持つことを記述
