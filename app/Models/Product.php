@@ -27,7 +27,7 @@ class Product extends Model
     }
 
     // Product_statusモデルを親に持つことを明記
-    public function product_statuse()
+    public function product_status()
     {
         //return $this->belongsTo('App\Models\Product_status');
     }

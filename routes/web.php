@@ -44,9 +44,11 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 // ユーザ情報確認
 Route::get('/user_info', 'UserController@show')->name('user.info');
 
+//商品検索画面
+Route::get('products', 'ProductsController@index')->name('search.product');
 
 //商品詳細画面表示
-Route::get('product', 'ProductDetailsController@index')->name('product.index');
+Route::get('products/{id}', 'ProductDetailsController@show')->name('product.show');
 Route::post('addCart', 'ProductDetailsController@addCart')->name('cart.index');
 
 // ユーザー情報編集
