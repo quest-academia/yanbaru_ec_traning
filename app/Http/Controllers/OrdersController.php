@@ -35,7 +35,7 @@ class OrdersController extends Controller
 
         $orders_details = Order::with('orderDetails.shipmentStatues', 'users')
         ->where([
-            ['user_id', '=', '1'],//1のところはAuth::id()
+            ['user_id', '=', '2'],//1のところはAuth::id()
             ['order_date', '>=', '$days_before'],//$limit_data
         ])->get();
         // $data = $order_details->user_id;
