@@ -8,7 +8,7 @@ class OrderDetail extends Model
 {
     protected $table = 't_orders_details';
 
-    public function orders() {
+    public function order() {
         return $this->belongsTo('App\Models\Order');
     }
 }
