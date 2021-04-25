@@ -38,8 +38,6 @@ class AddController extends Controller
         $newProduct->user_id = Auth::user()->id;
         $newProduct->save();
         
-        $validated = $request->validated();
-        
         return view('welcome');
     }
 }
