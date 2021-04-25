@@ -32,9 +32,7 @@
                                     <tr class="d-flex">
                                         <th scope="row" class="col-1 px-0 text-center">{{ $loop->iteration }}</th>
                                             <td class="col-2 px-0 text-center" id="order_number_1">
-                                            @foreach ($order->orderDetails as $orderDetail)
-                                                {{ $orderDetail->order_detail_number }}<br>
-                                            @endforeach
+                                                {{ $order->orderDetails[0]->order_detail_number }}
                                             </td>
                                         <td class="col-4 px-2">
                                             <div>〒<span id="postal_code_1"></span>{{ $order->users->zipcode }}</div>
@@ -57,6 +55,8 @@
                                                 <div>注文状態：<span id="order_status_2">発送済</span></div>
                                             @endif
                                         </td>
+                                        <!-- 注文詳細画面完了時適用 -->
+                                        <!-- <td class="col-2 px-0 text-center"><a href="{{ route('order.detail', ['id' => $order->id,'productCategory' => $order->orderDetails[0]->order_detail_number]) }}" class="btn btn-primary btn-sm">詳細</a></td> -->
                                         <td class="col-2 px-0 text-center"><button class="btn btn-primary btn-sm">詳細</button></td>
                                     </tr>
                                 @endforeach
