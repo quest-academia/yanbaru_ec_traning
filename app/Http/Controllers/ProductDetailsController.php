@@ -16,41 +16,24 @@ use Illuminate\Http\Request;
 
 class ProductDetailsController extends Controller
 {
-    public function index()
-    {   
-        //商品詳細画面
-        $user = Auth::user();
-        $products = Product::all();
-        $categories = Category::all();
-
-        return view('products.infoItem', compact('products', 'categories', 'user'));
-
-
-    
     //商品検索画面からPOSTされたデータをviewへ送信
-    
-        // $user = Auth::user();
-        // //idでプロダクトを検索
-        // $product = Product::find($id);
-        // $category_name = Category::find($product->category_id);
-        // //該当商品あれば表示
-        // if (isset($product)) {
-        //     return view('products.infoItem', compact('user', 'product', 'category_name'));
-        // }else{
-        //     //該当商品なければ表示
-        //     return view('products.notFoundItem', compact('user'));
-        // }
-    }
-    
-
-
+    public function show($id)
+    {
+        $user = Auth::user();
+        //idでプロダクトを検索
+        $product = Product::find($id);
+        $categoryName = Category::find($product->category_id);
         
+        //該当商品あれば表示
+        if (isset($product)) {
+            return view('products.infoItem', compact('user', 'product', 'categoryName'));
+        }else{
+            //該当商品なければ表示
+            return view('products.noFoundItem', compact('user'));
+        }
+    }
 
-    
-
-
-
-     //session保存処理
+    //session保存処理
     public function addCart(Request $request)
     {
          //POSTで送信する商品IDと注文個数をセッション変数で定義&格納
