@@ -56,7 +56,7 @@
                                             @endif
                                         </td>
                                         <!-- 注文詳細画面完了時適用 -->
-                                        <!-- <td class="col-2 px-0 text-center"><a href="{{ route('order.detail', ['id' => $order->id,'productCategory' => $order->orderDetails[0]->order_detail_number]) }}" class="btn btn-primary btn-sm">詳細</a></td> -->
+                                        <!-- <td class="col-2 px-0 text-center"><a href="{{ route('order.detail', ['id' => $order->id,'orderDetailNumber' => $order->orderDetails[0]->order_detail_number]) }}" class="btn btn-primary btn-sm">詳細</a></td> -->
                                         <td class="col-2 px-0 text-center"><button class="btn btn-primary btn-sm">詳細</button></td>
                                     </tr>
                                 @endforeach
