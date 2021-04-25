@@ -14,19 +14,20 @@ use App\Models\Product;
 
 class OrderDetailController extends Controller
 {
-    public function showOrderDetail(Request $request )
+    public function showOrderDetail(Request $request)
+    // public function showOrderDetail(Request $request,$id)注文履歴取り込んだら修正
     {
 
         $ordersHistory = OrderDetail::with('orders','Product.category','shipmentStatues')
         ->whereHas('orders', function ($query) {
             $query->where('user_id', Auth::id());
         })
-        ->where('order_detail_number', 1) //1のところは$id
+        ->where('order_detail_number', 1) //1のところは,$id（注文id）注文履歴作成後修正
         ->where('shipment_status_id', '<>', 2)
         ->get();
         // dd($ordersHistory);
         $userInfo = User::find(Auth::id());
-        $orderNumber = OrderDetail::where('order_id', 1) //$id order_detail_number
+        $orderNumber = OrderDetail::where('order_id', 1) //$id
         ->select('order_detail_number')
         ->find(1);
         // dd($orderNumber);
@@ -51,7 +52,7 @@ class OrderDetailController extends Controller
 
     public function edit()
     {
-        // ログインしたユーザーと同じuser_idなら
+        // ログインしたユーザーと同じuser_idなら修正可能
         $ordersHistory = OrderDetail::whereHas('orders', function ($query) {
         $query->where('user_id', Auth::id());
         })

@@ -5,15 +5,15 @@
 <div class="wrapper">
     <main>
         @if ($ordersHistory->isEmpty())
-        <div class="container">
+        <div class="container py-3  mt-5 pt-5">
             <div class="mx-auto">
-                <h2>該当商品が見つかりませんでした...</h2>
+                <h3>該当商品が見つかりませんでした...</h3>
                 <h3>商品検索画面に戻り、やり直してください</h3>
                 <h3><a href="#" class="toSearchItem btn btn-primary btn-lg">商品検索画面へ</a></h3>
             </div>
         </div>
         @else
-        <div class="container-fluid py-3">
+        <div class="container-fluid py-3 mt-5 pt-5">
             <div class="row col-12 justify-content-center m-0">
                 <div class="col-12">
                     <!-- お届け先 -->
@@ -103,9 +103,9 @@
                             </table>
                             <!-- 合計 -->
                             <div class="col-12 row justify-content-end m-0 p-0">
-                                    <div class="col-1 text-center px-0">合計</div>
-                                    <div class="col-2 text-center px-0">{{ $total }}円</div>
-                                    <div class="col-2 text-center"></div>
+                                <div class="col-1 text-center px-0">合計</div>
+                                <div class="col-2 text-center px-0">{{ $total }}円</div>
+                                <div class="col-2 text-center"></div>
                             </div>
                         <!-- ボタン -->
                         <div class="col-12 row justify-content-end mt-3 p-0 no-gutters">

@@ -7,7 +7,7 @@ class M_Users_ClassificationsTableSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+    @return void
      */
     public function run()
     {
