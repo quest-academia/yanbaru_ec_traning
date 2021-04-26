@@ -48,3 +48,7 @@ Route::post('itemRemove', 'ProductDetailsController@remove')->name('itemRemove')
 
 // 注文履歴
 Route::get('/orders', 'OrdersController@show')->name('order.history');
+
+//商品追加
+Route::get('newAdd', 'AddController@index')->name('newAdd.index');
+Route::post('newProduct', 'AddController@store')->name('newProduct.post');

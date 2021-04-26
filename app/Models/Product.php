@@ -8,28 +8,37 @@ class Product extends Model
 {
     protected $table = 'm_products';
     
+    public $timestamps = false;
+    
+    //商品追加
+    protected $fillable = [
+        'product_name',
+        'description',
+        'price',
+    ];
+
     // Userモデルを親に持つことを明記
     public function user()
     {
         return $this->belongsTo('App\User');
     }
-    
+
     // Categoryモデルを親に持つことを明記
     public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
 
-    // Sale_statusモデルを親に持つことを明記
-    public function sale_status()
+    // Saleモデルを親に持つことを明記
+    public function sale()
     {
-        //return $this->belongsTo('App\Models\Sale_status');
+        return $this->belongsTo('App\Models\Sale');
     }
 
-    // Product_statusモデルを親に持つことを明記
-    public function product_status()
+    // ProductStatusモデルを親に持つことを明記
+    public function productstatus()
     {
-        //return $this->belongsTo('App\Models\Product_status');
+        return $this->belongsTo('App\Models\ProductStatus');
     }
 
     // Detailモデルを子に持つことを記述
