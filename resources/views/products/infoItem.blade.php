@@ -23,7 +23,7 @@
                             <p>価格:{{ $product->price }}</p>
                         
                         </div>
-                        <form class="quantitySelection" action="/addCart" method="post">
+                        <form class="quantitySelection" method="POST" action="{{ route('addCart.index') }}">
                             @csrf
                             <!-- //session保存でカート内画面遷移時にデータを送信 -->
                             <input id="products_id" name="products_id" type="hidden" value="{{ $product->category_id }}">
