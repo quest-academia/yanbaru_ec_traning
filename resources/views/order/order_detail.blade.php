@@ -5,7 +5,7 @@
 <div class="wrapper">
     <main>
         @if ($ordersHistory->isEmpty())
-        <div class="container py-3  mt-5 pt-5">
+        <div class="container py-3">
             <div class="mx-auto">
                 <h3>該当商品が見つかりませんでした...</h3>
                 <h3>商品検索画面に戻り、やり直してください</h3>
@@ -13,7 +13,7 @@
             </div>
         </div>
         @else
-        <div class="container-fluid py-3 mt-5 pt-5">
+        <div class="container-fluid py-3">
             <div class="row col-12 justify-content-center m-0">
                 <div class="col-12">
                     <!-- お届け先 -->
@@ -65,7 +65,7 @@
                     <!-- 注文キャンセルボタン -->
                     @if ($preparationOrderFlg)
                     <div class="text-right">
-                        <a href="{{ action('OrderDetailController@edit', $ordersHistory[0]->id) }}" class="btn btn-danger">注文をキャンセルする</a>
+                        <a href="{{ action('OrderDetailController@edit', $ordersHistory[0]->order_detail_number) }}" class="btn btn-danger">注文をキャンセルする</a>
                     </div>
                     @endif
                     <div class="mt-2">
@@ -109,7 +109,7 @@
                             </div>
                         <!-- ボタン -->
                         <div class="col-12 row justify-content-end mt-3 p-0 no-gutters">
-                            <button class="btn btn-info btn-sm" >注文履歴に戻る</button>
+                            <a class="btn btn-info" href="{{ route('order.history') }}" role="button">注文履歴に戻る</a>
                         </div>
                     </div>
                 </div>

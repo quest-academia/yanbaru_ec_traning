@@ -3,46 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\User;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
-// use App\Models\OrderDetail;
-// use App\Models\ShipmentStatus;
 use Carbon\Carbon;
 
 class OrdersController extends Controller
 {
     public function show(Request $request)
     {
-        // $data = Auth::id();
-        // dd($data);
-        // $user_info = User::first();//first()の中はAuth::id()が入る
+        //3ヶ月前の履歴表示：termFlg＝＞false, 全件履歴表示：termFlg＝＞true
+        $termFlg = $request->input('termFlg') == 'false' ? false : true;
 
-        $set_day_before = 7;
-        $set_month_before = 3;
-        $days_before = Carbon::now()->subDay($set_day_before);
-        $months_before = Carbon::now()->subMonth($set_month_before);
+        //注文履歴情報取得
+        $orders = Order::where('user_id', Auth::id())
+                        ->with('orderDetails', 'user')
+                        ->when(!($termFlg), function ($query) {
+                            return $query->where('order_date', '>', (Carbon::now()->subMonth(3)));
+                        })
+                        ->orderBy('order_date', 'desc')
+                        ->paginate(15);
 
-        // dd($request->order_term);
-        // if ($id == 1) {
-        //     $limit_data = $days_before;
-        // } elseif ($id == 2) {
-        //     $limit_data = $months_before;
-        // } else{
-        //     $limit_data = null;
-        // };
+        //注文状態が発送済：preparationFlg ＝ true, 準備中：preparationFlg ＝ false,
+        $preparationFlg = false;//falseの場合は発送済
+        foreach ($orders as $order) {
+            foreach ($order->orderDetails as $order_detail) {
+                if ($order_detail->shipment_status_id == "1") {//shipment_status_id = 1 は 注文状態：'準備中'
+                    $preparationFlg = true;//trueの場合は準備中
+                    break;
+                }
+            }
+        }
 
-        $orders_details = Order::with('orderDetails.shipmentStatues', 'users')
-        ->where([
-            ['user_id', '=', '2'],//1のところはAuth::id()
-            ['order_date', '>=', '$days_before'],//$limit_data
-        ])->get();
-        // $data = $order_details->user_id;
-        // dd($data);
-        // dd($orders_details);
-        // dd($user_info);
-        return view('order/order_history', compact('orders_details'));
-        // return view('order/order_history', contact('user_info'));
+        return view('order/order_history', compact('orders', 'termFlg', 'preparationFlg'));
     }
 }

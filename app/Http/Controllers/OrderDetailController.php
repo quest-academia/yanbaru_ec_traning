@@ -14,52 +14,50 @@ use App\Models\Product;
 
 class OrderDetailController extends Controller
 {
-    public function showOrderDetail(Request $request)
-    // public function showOrderDetail(Request $request,$id)注文履歴取り込んだら修正
+    public function show($id)
     {
-
-        $ordersHistory = OrderDetail::with('orders','Product.category','shipmentStatues')
+        $orderNumber = OrderDetail::whereHas('orders', function ($query) use($id) {
+            $query->where('order_id', $id);
+        })
+        ->select('order_detail_number')
+        ->first();
+        // ログインしているユーザーの注文詳細、注文履歴で選んだ注文のキャンセル(注文状態)以外を取得
+        $ordersHistory = OrderDetail::with('Product.category','shipmentStatues')
         ->whereHas('orders', function ($query) {
             $query->where('user_id', Auth::id());
         })
-        ->where('order_detail_number', 1) //1のところは,$id（注文id）注文履歴作成後修正
+        ->where('order_detail_number', $orderNumber->order_detail_number)
         ->where('shipment_status_id', '<>', 2)
         ->get();
-        // dd($ordersHistory);
+
         $userInfo = User::find(Auth::id());
-        $orderNumber = OrderDetail::where('order_id', 1) //$id
-        ->select('order_detail_number')
-        ->find(1);
-        // dd($orderNumber);
         $subtotal = 0;
         $total = 0;
 
         //注文状態の判定
-        $preparationOrder = Order::where('user_id', Auth::id())
-        ->whereHas('orderDetails', function ($query) {
-            $query->where([
-                ['order_id', '=', '2'],//2のところは$id
-                ['shipment_status_id', '=', '1'],
-            ]);
+        $preparationOrder = OrderDetail::whereHas('orders', function ($query) {
+            $query->where('user_id', Auth::id());
         })
+        ->select('order_detail_number')
+        ->where('shipment_status_id', '=', 1)
         ->get();
-        // dd($shipment_status);
-        //$shipment_status_flg = true なら発送済、false なら発送済
+
+        //$shipment_status_flg = true なら準備中、false なら発送済
         $preparationOrderFlg = $preparationOrder->isEmpty() ? false : true;
-        // dd($shipment_status_flg);
+
         return view('order/order_detail', compact('ordersHistory','userInfo', 'orderNumber','subtotal','total','preparationOrderFlg') );
     }
 
-    public function edit()
+    public function edit($id)
     {
-        // ログインしたユーザーと同じuser_idなら修正可能
+        // ログインしたユーザーと同じuser_idなら選択した注文を準備中をキャンセルへ変更
         $ordersHistory = OrderDetail::whereHas('orders', function ($query) {
         $query->where('user_id', Auth::id());
         })
-
+        ->where('order_detail_number',  '=', $id)
         ->where('shipment_status_id',  '=', '1')
         ->update(['shipment_status_id' => '2']);
 
-        return redirect()->back();
+        return redirect()->back();;
     }
 }

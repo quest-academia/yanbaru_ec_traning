@@ -58,8 +58,7 @@ Route::put('/user_update', 'UserController@update')->name('user.update');
 // ユーザー情報削除
 Route::get('/delete', 'UserController@delete')->name('user.delete');
 // 注文履歴
-Route::get('/orders', 'OrdersController@show')->name('product.history');
+Route::get('/orders', 'OrdersController@show')->name('order.history');
 
 // オーダー情報詳細画面
-Route::get('/order_detail', 'OrderDetailController@showOrderDetail')->name('order.detail');
-Route::get('/order_detail/{id}', 'OrderDetailController@edit')->name('order.edit');
+Route::resource('/orders', 'OrderDetailController', ['only' =>['show','edit']]);
