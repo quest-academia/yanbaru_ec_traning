@@ -22,6 +22,14 @@
                         </div>
                     </div>
                 </div>
-                カートに商品はありません
+            </div>
+            <div class="mt-5">
+                <div class="text-center">
+                    <p class="h2">カートに商品はありません</p>
+                </div>
+            </div>
+        </div>
+    </div>            
 </main>
+
 @endsection

@@ -157,7 +157,6 @@ return [
         'phone_number'=>'電話番号',
         'password'=>'パスワード',
         'password_confirmation'=>'パスワード確認',
-        
     ],
 
 ];
