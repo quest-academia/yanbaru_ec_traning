@@ -5,7 +5,7 @@
             @if (Auth::check())
                 <p>{{ Auth::user()->last_name }} {{ Auth::user()->first_name }} さん</p>
                 <li><a href="/products">商品検索</a></li>
-                <li><a href="/cartlist">カート</a></li>
+                <li><a href="/cart">カート</a></li>
                 <li><a href="/orders">注文履歴</a></li>
                 <li><a href="/user_info">ユーザ情報</a></li>
                 <li><a href="/logout">ログアウト</a></li>
