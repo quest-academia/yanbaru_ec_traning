@@ -38,10 +38,9 @@ class OrderDetailController extends Controller
         $preparationOrder = OrderDetail::whereHas('orders', function ($query) {
             $query->where('user_id', Auth::id());
         })
-        ->select('order_detail_number')
+        ->where('order_detail_number',$orderNumber->order_detail_number)
         ->where('shipment_status_id', '=', 1)
         ->get();
-
         //$shipment_status_flg = true なら準備中、false なら発送済
         $preparationOrderFlg = $preparationOrder->isEmpty() ? false : true;
 
