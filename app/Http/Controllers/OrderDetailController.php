@@ -17,7 +17,7 @@ class OrderDetailController extends Controller
     {
         $orderDetail = OrderDetail::whereHas('orders', function ($query) use($id) {
             $query->where('order_id', $id);
-        })
+            })
             ->select('order_detail_number')
             ->first();
         // ログインしているユーザーの注文詳細、注文履歴で選んだ注文のキャンセル(注文状態)以外を取得
@@ -29,14 +29,14 @@ class OrderDetailController extends Controller
             ->where('shipment_status_id', '<>', 2)
             ->get();
 
-        $userInfo = User::find(Auth::id());
+        $userInfo = Auth::user();
         $subtotal = 0;
         $total = 0;
 
         //注文状態の判定
         $preparationOrder = OrderDetail::whereHas('orders', function ($query) {
             $query->where('user_id', Auth::id());
-        })
+            })
             ->where('order_detail_number', $orderDetail->order_detail_number)
             ->where('shipment_status_id', '=', 1)
             ->get();
@@ -53,8 +53,8 @@ class OrderDetailController extends Controller
             $query->where('user_id', Auth::id());
             })
             ->where('order_detail_number',  '=', $id)
-            ->where('shipment_status_id',  '=', '1')
-            ->update(['shipment_status_id' => '2']);
+            ->where('shipment_status_id',  '=', 1)
+            ->update(['shipment_status_id' => 2]);
 
         return redirect()->back();;
     }
