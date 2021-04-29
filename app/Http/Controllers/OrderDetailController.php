@@ -21,7 +21,7 @@ class OrderDetailController extends Controller
             ->select('order_detail_number')
             ->first();
         // ログインしているユーザーの注文詳細、注文履歴で選んだ注文のキャンセル(注文状態)以外を取得
-        $ordersHistory = OrderDetail::with('Product.category','shipmentStatues')
+        $ordersHistory = OrderDetail::with('Product.category', 'shipmentStatues')
             ->whereHas('orders', function ($query) {
                 $query->where('user_id', Auth::id());
                 })
