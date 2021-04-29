@@ -50,7 +50,7 @@ Route::post('itemRemove', 'ProductDetailsController@remove')->name('itemRemove')
 Route::get('/orders', 'OrdersController@show')->name('order.history');
 
 // オーダー情報詳細画面
-Route::resource('/orders', 'OrderDetailController', ['only' =>['show','edit']]);
+Route::resource('/orders', 'OrderDetailController', ['only' => ['show', 'edit']]);
 
 //商品追加
 Route::get('newAdd', 'AddController@index')->name('newAdd.index');

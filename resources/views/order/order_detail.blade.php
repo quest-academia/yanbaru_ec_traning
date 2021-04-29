@@ -46,7 +46,7 @@
                                 注文番号：
                             </div>
                             <div id="order_number">
-                            {{ $orderNumber->order_detail_number }}
+                            {{ $orderDetail->order_detail_number }}
                             </div>
                         </div>
                         <div class="row">
