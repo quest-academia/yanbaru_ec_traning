@@ -7,9 +7,9 @@
         @if ($ordersHistory->isEmpty())
         <div class="container py-3">
             <div class="mx-auto">
-                <h3>該当商品が見つかりませんでした...</h3>
-                <h3>商品検索画面に戻り、やり直してください</h3>
-                <h3><a href="#" class="toSearchItem btn btn-primary btn-lg">商品検索画面へ</a></h3>
+                <h3>該当の注文が見つかりませんでした...</h3>
+                <h3>注文履歴画面に戻り、やり直してください</h3>
+                <h3><a class="toSearchItem btn btn-primary btn-lg" href="{{ route('order.history') }}" role="button">注文履歴画面へ</a></h3>
             </div>
         </div>
         @else
