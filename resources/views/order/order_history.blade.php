@@ -57,7 +57,6 @@
                                         </td>
                                         <!-- 注文詳細画面完了時適用 -->
                                         <td class="col-2 px-0 text-center"><a href="{{ action('OrderDetailController@show', ['id' => $order->id]) }}" class="btn btn-primary btn-sm">詳細</a></td>
-                                        <!-- <td class="col-2 px-0 text-center"><button class="btn btn-primary btn-sm">詳細</button></td> -->
                                     </tr>
                                 @endforeach
                                 </tbody>

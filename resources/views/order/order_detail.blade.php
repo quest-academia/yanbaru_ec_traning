@@ -93,7 +93,7 @@
                                             <td class="col-2 px-0 text-center">{{ $orderHistory->Product->price }}円</td>
                                             <td class="col-1 px-0 text-center">{{ $orderHistory->order_quantity }}<span>個</span></td>
                                             <td class="col-2 px-0 text-center">{{ $subtotal }}円</td>
-                                            <td class="col-2 px-0 text-center">注文状態：<span id="order_status_1">{{ $orderHistory->shipmentStatues->shipment_status_name }}</span></td>
+                                            <td class="col-2 px-0 text-center">注文状態：<span id="order_status_1">{{ $orderHistory->shipmentStatus->shipment_status_name }}</span></td>
                                                 @php
                                                     $total += $subtotal;
                                                 @endphp
