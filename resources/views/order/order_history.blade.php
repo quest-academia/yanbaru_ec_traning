@@ -35,15 +35,15 @@
                                                 {{ $order->orderDetails[0]->order_detail_number }}
                                             </td>
                                         <td class="col-4 px-2">
-                                            <div>〒<span id="postal_code_1"></span>{{ $order->users->zipcode }}</div>
+                                            <div>〒<span id="postal_code_1"></span>{{ $order->user->zipcode }}</div>
                                             <div id="address_1">
-                                                {{ $order->users->prefecture }}
-                                                {{ $order->users->municipality }}
-                                                {{ $order->users->address }}
+                                                {{ $order->user->prefecture }}
+                                                {{ $order->user->municipality }}
+                                                {{ $order->user->address }}
                                             </div>
                                             <div id="order_name_1">
-                                                {{ $order->users->last_name }}
-                                                {{ $order->users->first_name }}
+                                                {{ $order->user->last_name }}
+                                                {{ $order->user->first_name }}
                                                 <span class="px-1">様</span>
                                             </div>
                                         </td>
@@ -56,8 +56,7 @@
                                             @endif
                                         </td>
                                         <!-- 注文詳細画面完了時適用 -->
-                                        <!-- <td class="col-2 px-0 text-center"><a href="{{ route('order.detail', ['id' => $order->id,'orderDetailNumber' => $order->orderDetails[0]->order_detail_number]) }}" class="btn btn-primary btn-sm">詳細</a></td> -->
-                                        <td class="col-2 px-0 text-center"><button class="btn btn-primary btn-sm">詳細</button></td>
+                                        <td class="col-2 px-0 text-center"><a href="{{ action('OrderDetailController@show', ['id' => $order->id]) }}" class="btn btn-primary btn-sm">詳細</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -51,13 +51,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     // Productモデルを子に持つことを記述
     public function products()
     {
         return $this->hasMany('App\Models\Product');
     }
-    
+
     public function orders() {
         return $this->hasMany('App\Models\Order');
     }

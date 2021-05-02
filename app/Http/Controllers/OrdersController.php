@@ -13,16 +13,16 @@ class OrdersController extends Controller
     {
         //3ヶ月前の履歴表示：termFlg＝＞false, 全件履歴表示：termFlg＝＞true
         $termFlg = $request->input('termFlg') == 'false' ? false : true;
-        
+
         //注文履歴情報取得
         $orders = Order::where('user_id', Auth::id())
-                        ->with('orderDetails', 'users')
+                        ->with('orderDetails', 'user')
                         ->when(!($termFlg), function ($query) {
                             return $query->where('order_date', '>', (Carbon::now()->subMonth(3)));
                         })
                         ->orderBy('order_date', 'desc')
                         ->paginate(15);
-        
+
         //注文状態が発送済：preparationFlg ＝ true, 準備中：preparationFlg ＝ false,
         $preparationFlg = false;//falseの場合は発送済
         foreach ($orders as $order) {
