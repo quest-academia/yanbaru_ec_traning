@@ -62,15 +62,14 @@
 
 
 
-                                <form class="quantitySelection" action="itemRemove" method="post" value="{{  $data['session_products_id'] }}">
+                                <form class="quantitySelection" action="itemRemove" method="post" value="{{ $data['session_products_id'] }}">
                                     @csrf
-                                    <td class="col-1 px-0 text-center">
-                                        <input type="submit" name="delete_products_id" class="btn btn-danger" value="削除">
-                                    </td>
-                                    <input id="product_id" name="product_id" type="hidden" value="{{  $data['session_products_id'] }}">
-                                    <input id="product_quantity" name="product_quantity" type="hidden" value="{{  $data['session_products_quantity'] }}">
+                                        <td class="col-1 px-0 text-center">
+                                            <input type="submit" name="delete_products_id" class="btn btn-danger" value="削除">
+                                        </td>
+                                        <input id="product_id" name="product_id" type="hidden" value="{{  $data['session_products_id'] }}">
+                                        <input id="product_quantity" name="product_quantity" type="hidden" value="{{  $data['session_products_quantity'] }}">
                                 </form>
-
                             </tr>
                             @endforeach
                         </tbody>
@@ -88,13 +87,13 @@
                     </div>
                     <!-- ボタン -->
                     <div class="col-12 row justify-content-center mt-3">
-                        <button  class="btn btn-info mx-3">買い物を続ける</button>
+                        <button class="btn btn-info mx-3">買い物を続ける</button>
 
                         <form class="btn btn-primary mx-3" action="orderFinalize" method="post" value="{{  $data['session_products_id'] }}">
-                        @csrf
-                        <td class="col-1 px-0 text-center">
-                            <input type="submit" name="orderFinalize" class="btn btn-primary" value="注文を確定する">
-                        </td>    
+                            @csrf
+                            <td class="col-1 px-0 text-center">
+                                <input type="submit" name="orderFinalize" class="btn btn-primary" value="注文を確定する">
+                            </td>
                         </form>
                     </div>
                 </div>
@@ -104,4 +103,4 @@
 
 </main>
 
-@endsection 
+@endsection

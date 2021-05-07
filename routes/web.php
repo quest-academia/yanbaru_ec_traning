@@ -27,11 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     //カート内商品一覧
     Route::get('cart', 'ProductDetailsController@takeCart')->name('cart.index');
     //カート内に商品無い場合
-    Route::view('/no-cartList', 'products/no_cart_list')->name('noCartlist');
+    Route::view('/no-cartList', 'products/NoCartlist')->name('noCartlist');
     //カート内商品削除
     Route::post('itemRemove', 'ProductDetailsController@remove')->name('itemRemove');
     //注文完了
-    Route::view('/purchaseCompleted', 'products/purchase_completed');
+    Route::view('/purchaseCompleted', 'products/PurchaseCompleted');
     Route::post('orderFinalize', 'ProductDetailsController@store')->name('orderFinalize');
     //商品詳細画面表示
     Route::get('products/{id}', 'ProductDetailsController@show')->name('product.show');

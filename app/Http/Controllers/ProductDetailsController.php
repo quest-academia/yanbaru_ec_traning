@@ -181,7 +181,7 @@ class ProductDetailsController extends Controller
     public function store(Request $request)
     {
         //$request->session()->forget('cartData');
-        $cartData = $request->session()->get('cartData');
+        $cartDatas = $request->session()->get('cartData');
         $now = Carbon::now();
 
 
@@ -199,7 +199,7 @@ class ProductDetailsController extends Controller
         $savedOrderId = $savedOrder->pluck('id')->toArray();
 
         //注文詳細情報保存を注文数分繰り返す １回のリクエストを複数カラムに分けDB登録
-        foreach ($cartData as $data) {
+        foreach ($cartDatas as $cartData) {
             //注文詳細情報に関わるオブジェクト生成
             $orderDetail = new \App\TOrdersDetail;
 
